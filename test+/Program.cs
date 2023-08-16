@@ -1,0 +1,13 @@
+﻿using System;
+
+
+namespace test_
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            
+        }
+    }
+}
