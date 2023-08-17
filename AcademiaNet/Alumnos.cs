@@ -60,10 +60,10 @@ namespace AcademiaNet
 
             cmbPlan.DataSource = dt;
         }
-        private void loadALumnos()
+        private void loadALumnos(string nombre)
         {
             Negocio.Persona negocio = new Negocio.Persona();
-            List<Entidades.Persona> personaList = negocio.getAlumnos();
+            List<Entidades.Persona> personaList = negocio.getAlumnos(nombre);
 
             DataTable dt = new DataTable();
             //id legajo nombre apellido FechaNacimiento Telefono email Plan idEspecialidad Especialidad
@@ -108,7 +108,7 @@ namespace AcademiaNet
         private void Persona_Load(object sender, EventArgs e)
         {
 
-            loadALumnos();
+            loadALumnos(textBox1.Text);
 
         }
 
@@ -163,7 +163,7 @@ namespace AcademiaNet
             }
             finally
             {
-                loadALumnos();
+                loadALumnos(textBox1.Text);
             }
 
         }
@@ -242,7 +242,7 @@ namespace AcademiaNet
             btnEliminar.Enabled = false;
             btnModificar.Enabled = false;
             btnCancelar.Enabled = false;
-            loadALumnos();
+            loadALumnos(textBox1.Text);
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -271,7 +271,12 @@ namespace AcademiaNet
             btnEliminar.Enabled = false;
             btnModificar.Enabled = false;
             btnCancelar.Enabled = false;
-            loadALumnos();
+            loadALumnos(textBox1.Text);
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            loadALumnos(textBox1.Text);
         }
     }
 }

@@ -47,6 +47,8 @@
             label2 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             dgvPersonas = new System.Windows.Forms.DataGridView();
+            label5 = new System.Windows.Forms.Label();
+            textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvPersonas).BeginInit();
             SuspendLayout();
             // 
@@ -60,6 +62,7 @@
             btnModificar.TabIndex = 45;
             btnModificar.Text = "Modificar";
             btnModificar.UseVisualStyleBackColor = true;
+            btnModificar.Click += btnModificar_Click;
             // 
             // btnEliminar
             // 
@@ -71,6 +74,7 @@
             btnEliminar.TabIndex = 44;
             btnEliminar.Text = "Eliminar";
             btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.Click += btnEliminar_Click;
             // 
             // btnCancelar
             // 
@@ -82,6 +86,7 @@
             btnCancelar.TabIndex = 43;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // btnAgregar
             // 
@@ -92,6 +97,7 @@
             btnAgregar.TabIndex = 42;
             btnAgregar.Text = "Agregar";
             btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.Click += btnAgregar_Click;
             // 
             // txtEmail
             // 
@@ -176,6 +182,7 @@
             txtLegajo.Size = new System.Drawing.Size(497, 27);
             txtLegajo.TabIndex = 28;
             txtLegajo.Text = "0";
+            txtLegajo.KeyPress += txtLegajo_KeyPress;
             // 
             // label4
             // 
@@ -221,20 +228,42 @@
             dgvPersonas.AllowUserToResizeRows = false;
             dgvPersonas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dgvPersonas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPersonas.Location = new System.Drawing.Point(12, 214);
+            dgvPersonas.Location = new System.Drawing.Point(12, 249);
             dgvPersonas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             dgvPersonas.Name = "dgvPersonas";
+            dgvPersonas.ReadOnly = true;
             dgvPersonas.RowHeadersVisible = false;
             dgvPersonas.RowHeadersWidth = 51;
             dgvPersonas.RowTemplate.Height = 25;
-            dgvPersonas.Size = new System.Drawing.Size(1301, 612);
+            dgvPersonas.Size = new System.Drawing.Size(1301, 577);
             dgvPersonas.TabIndex = 23;
+            dgvPersonas.CellDoubleClick += dgvPersonas_CellDoubleClick;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new System.Drawing.Point(12, 217);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(59, 20);
+            label5.TabIndex = 46;
+            label5.Text = "Buscar: ";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new System.Drawing.Point(77, 214);
+            textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new System.Drawing.Size(1235, 27);
+            textBox1.TabIndex = 47;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // Profesor
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1333, 839);
+            Controls.Add(textBox1);
+            Controls.Add(label5);
             Controls.Add(btnModificar);
             Controls.Add(btnEliminar);
             Controls.Add(btnCancelar);
@@ -283,5 +312,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvPersonas;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

@@ -51,6 +51,8 @@
             btnCancelar = new System.Windows.Forms.Button();
             btnEliminar = new System.Windows.Forms.Button();
             btnModificar = new System.Windows.Forms.Button();
+            label10 = new System.Windows.Forms.Label();
+            textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvPersonas).BeginInit();
             SuspendLayout();
             // 
@@ -62,14 +64,14 @@
             dgvPersonas.AllowUserToResizeRows = false;
             dgvPersonas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dgvPersonas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPersonas.Location = new System.Drawing.Point(14, 211);
+            dgvPersonas.Location = new System.Drawing.Point(14, 246);
             dgvPersonas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             dgvPersonas.Name = "dgvPersonas";
             dgvPersonas.ReadOnly = true;
             dgvPersonas.RowHeadersVisible = false;
             dgvPersonas.RowHeadersWidth = 51;
             dgvPersonas.RowTemplate.Height = 25;
-            dgvPersonas.Size = new System.Drawing.Size(1301, 612);
+            dgvPersonas.Size = new System.Drawing.Size(1301, 577);
             dgvPersonas.TabIndex = 0;
             dgvPersonas.CellDoubleClick += dgvPersonas_CellDoubleClick;
             // 
@@ -281,11 +283,31 @@
             btnModificar.UseVisualStyleBackColor = true;
             btnModificar.Click += btnModificar_Click;
             // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new System.Drawing.Point(14, 218);
+            label10.Name = "label10";
+            label10.Size = new System.Drawing.Size(52, 20);
+            label10.TabIndex = 23;
+            label10.Text = "Buscar";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new System.Drawing.Point(77, 211);
+            textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new System.Drawing.Size(1238, 27);
+            textBox1.TabIndex = 24;
+            textBox1.TextChanged += textBox1_TextChanged;
+            // 
             // Alumnos
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1333, 839);
+            Controls.Add(textBox1);
+            Controls.Add(label10);
             Controls.Add(btnModificar);
             Controls.Add(btnEliminar);
             Controls.Add(btnCancelar);
@@ -343,5 +365,7 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
