@@ -14,7 +14,13 @@ namespace Negocio
             return datos.getAlumnos();
         }
 
-        public void addPersona(Entidades.Persona p)
+        public List<Entidades.Persona> getProfesores()
+        {
+            Datos.Persona datos = new Datos.Persona();
+            return datos.getProfesores();
+        }
+
+        public void addAlumno(Entidades.Persona p)
         {
             if (p.Legajo == 0)
                 throw new Exception("Falta Legajo");
@@ -23,20 +29,20 @@ namespace Negocio
             if (p.Apellido == "")
                 throw new Exception("Falta Apellido");
             Datos.Persona datos = new Datos.Persona();
-            datos.addPersona(p);
+            datos.addAlumno(p);
 
         }
 
-        public void updatePersona(Entidades.Persona p)
+        public void updateAlumno(Entidades.Persona p)
         {
             Datos.Persona datos = new Datos.Persona();
-            datos.updatePersona(p);
+            datos.updateAlumno(p);
         }
 
-        public void deletePersona(Entidades.Persona p)
+        public void deleteAlumno(Entidades.Persona p)
         {
             Datos.Persona datos = new Datos.Persona();
-            datos.deletePersona(p);
+            datos.deleteAlumno(p);
         }
     }
 }

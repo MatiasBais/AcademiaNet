@@ -5,9 +5,9 @@ using System.Data.SqlClient;
 
 namespace Datos
 {
-    public class Persona
+    public class Persona:Base
     {
-        SqlConnection conn = new SqlConnection("Server=MATIASLAPTOP\\SQLEXPRESS;Database=academia;Trusted_Connection=True;");
+       
         public List<Entidades.Persona> getAlumnos()
         {
             List<Entidades.Persona> list = new List<Entidades.Persona>();
@@ -45,7 +45,34 @@ namespace Datos
             return list;
         }
 
-        public void addPersona(Entidades.Persona p)
+        public List<Entidades.Persona> getProfesores()
+        {
+            List<Entidades.Persona> list = new List<Entidades.Persona>();
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("SET DATEFORMAT 'YMD';select nombre, apellido, email, legajo, fechaNacimiento, personas.id as 'ID' , direccion, telefono from personas where tipoPersona ='Profesor'", conn);
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Entidades.Persona persona = new Entidades.Persona();
+                    persona.Nombre = reader["Nombre"].ToString();
+                    persona.Apellido = reader["Apellido"].ToString();
+                    persona.Email = reader["email"].ToString();
+                    persona.Legajo = (int)reader["legajo"];
+                    persona.FechaNacimiento = (DateTime)reader["FechaNacimiento"];
+                    persona.ID = (int)reader["ID"];
+                    persona.Direccion = reader["Direccion"].ToString();
+                    persona.Telefono = reader["telefono"].ToString();
+                    persona.TipoPersona = "Profesor";
+
+                    list.Add(persona);
+                }
+            }
+            conn.Close();
+
+            return list;
+        }
+        public void addAlumno(Entidades.Persona p)
         {
             conn.Open();
             
@@ -66,7 +93,7 @@ namespace Datos
             conn.Close();
         }
 
-        public void updatePersona(Entidades.Persona p)
+        public void updateAlumno(Entidades.Persona p)
         {
             conn.Open();
             string cmdstr = String.Format("SET DATEFORMAT 'YMD';update personas set Legajo = '{0}', Nombre = '{1}', Apellido = '{2}', FechaNacimiento = '{3}', Telefono = '{4}', Direccion = '{5}', email = '{6}', IDPlan = '{7}' where ID = '{8}'",
@@ -85,7 +112,7 @@ namespace Datos
             conn.Close();
         }
 
-        public void deletePersona(Entidades.Persona p)
+        public void deleteAlumno(Entidades.Persona p)
         {
             conn.Open();
             string cmdstr = String.Format("delete from personas where ID = '{0}'",
@@ -95,6 +122,7 @@ namespace Datos
             cmd.ExecuteNonQuery();
             conn.Close();
         }
+
 
 
     }

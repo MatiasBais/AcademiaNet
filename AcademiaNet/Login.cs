@@ -17,5 +17,16 @@ namespace AcademiaNet
             InitializeComponent();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Profesor profesor = new Profesor();
+            profesor.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Alumnos alumnos = new Alumnos();
+            alumnos.Show();
+        }
     }
 }

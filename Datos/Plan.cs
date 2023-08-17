@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace Datos
 {
-    public class Plan
+    public class Plan:Base
     {
-        SqlConnection conn = new SqlConnection("Server=MATIASLAPTOP\\SQLEXPRESS;Database=academia;Trusted_Connection=True;");
-
+        
         public List<Entidades.Plan> getPlanes( int idEspecialidad)
         {
             List<Entidades.Plan> planes = new List<Entidades.Plan>();

@@ -65,6 +65,7 @@
             dgvPersonas.Location = new System.Drawing.Point(14, 211);
             dgvPersonas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             dgvPersonas.Name = "dgvPersonas";
+            dgvPersonas.ReadOnly = true;
             dgvPersonas.RowHeadersVisible = false;
             dgvPersonas.RowHeadersWidth = 51;
             dgvPersonas.RowTemplate.Height = 25;
@@ -310,7 +311,7 @@
             Controls.Add(dgvPersonas);
             Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             Name = "Alumnos";
-            Text = "Persona";
+            Text = "Alumno";
             Load += Persona_Load;
             ((System.ComponentModel.ISupportInitialize)dgvPersonas).EndInit();
             ResumeLayout(false);

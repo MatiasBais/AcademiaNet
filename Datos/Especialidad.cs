@@ -7,10 +7,9 @@ using System.Data.SqlClient;
 
 namespace Datos
 {
-    public class Especialidad
+    public class Especialidad : Base
     {
-        SqlConnection conn = new SqlConnection("Server=MATIASLAPTOP\\SQLEXPRESS;Database=academia;Trusted_Connection=True;");
-
+        
         public List<Entidades.Especialidad> getEspecialidades()
         {
             List<Entidades.Especialidad> especialidades = new List<Entidades.Especialidad>();

@@ -148,24 +148,13 @@ namespace AcademiaNet
 
             p.Plan = plan;
 
-            string cmdstr = String.Format("insert into Personas(Legajo, Nombre, Apellido, FechaNacimiento, Telefono, Direccion, email, idPlan, TipoPersona) values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}')",
-                p.Legajo.ToString(),
-                p.Nombre,
-                p.Apellido,
-                p.FechaNacimiento.ToString("yyyy-MM-dd"),
-                p.Telefono,
-                p.Direccion,
-                p.Email,
-                p.Plan.ID.ToString(),
-                p.TipoPersona);
 
-            MessageBox.Show(cmdstr);
 
 
             Negocio.Persona negocio = new Negocio.Persona();
             try
             {
-                negocio.addPersona(p);
+                negocio.addAlumno(p);
                 clear();
             }
             catch (Exception error)
@@ -245,7 +234,7 @@ namespace AcademiaNet
             p.Plan = plan;
 
             Negocio.Persona negocio = new Negocio.Persona();
-            negocio.deletePersona(p);
+            negocio.deleteAlumno(p);
 
 
             clear();
@@ -275,7 +264,7 @@ namespace AcademiaNet
             p.Plan = plan;
 
             Negocio.Persona negocio = new Negocio.Persona();
-            negocio.updatePersona(p);
+            negocio.updateAlumno(p);
 
             clear();
             btnAgregar.Enabled = true;
