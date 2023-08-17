@@ -9,7 +9,7 @@ namespace Datos
 {
     public class Especialidad
     {
-        SqlConnection conn = new SqlConnection("Server=MATIASESCRITORI\\TEW_SQLEXPRESS;Database=academia;Trusted_Connection=True;");
+        SqlConnection conn = new SqlConnection("Server=MATIASLAPTOP\\SQLEXPRESS;Database=academia;Trusted_Connection=True;");
 
         public List<Entidades.Especialidad> getEspecialidades()
         {

@@ -9,7 +9,7 @@ namespace Datos
 {
     public class Plan
     {
-        SqlConnection conn = new SqlConnection("Server=MATIASESCRITORI\\TEW_SQLEXPRESS;Database=academia;Trusted_Connection=True;");
+        SqlConnection conn = new SqlConnection("Server=MATIASLAPTOP\\SQLEXPRESS;Database=academia;Trusted_Connection=True;");
 
         public List<Entidades.Plan> getPlanes( int idEspecialidad)
         {

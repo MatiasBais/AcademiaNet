@@ -18,13 +18,25 @@ namespace Negocio
         {
             if (p.Legajo == 0)
                 throw new Exception("Falta Legajo");
-            if (p.Nombre == null)
+            if (p.Nombre == "")
                 throw new Exception("Falta Nombre");
-            if (p.Apellido == null)
+            if (p.Apellido == "")
                 throw new Exception("Falta Apellido");
             Datos.Persona datos = new Datos.Persona();
             datos.addPersona(p);
 
+        }
+
+        public void updatePersona(Entidades.Persona p)
+        {
+            Datos.Persona datos = new Datos.Persona();
+            datos.updatePersona(p);
+        }
+
+        public void deletePersona(Entidades.Persona p)
+        {
+            Datos.Persona datos = new Datos.Persona();
+            datos.deletePersona(p);
         }
     }
 }

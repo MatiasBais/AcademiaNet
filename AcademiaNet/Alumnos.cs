@@ -24,7 +24,7 @@ namespace AcademiaNet
             DataTable dt = new DataTable();
             dt.Columns.Add("ID", typeof(int));
             dt.Columns.Add("Descripcion", typeof(string));
-            foreach(Entidades.Especialidad esp in negocio.getEspecialidades())
+            foreach (Entidades.Especialidad esp in negocio.getEspecialidades())
             {
                 DataRow row = dt.NewRow();
                 row[0] = esp.ID;
@@ -107,9 +107,9 @@ namespace AcademiaNet
         }
         private void Persona_Load(object sender, EventArgs e)
         {
-            
+
             loadALumnos();
-            
+
         }
 
         private void cmbEspecialidad_SelectedValueChanged(object sender, EventArgs e)
@@ -148,6 +148,19 @@ namespace AcademiaNet
 
             p.Plan = plan;
 
+            string cmdstr = String.Format("insert into Personas(Legajo, Nombre, Apellido, FechaNacimiento, Telefono, Direccion, email, idPlan, TipoPersona) values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}')",
+                p.Legajo.ToString(),
+                p.Nombre,
+                p.Apellido,
+                p.FechaNacimiento.ToString("yyyy-MM-dd"),
+                p.Telefono,
+                p.Direccion,
+                p.Email,
+                p.Plan.ID.ToString(),
+                p.TipoPersona);
+
+            MessageBox.Show(cmdstr);
+
 
             Negocio.Persona negocio = new Negocio.Persona();
             try
@@ -168,7 +181,7 @@ namespace AcademiaNet
 
         private void txtLegajo_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void txtLegajo_KeyDown(object sender, KeyEventArgs e)
@@ -188,6 +201,88 @@ namespace AcademiaNet
         {
             if (txtLegajo.Text == "")
                 txtLegajo.Text = "0";
+        }
+        int ID = 0;
+        private void dgvPersonas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = dgvPersonas.SelectedCells[0].RowIndex;
+            ID = Convert.ToInt32(dgvPersonas.Rows[index].Cells[0].Value);
+            txtLegajo.Text = dgvPersonas.Rows[index].Cells[1].Value.ToString();
+            txtNombre.Text = dgvPersonas.Rows[index].Cells[2].Value.ToString();
+            txtApellido.Text = dgvPersonas.Rows[index].Cells[3].Value.ToString();
+            dtpFechaNacimiento.Value = Convert.ToDateTime(dgvPersonas.Rows[index].Cells[4].Value);
+            txtTelefono.Text = dgvPersonas.Rows[index].Cells[5].Value.ToString();
+            txtDireccion.Text = dgvPersonas.Rows[index].Cells[6].Value.ToString();
+            txtEmail.Text = dgvPersonas.Rows[index].Cells[7].Value.ToString();
+            cmbEspecialidad.SelectedValue = dgvPersonas.Rows[index].Cells[10].Value;
+            cmbPlan.SelectedValue = dgvPersonas.Rows[index].Cells[8].Value;
+
+            btnAgregar.Enabled = false;
+            btnEliminar.Enabled = true;
+            btnModificar.Enabled = true;
+            btnCancelar.Enabled = true;
+
+
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+
+            Entidades.Persona p = new Entidades.Persona();
+            p.ID = ID;
+            p.Legajo = Convert.ToInt32(txtLegajo.Text);
+            p.Nombre = txtNombre.Text;
+            p.Apellido = txtApellido.Text;
+            p.Direccion = txtDireccion.Text;
+            p.Email = txtEmail.Text;
+            p.Telefono = txtTelefono.Text;
+            p.TipoPersona = "Alumno";
+            p.FechaNacimiento = dtpFechaNacimiento.Value;
+            Entidades.Plan plan = new Entidades.Plan();
+            plan.ID = (int)cmbPlan.SelectedValue;
+
+
+            p.Plan = plan;
+
+            Negocio.Persona negocio = new Negocio.Persona();
+            negocio.deletePersona(p);
+
+
+            clear();
+            btnAgregar.Enabled = true;
+            btnEliminar.Enabled = false;
+            btnModificar.Enabled = false;
+            btnCancelar.Enabled = false;
+            loadALumnos();
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Entidades.Persona p = new Entidades.Persona();
+            p.ID = ID;
+            p.Legajo = Convert.ToInt32(txtLegajo.Text);
+            p.Nombre = txtNombre.Text;
+            p.Apellido = txtApellido.Text;
+            p.Direccion = txtDireccion.Text;
+            p.Email = txtEmail.Text;
+            p.Telefono = txtTelefono.Text;
+            p.TipoPersona = "Alumno";
+            p.FechaNacimiento = dtpFechaNacimiento.Value;
+            Entidades.Plan plan = new Entidades.Plan();
+            plan.ID = (int)cmbPlan.SelectedValue;
+
+
+            p.Plan = plan;
+
+            Negocio.Persona negocio = new Negocio.Persona();
+            negocio.updatePersona(p);
+
+            clear();
+            btnAgregar.Enabled = true;
+            btnEliminar.Enabled = false;
+            btnModificar.Enabled = false;
+            btnCancelar.Enabled = false;
+            loadALumnos();
         }
     }
 }
