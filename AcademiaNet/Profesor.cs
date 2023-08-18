@@ -64,14 +64,11 @@ namespace AcademiaNet
             {
                 negocio.addProfesor(p);
                 clear();
+                loadProfesores(textBox1.Text);
             }
             catch (Exception error)
             {
-                MessageBox.Show(error.ToString());
-            }
-            finally
-            {
-                loadProfesores(textBox1.Text);
+                MessageBox.Show(error.Message);
             }
         }
         int ID = 0;
@@ -108,14 +105,21 @@ namespace AcademiaNet
             p.FechaNacimiento = dtpFechaNacimiento.Value;
 
             Negocio.Persona negocio = new Negocio.Persona();
-            negocio.updateProfesor(p);
 
-            clear();
-            btnAgregar.Enabled = true;
-            btnEliminar.Enabled = false;
-            btnModificar.Enabled = false;
-            btnCancelar.Enabled = false;
-            loadProfesores(textBox1.Text);
+            try { 
+                negocio.updateProfesor(p);
+
+                clear();
+                btnAgregar.Enabled = true;
+                btnEliminar.Enabled = false;
+                btnModificar.Enabled = false;
+                btnCancelar.Enabled = false;
+                loadProfesores(textBox1.Text);
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -162,6 +166,12 @@ namespace AcademiaNet
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             loadProfesores(textBox1.Text);
+        }
+
+        private void txtLegajo_Leave(object sender, EventArgs e)
+        {
+            if (txtLegajo.Text == "")
+                txtLegajo.Text = "0";
         }
     }
 }
