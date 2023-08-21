@@ -28,5 +28,11 @@ namespace AcademiaNet
             Alumnos alumnos = new Alumnos();
             alumnos.Show();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Especialidad esp = new Especialidad();
+            esp.Show();
+        }
     }
 }

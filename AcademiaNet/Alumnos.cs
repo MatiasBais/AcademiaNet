@@ -108,7 +108,7 @@ namespace AcademiaNet
         private void Persona_Load(object sender, EventArgs e)
         {
 
-            loadALumnos(textBox1.Text);
+            loadALumnos(txtBuscar.Text);
 
         }
 
@@ -160,7 +160,7 @@ namespace AcademiaNet
             {
                 negocio.addAlumno(p);
                 clear();
-                loadALumnos(textBox1.Text);
+                loadALumnos(txtBuscar.Text);
             }
             catch (Exception error)
             {
@@ -243,7 +243,7 @@ namespace AcademiaNet
             btnEliminar.Enabled = false;
             btnModificar.Enabled = false;
             btnCancelar.Enabled = false;
-            loadALumnos(textBox1.Text);
+            loadALumnos(txtBuscar.Text);
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -264,7 +264,8 @@ namespace AcademiaNet
 
             p.Plan = plan;
 
-            try { 
+            try
+            {
                 Negocio.Persona negocio = new Negocio.Persona();
                 negocio.updateAlumno(p);
 
@@ -273,7 +274,7 @@ namespace AcademiaNet
                 btnEliminar.Enabled = false;
                 btnModificar.Enabled = false;
                 btnCancelar.Enabled = false;
-                loadALumnos(textBox1.Text);
+                loadALumnos(txtBuscar.Text);
             }
             catch (Exception error)
             {
@@ -281,11 +282,9 @@ namespace AcademiaNet
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
-            loadALumnos(textBox1.Text);
+            loadALumnos(txtBuscar.Text);
         }
-
-        
     }
 }

@@ -30,7 +30,7 @@ namespace AcademiaNet
 
         private void Profesor_Load(object sender, EventArgs e)
         {
-            loadProfesores(textBox1.Text);
+            loadProfesores(txtBuscar.Text);
 
         }
         public void clear()
@@ -64,7 +64,7 @@ namespace AcademiaNet
             {
                 negocio.addProfesor(p);
                 clear();
-                loadProfesores(textBox1.Text);
+                loadProfesores(txtBuscar.Text);
             }
             catch (Exception error)
             {
@@ -106,7 +106,8 @@ namespace AcademiaNet
 
             Negocio.Persona negocio = new Negocio.Persona();
 
-            try { 
+            try
+            {
                 negocio.updateProfesor(p);
 
                 clear();
@@ -114,7 +115,7 @@ namespace AcademiaNet
                 btnEliminar.Enabled = false;
                 btnModificar.Enabled = false;
                 btnCancelar.Enabled = false;
-                loadProfesores(textBox1.Text);
+                loadProfesores(txtBuscar.Text);
             }
             catch (Exception error)
             {
@@ -152,7 +153,7 @@ namespace AcademiaNet
             btnEliminar.Enabled = false;
             btnModificar.Enabled = false;
             btnCancelar.Enabled = false;
-            loadProfesores(textBox1.Text);
+            loadProfesores(txtBuscar.Text);
         }
 
         private void txtLegajo_KeyPress(object sender, KeyPressEventArgs e)
@@ -165,7 +166,7 @@ namespace AcademiaNet
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            loadProfesores(textBox1.Text);
+            loadProfesores(txtBuscar.Text);
         }
 
         private void txtLegajo_Leave(object sender, EventArgs e)
