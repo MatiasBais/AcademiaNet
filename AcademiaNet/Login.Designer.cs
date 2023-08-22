@@ -66,8 +66,9 @@
             button3.Name = "button3";
             button3.Size = new System.Drawing.Size(100, 100);
             button3.TabIndex = 2;
-            button3.Text = "button3";
+            button3.Text = "Comisiones\r\n";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // button4
             // 
