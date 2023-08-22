@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AcademiaNet
+namespace AcademiaNet  
 {
     public partial class Especialidad : Form
     {
@@ -122,6 +122,11 @@ namespace AcademiaNet
             btnEliminar.Enabled = false;
             btnModificar.Enabled = false;
             btnCancelar.Enabled = false;
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

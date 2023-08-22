@@ -34,5 +34,11 @@ namespace AcademiaNet
             Especialidad esp = new Especialidad();
             esp.Show();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Comision comisiones = new Comision();
+            comisiones.Show();
+        }
     }
 }
