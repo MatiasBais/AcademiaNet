@@ -28,171 +28,179 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnAgregar = new System.Windows.Forms.Button();
-            btnCancelar = new System.Windows.Forms.Button();
-            btnModificar = new System.Windows.Forms.Button();
-            btnEliminar = new System.Windows.Forms.Button();
-            label1 = new System.Windows.Forms.Label();
-            label2 = new System.Windows.Forms.Label();
-            dgvComisiones = new System.Windows.Forms.DataGridView();
-            txtDescripción = new System.Windows.Forms.TextBox();
-            txtBuscar = new System.Windows.Forms.TextBox();
-            label3 = new System.Windows.Forms.Label();
-            label4 = new System.Windows.Forms.Label();
-            txtIdPlan = new System.Windows.Forms.TextBox();
-            txtAnioEspecialidad = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)dgvComisiones).BeginInit();
-            SuspendLayout();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dgvComisiones = new System.Windows.Forms.DataGridView();
+            this.txtDescripción = new System.Windows.Forms.TextBox();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtIdPlan = new System.Windows.Forms.TextBox();
+            this.txtAnioEspecialidad = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvComisiones)).BeginInit();
+            this.SuspendLayout();
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new System.Drawing.Point(12, 62);
-            btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new System.Drawing.Size(157, 29);
-            btnAgregar.TabIndex = 0;
-            btnAgregar.Text = "Agregar";
-            btnAgregar.UseVisualStyleBackColor = true;
-            btnAgregar.Click += btnAgregar_Click;
+            this.btnAgregar.Location = new System.Drawing.Point(10, 46);
+            this.btnAgregar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(137, 22);
+            this.btnAgregar.TabIndex = 0;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnCancelar
             // 
-            btnCancelar.Enabled = false;
-            btnCancelar.Location = new System.Drawing.Point(501, 62);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new System.Drawing.Size(157, 29);
-            btnCancelar.TabIndex = 1;
-            btnCancelar.Text = "Cancelar";
-            btnCancelar.UseVisualStyleBackColor = true;
-            btnCancelar.Click += btnCancelar_Click;
+            this.btnCancelar.Enabled = false;
+            this.btnCancelar.Location = new System.Drawing.Point(438, 46);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(137, 22);
+            this.btnCancelar.TabIndex = 1;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnModificar
             // 
-            btnModificar.Enabled = false;
-            btnModificar.Location = new System.Drawing.Point(175, 62);
-            btnModificar.Name = "btnModificar";
-            btnModificar.Size = new System.Drawing.Size(157, 29);
-            btnModificar.TabIndex = 2;
-            btnModificar.Text = "Modificar";
-            btnModificar.UseVisualStyleBackColor = true;
-            btnModificar.Click += btnModificar_Click;
+            this.btnModificar.Enabled = false;
+            this.btnModificar.Location = new System.Drawing.Point(153, 46);
+            this.btnModificar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(137, 22);
+            this.btnModificar.TabIndex = 2;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnEliminar
             // 
-            btnEliminar.Enabled = false;
-            btnEliminar.Location = new System.Drawing.Point(338, 62);
-            btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new System.Drawing.Size(157, 29);
-            btnEliminar.TabIndex = 3;
-            btnEliminar.Text = "Eliminar";
-            btnEliminar.UseVisualStyleBackColor = true;
-            btnEliminar.Click += btnEliminar_Click;
+            this.btnEliminar.Enabled = false;
+            this.btnEliminar.Location = new System.Drawing.Point(296, 46);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(137, 22);
+            this.btnEliminar.TabIndex = 3;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(737, 15);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(90, 20);
-            label1.TabIndex = 4;
-            label1.Text = "Descripción:";
-            label1.Click += label1_Click;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(645, 11);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(72, 15);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Descripción:";
             // 
             // label2
             // 
-            label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(12, 118);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(55, 20);
-            label2.TabIndex = 5;
-            label2.Text = "Buscar:";
-            label2.Click += label2_Click;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(10, 88);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(45, 15);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Buscar:";
             // 
             // dgvComisiones
             // 
-            dgvComisiones.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dgvComisiones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvComisiones.Location = new System.Drawing.Point(12, 148);
-            dgvComisiones.Name = "dgvComisiones";
-            dgvComisiones.ReadOnly = true;
-            dgvComisiones.RowHeadersVisible = false;
-            dgvComisiones.RowHeadersWidth = 51;
-            dgvComisiones.RowTemplate.Height = 29;
-            dgvComisiones.Size = new System.Drawing.Size(493, 188);
-            dgvComisiones.TabIndex = 6;
-            dgvComisiones.CellDoubleClick += dgvComisiones_CellDoubleClick;
+            this.dgvComisiones.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvComisiones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvComisiones.Location = new System.Drawing.Point(10, 111);
+            this.dgvComisiones.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvComisiones.Name = "dgvComisiones";
+            this.dgvComisiones.ReadOnly = true;
+            this.dgvComisiones.RowHeadersVisible = false;
+            this.dgvComisiones.RowHeadersWidth = 51;
+            this.dgvComisiones.RowTemplate.Height = 29;
+            this.dgvComisiones.Size = new System.Drawing.Size(431, 141);
+            this.dgvComisiones.TabIndex = 6;
+            this.dgvComisiones.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvComisiones_CellDoubleClick);
             // 
             // txtDescripción
             // 
-            txtDescripción.Location = new System.Drawing.Point(842, 12);
-            txtDescripción.Name = "txtDescripción";
-            txtDescripción.Size = new System.Drawing.Size(157, 27);
-            txtDescripción.TabIndex = 7;
+            this.txtDescripción.Location = new System.Drawing.Point(737, 9);
+            this.txtDescripción.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtDescripción.Name = "txtDescripción";
+            this.txtDescripción.Size = new System.Drawing.Size(138, 23);
+            this.txtDescripción.TabIndex = 7;
             // 
             // txtBuscar
             // 
-            txtBuscar.Location = new System.Drawing.Point(135, 115);
-            txtBuscar.Name = "txtBuscar";
-            txtBuscar.Size = new System.Drawing.Size(157, 27);
-            txtBuscar.TabIndex = 8;
-            txtBuscar.TextChanged += txtBuscar_TextChanged;
+            this.txtBuscar.Location = new System.Drawing.Point(118, 86);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(138, 23);
+            this.txtBuscar.TabIndex = 8;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // label3
             // 
-            label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(17, 15);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(57, 20);
-            label3.TabIndex = 9;
-            label3.Text = "Id Plan:";
-            label3.Click += label3_Click;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(15, 11);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(46, 15);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Id Plan:";
             // 
             // label4
             // 
-            label4.AutoSize = true;
-            label4.Location = new System.Drawing.Point(351, 15);
-            label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(127, 20);
-            label4.TabIndex = 10;
-            label4.Text = "Año especialidad:";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(307, 11);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(100, 15);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Año especialidad:";
             // 
             // txtIdPlan
             // 
-            txtIdPlan.Location = new System.Drawing.Point(103, 12);
-            txtIdPlan.Name = "txtIdPlan";
-            txtIdPlan.Size = new System.Drawing.Size(173, 27);
-            txtIdPlan.TabIndex = 11;
+            this.txtIdPlan.Location = new System.Drawing.Point(90, 9);
+            this.txtIdPlan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtIdPlan.Name = "txtIdPlan";
+            this.txtIdPlan.Size = new System.Drawing.Size(152, 23);
+            this.txtIdPlan.TabIndex = 11;
             // 
             // txtAnioEspecialidad
             // 
-            txtAnioEspecialidad.Location = new System.Drawing.Point(491, 12);
-            txtAnioEspecialidad.Name = "txtAnioEspecialidad";
-            txtAnioEspecialidad.Size = new System.Drawing.Size(167, 27);
-            txtAnioEspecialidad.TabIndex = 12;
+            this.txtAnioEspecialidad.Location = new System.Drawing.Point(430, 9);
+            this.txtAnioEspecialidad.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtAnioEspecialidad.Name = "txtAnioEspecialidad";
+            this.txtAnioEspecialidad.Size = new System.Drawing.Size(147, 23);
+            this.txtAnioEspecialidad.TabIndex = 12;
             // 
             // Comision
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1053, 347);
-            Controls.Add(txtIdPlan);
-            Controls.Add(txtAnioEspecialidad);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(txtBuscar);
-            Controls.Add(txtDescripción);
-            Controls.Add(dgvComisiones);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(btnEliminar);
-            Controls.Add(btnModificar);
-            Controls.Add(btnCancelar);
-            Controls.Add(btnAgregar);
-            Name = "Comision";
-            Text = "Comision";
-            Load += Comision_Load;
-            ((System.ComponentModel.ISupportInitialize)dgvComisiones).EndInit();
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(921, 260);
+            this.Controls.Add(this.txtIdPlan);
+            this.Controls.Add(this.txtAnioEspecialidad);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtBuscar);
+            this.Controls.Add(this.txtDescripción);
+            this.Controls.Add(this.dgvComisiones);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.btnModificar);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnAgregar);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Name = "Comision";
+            this.Text = "Comision";
+            this.Load += new System.EventHandler(this.Comision_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvComisiones)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
