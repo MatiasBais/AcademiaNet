@@ -261,7 +261,6 @@ namespace AcademiaNet
             Entidades.Plan plan = new Entidades.Plan();
             plan.ID = (int)cmbPlan.SelectedValue;
 
-
             p.Plan = plan;
 
             try

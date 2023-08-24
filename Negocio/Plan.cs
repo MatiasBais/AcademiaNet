@@ -8,6 +8,13 @@ namespace Negocio
 {
     public class Plan
     {
+
+        public List<Entidades.Plan> getPlanes()
+        {
+            Datos.Plan plan = new Datos.Plan();
+            return plan.getPlanes();
+        }
+
         public List<Entidades.Plan> getPlanes(int idEspecialidad)
         {
             Datos.Plan p = new Datos.Plan();

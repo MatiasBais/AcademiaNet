@@ -14,16 +14,40 @@ namespace Datos
         {
             List<Entidades.Comision> comisiones = new List<Entidades.Comision>();
             conn.Open();
-            SqlCommand cmd = new SqlCommand("select * from comisiones", conn);
+            //SqlCommand cmd = new SqlCommand("select id,AñoEspecialidad, Descripcion,IDPlan,especialidades.id as 'IDEspecialidad',planes.id as 'IDPlan', planes.descripcion as 'plan', especialidades.descripcion as 'descripcion' from comisiones join planes on IDPLAN = planes.id join Especialidades on IDESpecialidad = especialidades.ID", conn);
+
+            SqlCommand cmd = new SqlCommand(@"SELECT comisiones.ID,
+                                               comisiones.AñoEspecialidad,
+                                               comisiones.Descripcion,
+                                               comisiones.IDPlan,
+                                               especialidades.ID AS 'IDEspecialidad',
+                                               planes.ID AS 'IDPlan_Plan',
+                                               planes.Descripcion AS 'plan',
+                                               especialidades.Descripcion AS 'descripcion_especialidad'
+                                            FROM planes
+                                            JOIN comisiones ON planes.ID = comisiones.IDPlan
+                                            JOIN Especialidades ON especialidades.ID = comisiones.IDESpecialidad
+                                            WHERE comisiones.Descripcion", conn);
+            
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
                 {
                     Entidades.Comision comision = new Entidades.Comision();
                     comision.ID = (int)reader["ID"];
-                    comision.IDPlan = (int)reader["IDPlan"];
                     comision.AnioEspecialidad = (int)reader["AñoEspecialidad"];
                     comision.Descripcion = reader["Descripcion"].ToString();
+
+                    Entidades.Especialidad especialidad = new Entidades.Especialidad();
+                    especialidad.ID = (int)reader["IDEspecialidad"];
+                    especialidad.Descripcion = reader["descripcion_especialidad"].ToString();
+
+                    Entidades.Plan plan = new Entidades.Plan();
+                    plan.ID = (int)reader["IDPlan_Plan"];
+                    plan.Descripcion = reader["plan"].ToString();
+                    plan.Especialidad = especialidad;
+
+                    comision.Plan = plan;
 
                     comisiones.Add(comision);
                 }
@@ -36,16 +60,38 @@ namespace Datos
         {
             List<Entidades.Comision> comisiones = new List<Entidades.Comision>();
             conn.Open();
-            SqlCommand cmd = new SqlCommand("select * from comisiones where descripcion like '" + desc + "%'", conn);
+            SqlCommand cmd = new SqlCommand(@"SELECT comisiones.ID,
+                                               comisiones.AñoEspecialidad,
+                                               comisiones.Descripcion,
+                                               comisiones.IDPlan,
+                                               especialidades.ID AS 'IDEspecialidad',
+                                               planes.ID AS 'IDPlan_Plan',
+                                               planes.Descripcion AS 'plan',
+                                               especialidades.Descripcion AS 'descripcion_especialidad'
+                                            FROM planes
+                                            JOIN comisiones ON planes.ID = comisiones.IDPlan
+                                            JOIN Especialidades ON especialidades.ID = planes.IDESpecialidad
+                                            WHERE comisiones.Descripcion LIKE @desc + '%'", conn);
+            cmd.Parameters.AddWithValue("@desc", desc);
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
                 {
                     Entidades.Comision comision = new Entidades.Comision();
                     comision.ID = (int)reader["ID"];
-                    comision.IDPlan = (int)reader["IDPlan"];
                     comision.AnioEspecialidad = (int)reader["AñoEspecialidad"];
                     comision.Descripcion = reader["Descripcion"].ToString();
+
+                    Entidades.Especialidad especialidad = new Entidades.Especialidad();
+                    especialidad.ID = (int)reader["IDEspecialidad"];
+                    especialidad.Descripcion = reader["descripcion_especialidad"].ToString();
+
+                    Entidades.Plan plan = new Entidades.Plan();
+                    plan.ID = (int)reader["IDPlan_Plan"];
+                    plan.Descripcion = reader["plan"].ToString();
+                    plan.Especialidad = especialidad;
+
+                    comision.Plan = plan;
 
                     comisiones.Add(comision);
                 }
@@ -63,24 +109,8 @@ namespace Datos
             SqlCommand cmd = new SqlCommand(query, conn);
 
             cmd.Parameters.AddWithValue("@Descripcion", comision.Descripcion);
-
-            if (comision.IDPlan.HasValue)
-            {
-                cmd.Parameters.AddWithValue("@IDPlan", comision.IDPlan.Value);
-            }
-            else
-            {
-                cmd.Parameters.AddWithValue("@IDPlan", DBNull.Value);
-            }
-
-            if (comision.AnioEspecialidad.HasValue)
-            {
-                cmd.Parameters.AddWithValue("@AnioEspecialidad", comision.AnioEspecialidad.Value);
-            }
-            else
-            {
-                cmd.Parameters.AddWithValue("@AnioEspecialidad", DBNull.Value);
-            }
+            cmd.Parameters.AddWithValue("@IDPlan", comision.Plan.ID);
+            cmd.Parameters.AddWithValue("@AnioEspecialidad", comision.AnioEspecialidad);
 
             cmd.ExecuteNonQuery();
             conn.Close();
@@ -89,9 +119,11 @@ namespace Datos
         public void updateComision(Entidades.Comision comision)
         {
             conn.Open();
-            string query = String.Format("update Comisiones set descripcion = {0}, IDPlan = {1}, AñoEspecialidad = {2} where ID = {3}",
-                comision.Descripcion, comision.IDPlan, comision.AnioEspecialidad, comision.ID);
-            SqlCommand cmd = new SqlCommand(query, conn);
+            Console.WriteLine("hola");
+            string cmdstr = String.Format("UPDATE Comisiones SET descripcion = '{0}', IDPlan = '{1}', AñoEspecialidad = '{2}' WHERE ID = '{3}'",
+                comision.Descripcion, comision.Plan.ID.ToString(), comision.AnioEspecialidad.ToString(), comision.ID.ToString() );
+
+            SqlCommand cmd = new SqlCommand(cmdstr, conn);
             cmd.ExecuteNonQuery();
             conn.Close();
         }

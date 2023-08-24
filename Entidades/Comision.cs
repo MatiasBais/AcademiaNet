@@ -7,14 +7,13 @@ using System.Threading.Tasks;
 namespace Entidades
 {
     public class Comision : Padre
-    {   
+    {
 
         public int? AnioEspecialidad { get; set; }
 
         public string Descripcion { get; set; }
 
-        public int? IDPlan { get; set; }
-
+        public Plan Plan { get; set; }
 
     }
 }
