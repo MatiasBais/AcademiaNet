@@ -10,27 +10,25 @@ using System.Windows.Forms;
 
 namespace AcademiaNet
 {
-    public partial class Profesor : Form
+    public partial class Persona : Form
     {
-        public Profesor()
+        public Persona()
         {
             InitializeComponent();
         }
 
-        void loadProfesores(string nombre)
+        void loadPersonas(string nombre)
         {
             //
             Negocio.Persona negocio = new Negocio.Persona();
-            dgvPersonas.DataSource = negocio.getProfesores(nombre);
+            dgvPersonas.DataSource = negocio.getPersonas(nombre);
+            dgvPersonas.Columns[6].Visible = false;
             dgvPersonas.Columns[7].Visible = false;
-            dgvPersonas.Columns[8].Visible = false;
-            dgvPersonas.Columns[9].Visible = false;
-            dgvPersonas.Columns[10].Visible = false;
         }
 
         private void Profesor_Load(object sender, EventArgs e)
         {
-            loadProfesores(txtBuscar.Text);
+            loadPersonas(txtBuscar.Text);
 
         }
         public void clear()
@@ -39,20 +37,17 @@ namespace AcademiaNet
             txtNombre.Clear();
             txtDireccion.Clear();
             txtEmail.Clear();
-            txtLegajo.Text = "0";
             txtTelefono.Clear();
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             Entidades.Persona p = new Entidades.Persona();
-            p.Legajo = Convert.ToInt32(txtLegajo.Text);
             p.Nombre = txtNombre.Text;
             p.Apellido = txtApellido.Text;
             p.Direccion = txtDireccion.Text;
             p.Email = txtEmail.Text;
             p.Telefono = txtTelefono.Text;
-            p.TipoPersona = "Profesor";
             p.FechaNacimiento = dtpFechaNacimiento.Value;
 
 
@@ -62,9 +57,9 @@ namespace AcademiaNet
             Negocio.Persona negocio = new Negocio.Persona();
             try
             {
-                negocio.addProfesor(p);
+                negocio.addPersona(p);
                 clear();
-                loadProfesores(txtBuscar.Text);
+                loadPersonas(txtBuscar.Text);
             }
             catch (Exception error)
             {
@@ -74,48 +69,38 @@ namespace AcademiaNet
         int ID = 0;
         private void dgvPersonas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //legajo nombre apellido fechanac telefono direccion email
             int index = dgvPersonas.SelectedCells[0].RowIndex;
-            ID = Convert.ToInt32(dgvPersonas.Rows[index].Cells[9].Value);
-            txtLegajo.Text = dgvPersonas.Rows[index].Cells[0].Value.ToString();
-            txtNombre.Text = dgvPersonas.Rows[index].Cells[1].Value.ToString();
-            txtApellido.Text = dgvPersonas.Rows[index].Cells[2].Value.ToString();
-            dtpFechaNacimiento.Value = Convert.ToDateTime(dgvPersonas.Rows[index].Cells[3].Value);
-            txtTelefono.Text = dgvPersonas.Rows[index].Cells[4].Value.ToString();
-            txtDireccion.Text = dgvPersonas.Rows[index].Cells[5].Value.ToString();
-            txtEmail.Text = dgvPersonas.Rows[index].Cells[6].Value.ToString();
+            Entidades.Persona persona = new Entidades.Persona();
+            persona.ID = Convert.ToInt32(dgvPersonas.Rows[index].Cells[6].Value);
+            persona.Nombre = "Juan";
+            Usuario usuario = new Usuario(persona);
+            usuario.ShowDialog();
 
-            btnAgregar.Enabled = false;
-            btnEliminar.Enabled = true;
-            btnModificar.Enabled = true;
-            btnCancelar.Enabled = true;
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
             Entidades.Persona p = new Entidades.Persona();
             p.ID = ID;
-            p.Legajo = Convert.ToInt32(txtLegajo.Text);
             p.Nombre = txtNombre.Text;
             p.Apellido = txtApellido.Text;
             p.Direccion = txtDireccion.Text;
             p.Email = txtEmail.Text;
             p.Telefono = txtTelefono.Text;
-            p.TipoPersona = "Profesor";
             p.FechaNacimiento = dtpFechaNacimiento.Value;
 
             Negocio.Persona negocio = new Negocio.Persona();
 
             try
             {
-                negocio.updateProfesor(p);
+                negocio.updatePersona(p);
 
                 clear();
                 btnAgregar.Enabled = true;
                 btnEliminar.Enabled = false;
                 btnModificar.Enabled = false;
                 btnCancelar.Enabled = false;
-                loadProfesores(txtBuscar.Text);
+                loadPersonas(txtBuscar.Text);
             }
             catch (Exception error)
             {
@@ -134,45 +119,48 @@ namespace AcademiaNet
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            Entidades.Persona p = new Entidades.Persona();
-            p.ID = ID;
-            p.Legajo = Convert.ToInt32(txtLegajo.Text);
-            p.Nombre = txtNombre.Text;
-            p.Apellido = txtApellido.Text;
-            p.Direccion = txtDireccion.Text;
-            p.Email = txtEmail.Text;
-            p.Telefono = txtTelefono.Text;
-            p.TipoPersona = "Profesor";
-            p.FechaNacimiento = dtpFechaNacimiento.Value;
-
+            
             Negocio.Persona negocio = new Negocio.Persona();
-            negocio.deleteProfesor(p);
+            negocio.deletePersona(ID);
 
             clear();
             btnAgregar.Enabled = true;
             btnEliminar.Enabled = false;
             btnModificar.Enabled = false;
             btnCancelar.Enabled = false;
-            loadProfesores(txtBuscar.Text);
+            loadPersonas(txtBuscar.Text);
         }
 
         private void txtLegajo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
+            
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            loadProfesores(txtBuscar.Text);
+            loadPersonas(txtBuscar.Text);
         }
 
         private void txtLegajo_Leave(object sender, EventArgs e)
         {
-            if (txtLegajo.Text == "")
-                txtLegajo.Text = "0";
+       
+        }
+
+        private void dgvPersonas_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = dgvPersonas.SelectedCells[0].RowIndex;
+            ID = Convert.ToInt32(dgvPersonas.Rows[index].Cells[6].Value);
+            txtNombre.Text = dgvPersonas.Rows[index].Cells[0].Value.ToString();
+            txtApellido.Text = dgvPersonas.Rows[index].Cells[1].Value.ToString();
+            dtpFechaNacimiento.Value = Convert.ToDateTime(dgvPersonas.Rows[index].Cells[2].Value);
+            txtTelefono.Text = dgvPersonas.Rows[index].Cells[3].Value.ToString();
+            txtDireccion.Text = dgvPersonas.Rows[index].Cells[5].Value.ToString();
+            txtEmail.Text = dgvPersonas.Rows[index].Cells[4].Value.ToString();
+
+            btnAgregar.Enabled = false;
+            btnEliminar.Enabled = true;
+            btnModificar.Enabled = true;
+            btnCancelar.Enabled = true;
         }
     }
 }

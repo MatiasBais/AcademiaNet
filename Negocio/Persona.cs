@@ -8,75 +8,36 @@ namespace Negocio
 {
     public class Persona
     {
-        public List<Entidades.Persona> getAlumnos(string nombre)
+        public List<Entidades.Persona> getPersonas(string nombre)
         {
             Datos.Persona datos = new Datos.Persona();
-            return datos.getAlumnos(nombre);
+            return datos.getPersonas(nombre);
         }
-
-        public List<Entidades.Persona> getProfesores(string nombre)
+        public void addPersona(Entidades.Persona p)
         {
-            Datos.Persona datos = new Datos.Persona();
-            return datos.getProfesores(nombre);
-        }
-        public void addProfesor(Entidades.Persona p)
-        {
-            if (p.Legajo == 0)
-                throw new Exception("Falta Legajo");
             if (p.Nombre == "")
                 throw new Exception("Falta Nombre");
             if (p.Apellido == "")
                 throw new Exception("Falta Apellido");
             Datos.Persona datos = new Datos.Persona();
-            datos.addProfesor(p);
+            datos.addPersona(p);
 
         }
-        public void addAlumno(Entidades.Persona p)
+
+        public void updatePersona(Entidades.Persona p)
         {
-            if (p.Legajo == 0)
-                throw new Exception("Falta Legajo");
             if (p.Nombre == "")
                 throw new Exception("Falta Nombre");
             if (p.Apellido == "")
                 throw new Exception("Falta Apellido");
             Datos.Persona datos = new Datos.Persona();
-            datos.addAlumno(p);
-
+            datos.updatePersona(p);
         }
 
-        public void updateAlumno(Entidades.Persona p)
-        {
-            if (p.Legajo == 0)
-                throw new Exception("Falta Legajo");
-            if (p.Nombre == "")
-                throw new Exception("Falta Nombre");
-            if (p.Apellido == "")
-                throw new Exception("Falta Apellido");
-            Datos.Persona datos = new Datos.Persona();
-            datos.updateAlumno(p);
-        }
-
-        public void updateProfesor(Entidades.Persona p)
-        {
-            if (p.Legajo == 0)
-                throw new Exception("Falta Legajo");
-            if (p.Nombre == "")
-                throw new Exception("Falta Nombre");
-            if (p.Apellido == "")
-                throw new Exception("Falta Apellido");
-            Datos.Persona datos = new Datos.Persona();
-            datos.updateProfesor(p);
-        }
-
-        public void deleteAlumno(Entidades.Persona p)
+        public void deletePersona(int id)
         {
             Datos.Persona datos = new Datos.Persona();
-            datos.deleteAlumno(p);
-        }
-        public void deleteProfesor(Entidades.Persona p)
-        {
-            Datos.Persona datos = new Datos.Persona();
-            datos.deleteProfesor(p);
+            datos.deletePersona(id);
         }
     }
 }

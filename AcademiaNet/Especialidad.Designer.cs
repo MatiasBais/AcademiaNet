@@ -118,6 +118,7 @@
             this.dgvEspecialidades.RowTemplate.Height = 29;
             this.dgvEspecialidades.Size = new System.Drawing.Size(280, 141);
             this.dgvEspecialidades.TabIndex = 6;
+            this.dgvEspecialidades.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEspecialidades_CellClick);
             this.dgvEspecialidades.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEspecialidades_CellDoubleClick);
             // 
             // txtDescripción
