@@ -14,7 +14,6 @@ namespace Datos
         {
             List<Entidades.Comision> comisiones = new List<Entidades.Comision>();
             conn.Open();
-            //SqlCommand cmd = new SqlCommand("select id,AñoEspecialidad, Descripcion,IDPlan,especialidades.id as 'IDEspecialidad',planes.id as 'IDPlan', planes.descripcion as 'plan', especialidades.descripcion as 'descripcion' from comisiones join planes on IDPLAN = planes.id join Especialidades on IDESpecialidad = especialidades.ID", conn);
 
             SqlCommand cmd = new SqlCommand(@"SELECT comisiones.ID,
                                                comisiones.AñoEspecialidad,
@@ -26,9 +25,8 @@ namespace Datos
                                                especialidades.Descripcion AS 'descripcion_especialidad'
                                             FROM planes
                                             JOIN comisiones ON planes.ID = comisiones.IDPlan
-                                            JOIN Especialidades ON especialidades.ID = comisiones.IDESpecialidad
-                                            WHERE comisiones.Descripcion", conn);
-            
+                                            JOIN Especialidades ON especialidades.ID = comisiones.IDESpecialidad", conn);
+
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
@@ -54,6 +52,26 @@ namespace Datos
             }
             conn.Close();
             return comisiones;
+        }
+        public Entidades.Comision getComision(int ID)
+        {
+            Entidades.Comision comision = new Entidades.Comision();
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("select * from comisiones where ID = " + ID, conn);
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    comision.ID = (int)reader["ID"];
+                    comision.AnioEspecialidad = (int)reader["AñoEspecialidad"];
+                    comision.Descripcion = reader["Descripcion"].ToString();
+                    int IDPlan = (int)reader["IDPlan"];
+                    Plan plan = new Plan();
+                    comision.Plan = plan.getPlan(IDPlan);
+                }
+            }
+            conn.Close();
+            return comision;
         }
 
         public List<Entidades.Comision> getComisiones(string desc)
