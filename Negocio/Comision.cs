@@ -24,7 +24,7 @@ namespace Negocio
         {
             if (comision.Descripcion == "")
                 throw (new Exception("Falta descripción"));
-            if (comision.IDPlan == 0)
+            if (comision.Plan.ID == 0)
                 throw (new Exception("Falta id del plan"));
             if (comision.AnioEspecialidad == 0)
                 throw (new Exception("Falta año"));
@@ -35,7 +35,7 @@ namespace Negocio
         {
             if (comision.Descripcion == "")
                 throw (new Exception("Falta descripción"));
-            if (comision.IDPlan == 0)
+            if (comision.Plan.ID == 0)
                 throw (new Exception("Falta id del plan"));
             if (comision.AnioEspecialidad == 0)
                 throw (new Exception("Falta año"));

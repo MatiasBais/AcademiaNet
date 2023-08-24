@@ -9,7 +9,26 @@ namespace Datos
 {
     public class Plan:Base
     {
-        
+
+        public List<Entidades.Plan> getPlanes()
+        {
+            List<Entidades.Plan> planes = new List<Entidades.Plan>();
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("select * from planes", conn);
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Entidades.Plan plan = new Entidades.Plan();
+                    plan.ID = (int)reader["ID"];
+                    plan.Descripcion = reader["descripcion"].ToString();
+                    planes.Add(plan);
+                }
+            }
+            conn.Close();
+            return planes;
+        }
+
         public List<Entidades.Plan> getPlanes( int idEspecialidad)
         {
             List<Entidades.Plan> planes = new List<Entidades.Plan>();
@@ -29,5 +48,6 @@ namespace Datos
             return planes;
 
         }
+
     }
 }

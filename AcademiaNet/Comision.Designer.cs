@@ -39,8 +39,10 @@
             txtBuscar = new System.Windows.Forms.TextBox();
             label3 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
-            txtIdPlan = new System.Windows.Forms.TextBox();
             txtAnioEspecialidad = new System.Windows.Forms.TextBox();
+            cmbIdPlan = new System.Windows.Forms.ComboBox();
+            txtEspecialidad = new System.Windows.Forms.Label();
+            cmbEspecialidad = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)dgvComisiones).BeginInit();
             SuspendLayout();
             // 
@@ -90,7 +92,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(737, 15);
+            label1.Location = new System.Drawing.Point(918, 11);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(90, 20);
             label1.TabIndex = 4;
@@ -117,13 +119,13 @@
             dgvComisiones.RowHeadersVisible = false;
             dgvComisiones.RowHeadersWidth = 51;
             dgvComisiones.RowTemplate.Height = 29;
-            dgvComisiones.Size = new System.Drawing.Size(493, 188);
+            dgvComisiones.Size = new System.Drawing.Size(1029, 188);
             dgvComisiones.TabIndex = 6;
             dgvComisiones.CellDoubleClick += dgvComisiones_CellDoubleClick;
             // 
             // txtDescripción
             // 
-            txtDescripción.Location = new System.Drawing.Point(842, 12);
+            txtDescripción.Location = new System.Drawing.Point(1023, 8);
             txtDescripción.Name = "txtDescripción";
             txtDescripción.Size = new System.Drawing.Size(157, 27);
             txtDescripción.TabIndex = 7;
@@ -139,42 +141,63 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(17, 15);
+            label3.Location = new System.Drawing.Point(306, 18);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(57, 20);
+            label3.Size = new System.Drawing.Size(40, 20);
             label3.TabIndex = 9;
-            label3.Text = "Id Plan:";
+            label3.Text = "Plan:";
             label3.Click += label3_Click;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new System.Drawing.Point(351, 15);
+            label4.Location = new System.Drawing.Point(531, 15);
             label4.Name = "label4";
             label4.Size = new System.Drawing.Size(127, 20);
             label4.TabIndex = 10;
             label4.Text = "Año especialidad:";
             // 
-            // txtIdPlan
-            // 
-            txtIdPlan.Location = new System.Drawing.Point(103, 12);
-            txtIdPlan.Name = "txtIdPlan";
-            txtIdPlan.Size = new System.Drawing.Size(173, 27);
-            txtIdPlan.TabIndex = 11;
-            // 
             // txtAnioEspecialidad
             // 
-            txtAnioEspecialidad.Location = new System.Drawing.Point(491, 12);
+            txtAnioEspecialidad.Location = new System.Drawing.Point(680, 11);
             txtAnioEspecialidad.Name = "txtAnioEspecialidad";
             txtAnioEspecialidad.Size = new System.Drawing.Size(167, 27);
             txtAnioEspecialidad.TabIndex = 12;
+            // 
+            // cmbIdPlan
+            // 
+            cmbIdPlan.FormattingEnabled = true;
+            cmbIdPlan.Location = new System.Drawing.Point(371, 12);
+            cmbIdPlan.Name = "cmbIdPlan";
+            cmbIdPlan.Size = new System.Drawing.Size(108, 28);
+            cmbIdPlan.TabIndex = 13;
+            // 
+            // txtEspecialidad
+            // 
+            txtEspecialidad.AutoSize = true;
+            txtEspecialidad.Location = new System.Drawing.Point(12, 18);
+            txtEspecialidad.Name = "txtEspecialidad";
+            txtEspecialidad.Size = new System.Drawing.Size(96, 20);
+            txtEspecialidad.TabIndex = 14;
+            txtEspecialidad.Text = "Especialidad:";
+            // 
+            // cmbEspecialidad
+            // 
+            cmbEspecialidad.FormattingEnabled = true;
+            cmbEspecialidad.Location = new System.Drawing.Point(114, 11);
+            cmbEspecialidad.Name = "cmbEspecialidad";
+            cmbEspecialidad.Size = new System.Drawing.Size(151, 28);
+            cmbEspecialidad.TabIndex = 15;
+            cmbEspecialidad.SelectedValueChanged += cmbEspecialidad_SelectedValueChanged;
             // 
             // Comision
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1053, 347);
-            Controls.Add(txtIdPlan);
+            ClientSize = new System.Drawing.Size(1284, 347);
+            Controls.Add(cmbEspecialidad);
+            Controls.Add(txtEspecialidad);
+            Controls.Add(cmbIdPlan);
             Controls.Add(txtAnioEspecialidad);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -208,7 +231,9 @@
         private System.Windows.Forms.DataGridView dgvComisiones;
         private System.Windows.Forms.TextBox txtDescripción;
         private System.Windows.Forms.TextBox txtBuscar;
-        private System.Windows.Forms.TextBox txtIdPlan;
         private System.Windows.Forms.TextBox txtAnioEspecialidad;
+        private System.Windows.Forms.ComboBox cmbIdPlan;
+        private System.Windows.Forms.Label txtEspecialidad;
+        private System.Windows.Forms.ComboBox cmbEspecialidad;
     }
 }
