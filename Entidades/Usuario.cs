@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,13 +9,18 @@ namespace Entidades
 {
     public class Usuario : Padre
     {
-        public Persona Persona { get; set; }
 
         public string NombreUsuario { get; set; }
 
         public string Clave { get; set; }
 
-        public Boolean Habilitado { get; set; }
+        public string Habilitado { get; set; }
+
+        public Entidades.Plan Plan { get; set; }
+
+        public int Legajo { get; set; }
+
+        public string TipoPersona { get; set; }
 
 
     }

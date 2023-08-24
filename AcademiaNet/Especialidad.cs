@@ -59,13 +59,7 @@ namespace AcademiaNet
         int ID = 0;
         private void dgvEspecialidades_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            int index = dgvEspecialidades.SelectedCells[0].RowIndex;
-            ID = Convert.ToInt32(dgvEspecialidades.Rows[index].Cells[1].Value);
-            txtDescripción.Text = dgvEspecialidades.Rows[index].Cells[0].Value.ToString();
-            btnAgregar.Enabled = false;
-            btnEliminar.Enabled = true;
-            btnModificar.Enabled = true;
-            btnCancelar.Enabled = true;
+            
         }
 
         private void clear()
@@ -127,6 +121,17 @@ namespace AcademiaNet
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dgvEspecialidades_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = dgvEspecialidades.SelectedCells[0].RowIndex;
+            ID = Convert.ToInt32(dgvEspecialidades.Rows[index].Cells[1].Value);
+            txtDescripción.Text = dgvEspecialidades.Rows[index].Cells[0].Value.ToString();
+            btnAgregar.Enabled = false;
+            btnEliminar.Enabled = true;
+            btnModificar.Enabled = true;
+            btnCancelar.Enabled = true;
         }
     }
 }
