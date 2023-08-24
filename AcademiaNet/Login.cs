@@ -40,5 +40,11 @@ namespace AcademiaNet
             Comision comisiones = new Comision();
             comisiones.Show();
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Planes planes = new Planes();
+            planes.Show();
+        }
     }
 }
