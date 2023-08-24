@@ -38,5 +38,11 @@ namespace Negocio
             Datos.Plan p = new Datos.Plan();
             p.deletePlan(plan);
         }
+
+        public Entidades.Plan getPlan(int idPlan)
+        {
+            Datos.Plan plan = new Datos.Plan();
+            return plan.getPlan(idPlan);
+        }
     }
 }

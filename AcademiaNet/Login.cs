@@ -43,7 +43,7 @@ namespace AcademiaNet
 
         private void button6_Click(object sender, EventArgs e)
         {
-            Plan planes = new Plan();
+            Planes planes = new Planes();
             planes.Show();
         }
     }
