@@ -8,7 +8,6 @@ namespace Entidades
 {
     public class Plan : Padre
     {
-        public int ID { get; set; }
         public string Descripcion { get; set; }
 
         public Especialidad Especialidad { get; set; }

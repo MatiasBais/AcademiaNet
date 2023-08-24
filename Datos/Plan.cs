@@ -9,33 +9,12 @@ namespace Datos
 {
     public class Plan:Base
     {
-        public Entidades.Plan getPlan(int idPlan)
-        {
-            Entidades.Plan plan = new Entidades.Plan();
-            conn.Open();
-            SqlCommand cmd = new SqlCommand("select planes.ID as ID, planes.descripcion, esp.ID as 'IDEspecialidad', esp.descripcion as 'DescripcionEspecialidad'  from planes join especialidades esp on esp.ID = planes.IDEspecialidad where planes.ID =" + idPlan, conn);
-            using (SqlDataReader reader = cmd.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    plan.ID = (int)reader["ID"];
-                    plan.Descripcion = reader["descripcion"].ToString();
-                    Entidades.Especialidad especialidad = new Entidades.Especialidad();
-                    especialidad.ID = (int)reader["IDEspecialidad"];
-                    especialidad.Descripcion = reader["DescripcionEspecialidad"].ToString();
-                    plan.Especialidad = especialidad;
-                }
-            }
-            conn.Close();
-            return plan;
-
-        }
-
+        
         public List<Entidades.Plan> getPlanes( int idEspecialidad)
         {
             List<Entidades.Plan> planes = new List<Entidades.Plan>();
             conn.Open();
-            SqlCommand cmd = new SqlCommand("select planes.ID as ID, planes.descripcion, esp.ID as 'IDEspecialidad', esp.descripcion as 'DescripcionEspecialidad'  from planes join especialidades esp on esp.ID = planes.IDEspecialidad where idEspecialidad =" + idEspecialidad, conn);
+            SqlCommand cmd = new SqlCommand("select * from planes where idEspecialidad ="+idEspecialidad, conn);
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
@@ -43,10 +22,6 @@ namespace Datos
                     Entidades.Plan plan = new Entidades.Plan();
                     plan.ID = (int)reader["ID"];
                     plan.Descripcion = reader["descripcion"].ToString();
-                    Entidades.Especialidad especialidad = new Entidades.Especialidad();
-                    especialidad.ID = (int)reader["IDEspecialidad"];
-                    especialidad.Descripcion = reader["DescripcionEspecialidad"].ToString();
-                    plan.Especialidad = especialidad;
                     planes.Add(plan);
                 }
             }
@@ -87,22 +62,20 @@ namespace Datos
             conn.Close();
         }
 
-        public void deletePlan(Entidades.Plan plan)
+        public void updatePlan(Entidades.Plan plan)
         {
             conn.Open();
-            string cmdstr = String.Format("delete from planes where ID = '{0}'",
-                plan.ID.ToString());
-
-            SqlCommand cmd = new SqlCommand(cmdstr, conn);
+            string query = String.Format("update Planes set descripcion ='{0}', IDEspecialidad = '{1}' where ID= {1}", plan.Descripcion, plan.Especialidad.ID);
+            SqlCommand cmd = new SqlCommand(query, conn);
             cmd.ExecuteNonQuery();
             conn.Close();
         }
 
-        public void updatePlan(Entidades.Plan p)
+        public void deletePlan(Entidades.Plan plan)
         {
             conn.Open();
-            string cmdstr = String.Format("update planes set Descripcion = '" + p.Descripcion + "', IDEspecialidad = " + p.Especialidad.ID + "  where ID =" + p.ID);
-            SqlCommand cmd = new SqlCommand(cmdstr, conn);
+            string query = String.Format("delete from Planes where ID= {0}", plan.ID);
+            SqlCommand cmd = new SqlCommand(query, conn);
             cmd.ExecuteNonQuery();
             conn.Close();
         }
