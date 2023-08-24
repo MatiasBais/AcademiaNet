@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Plan : Padre
+    public class Materia: Padre
     {
         public int ID { get; set; }
         public string Descripcion { get; set; }
 
-        public Especialidad Especialidad { get; set; }
+        public int HSSemanales { get; set; }
+
+        public int HSTotales { get; set; }
+
+        public Plan Plan { get; set; }
     }
 }

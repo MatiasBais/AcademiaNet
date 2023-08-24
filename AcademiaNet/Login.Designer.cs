@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -145,8 +146,19 @@
             this.button10.Text = "button10";
             this.button10.UseVisualStyleBackColor = true;
             // 
+            // button3
+            // 
+            button3.Location = new System.Drawing.Point(353, 210);
+            button3.Name = "button3";
+            button3.Size = new System.Drawing.Size(75, 23);
+            button3.TabIndex = 2;
+            button3.Text = "Planes";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
             // Login
             // 
+
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(294, 248);
@@ -164,7 +176,6 @@
             this.Name = "Login";
             this.Text = "Inicio";
             this.ResumeLayout(false);
-
         }
 
         #endregion
