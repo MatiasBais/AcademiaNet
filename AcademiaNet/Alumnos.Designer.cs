@@ -71,52 +71,52 @@
             dgvPersonas.RowHeadersVisible = false;
             dgvPersonas.RowHeadersWidth = 51;
             dgvPersonas.RowTemplate.Height = 25;
-            dgvPersonas.Size = new System.Drawing.Size(1138, 433);
+            dgvPersonas.Size = new System.Drawing.Size(1301, 577);
             dgvPersonas.TabIndex = 0;
-            dgvPersonas.CellContentClick += dgvPersonas_CellContentClick;
             dgvPersonas.CellDoubleClick += dgvPersonas_CellDoubleClick;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(12, 9);
+            label1.Location = new System.Drawing.Point(14, 12);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(48, 15);
+            label1.Size = new System.Drawing.Size(61, 20);
             label1.TabIndex = 1;
             label1.Text = "Legajo: ";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(12, 38);
+            label2.Location = new System.Drawing.Point(14, 51);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(57, 15);
+            label2.Size = new System.Drawing.Size(71, 20);
             label2.TabIndex = 2;
             label2.Text = "Nombre: ";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(12, 67);
+            label3.Location = new System.Drawing.Point(14, 89);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(57, 15);
+            label3.Size = new System.Drawing.Size(73, 20);
             label3.TabIndex = 3;
             label3.Text = "Apellido: ";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new System.Drawing.Point(12, 99);
+            label4.Location = new System.Drawing.Point(14, 132);
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(125, 15);
+            label4.Size = new System.Drawing.Size(156, 20);
             label4.TabIndex = 4;
             label4.Text = "Fecha de Nacimiento: ";
             // 
             // txtLegajo
             // 
-            txtLegajo.Location = new System.Drawing.Point(143, 6);
+            txtLegajo.Location = new System.Drawing.Point(163, 8);
+            txtLegajo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             txtLegajo.Name = "txtLegajo";
-            txtLegajo.Size = new System.Drawing.Size(435, 23);
+            txtLegajo.Size = new System.Drawing.Size(497, 27);
             txtLegajo.TabIndex = 5;
             txtLegajo.Text = "0";
             txtLegajo.KeyPress += txtLegajo_KeyPress;
@@ -124,114 +124,122 @@
             // 
             // txtNombre
             // 
-            txtNombre.Location = new System.Drawing.Point(143, 35);
+            txtNombre.Location = new System.Drawing.Point(163, 47);
+            txtNombre.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new System.Drawing.Size(435, 23);
+            txtNombre.Size = new System.Drawing.Size(497, 27);
             txtNombre.TabIndex = 6;
             // 
             // txtApellido
             // 
-            txtApellido.Location = new System.Drawing.Point(143, 64);
+            txtApellido.Location = new System.Drawing.Point(163, 85);
+            txtApellido.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             txtApellido.Name = "txtApellido";
-            txtApellido.Size = new System.Drawing.Size(435, 23);
+            txtApellido.Size = new System.Drawing.Size(497, 27);
             txtApellido.TabIndex = 7;
             // 
             // dtpFechaNacimiento
             // 
-            dtpFechaNacimiento.Location = new System.Drawing.Point(143, 93);
+            dtpFechaNacimiento.Location = new System.Drawing.Point(163, 124);
+            dtpFechaNacimiento.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             dtpFechaNacimiento.Name = "dtpFechaNacimiento";
-            dtpFechaNacimiento.Size = new System.Drawing.Size(435, 23);
+            dtpFechaNacimiento.Size = new System.Drawing.Size(497, 27);
             dtpFechaNacimiento.TabIndex = 8;
             // 
             // txtEmail
             // 
-            txtEmail.Location = new System.Drawing.Point(715, 64);
+            txtEmail.Location = new System.Drawing.Point(817, 85);
+            txtEmail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new System.Drawing.Size(435, 23);
+            txtEmail.Size = new System.Drawing.Size(497, 27);
             txtEmail.TabIndex = 15;
             // 
             // txtDireccion
             // 
-            txtDireccion.Location = new System.Drawing.Point(715, 35);
+            txtDireccion.Location = new System.Drawing.Point(817, 47);
+            txtDireccion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             txtDireccion.Name = "txtDireccion";
-            txtDireccion.Size = new System.Drawing.Size(435, 23);
+            txtDireccion.Size = new System.Drawing.Size(497, 27);
             txtDireccion.TabIndex = 14;
             // 
             // txtTelefono
             // 
-            txtTelefono.Location = new System.Drawing.Point(715, 6);
+            txtTelefono.Location = new System.Drawing.Point(817, 8);
+            txtTelefono.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             txtTelefono.Name = "txtTelefono";
-            txtTelefono.Size = new System.Drawing.Size(435, 23);
+            txtTelefono.Size = new System.Drawing.Size(497, 27);
             txtTelefono.TabIndex = 13;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new System.Drawing.Point(584, 96);
+            label5.Location = new System.Drawing.Point(667, 128);
             label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(75, 15);
+            label5.Size = new System.Drawing.Size(96, 20);
             label5.TabIndex = 12;
             label5.Text = "Especialidad:";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new System.Drawing.Point(584, 67);
+            label6.Location = new System.Drawing.Point(667, 89);
             label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(42, 15);
+            label6.Size = new System.Drawing.Size(53, 20);
             label6.TabIndex = 11;
             label6.Text = "Email: ";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new System.Drawing.Point(584, 38);
+            label7.Location = new System.Drawing.Point(667, 51);
             label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(63, 15);
+            label7.Size = new System.Drawing.Size(79, 20);
             label7.TabIndex = 10;
             label7.Text = "Direccion: ";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new System.Drawing.Point(584, 9);
+            label8.Location = new System.Drawing.Point(667, 12);
             label8.Name = "label8";
-            label8.Size = new System.Drawing.Size(58, 15);
+            label8.Size = new System.Drawing.Size(74, 20);
             label8.TabIndex = 9;
             label8.Text = "Telefono: ";
             // 
             // cmbEspecialidad
             // 
             cmbEspecialidad.FormattingEnabled = true;
-            cmbEspecialidad.Location = new System.Drawing.Point(715, 93);
+            cmbEspecialidad.Location = new System.Drawing.Point(817, 124);
+            cmbEspecialidad.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             cmbEspecialidad.Name = "cmbEspecialidad";
-            cmbEspecialidad.Size = new System.Drawing.Size(169, 23);
+            cmbEspecialidad.Size = new System.Drawing.Size(193, 28);
             cmbEspecialidad.TabIndex = 16;
-            cmbEspecialidad.SelectedIndexChanged += cmbEspecialidad_SelectedIndexChanged;
             cmbEspecialidad.SelectedValueChanged += cmbEspecialidad_SelectedValueChanged;
             // 
             // cmbPlan
             // 
             cmbPlan.FormattingEnabled = true;
-            cmbPlan.Location = new System.Drawing.Point(973, 93);
+            cmbPlan.Location = new System.Drawing.Point(1112, 124);
+            cmbPlan.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             cmbPlan.Name = "cmbPlan";
-            cmbPlan.Size = new System.Drawing.Size(177, 23);
+            cmbPlan.Size = new System.Drawing.Size(202, 28);
             cmbPlan.TabIndex = 18;
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new System.Drawing.Point(900, 96);
+            label9.Location = new System.Drawing.Point(1029, 128);
             label9.Name = "label9";
-            label9.Size = new System.Drawing.Size(33, 15);
+            label9.Size = new System.Drawing.Size(40, 20);
             label9.TabIndex = 17;
             label9.Text = "Plan:";
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new System.Drawing.Point(12, 129);
+            btnAgregar.Location = new System.Drawing.Point(14, 172);
+            btnAgregar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new System.Drawing.Size(281, 23);
+            btnAgregar.Size = new System.Drawing.Size(321, 31);
             btnAgregar.TabIndex = 19;
             btnAgregar.Text = "Agregar";
             btnAgregar.UseVisualStyleBackColor = true;
@@ -240,9 +248,10 @@
             // btnCancelar
             // 
             btnCancelar.Enabled = false;
-            btnCancelar.Location = new System.Drawing.Point(873, 129);
+            btnCancelar.Location = new System.Drawing.Point(998, 172);
+            btnCancelar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new System.Drawing.Size(281, 23);
+            btnCancelar.Size = new System.Drawing.Size(321, 31);
             btnCancelar.TabIndex = 20;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
@@ -251,9 +260,10 @@
             // btnEliminar
             // 
             btnEliminar.Enabled = false;
-            btnEliminar.Location = new System.Drawing.Point(586, 129);
+            btnEliminar.Location = new System.Drawing.Point(670, 172);
+            btnEliminar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new System.Drawing.Size(281, 23);
+            btnEliminar.Size = new System.Drawing.Size(321, 31);
             btnEliminar.TabIndex = 21;
             btnEliminar.Text = "Eliminar";
             btnEliminar.UseVisualStyleBackColor = true;
@@ -262,9 +272,10 @@
             // btnModificar
             // 
             btnModificar.Enabled = false;
-            btnModificar.Location = new System.Drawing.Point(299, 129);
+            btnModificar.Location = new System.Drawing.Point(342, 172);
+            btnModificar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnModificar.Name = "btnModificar";
-            btnModificar.Size = new System.Drawing.Size(281, 23);
+            btnModificar.Size = new System.Drawing.Size(321, 31);
             btnModificar.TabIndex = 22;
             btnModificar.Text = "Modificar";
             btnModificar.UseVisualStyleBackColor = true;
@@ -273,10 +284,9 @@
             // label10
             // 
             label10.AutoSize = true;
-
             label10.Location = new System.Drawing.Point(14, 219);
             label10.Name = "label10";
-            label10.Size = new System.Drawing.Size(42, 15);
+            label10.Size = new System.Drawing.Size(52, 20);
             label10.TabIndex = 23;
             label10.Text = "Buscar";
             // 
@@ -291,7 +301,7 @@
             // 
             // Alumnos
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1333, 839);
             Controls.Add(txtBuscar);
@@ -319,6 +329,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(dgvPersonas);
+            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             Name = "Alumnos";
             Text = "Alumno";
             Load += Persona_Load;

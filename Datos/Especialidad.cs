@@ -29,20 +29,6 @@ namespace Datos
             return especialidades;
         }
 
-        public Entidades.Especialidad getEspecialidad(int ID)
-        {
-            Entidades.Especialidad especialidad = new Entidades.Especialidad();
-            conn.Open();
-            SqlCommand cmd = new SqlCommand("select * from especialidades where ID = " + ID, conn);
-            <<<<<<< materiaYplanes
-                    especialidad.ID = (int)reader["ID"];
-                    especialidad.Descripcion = reader["descripcion"].ToString();
-                }
-            }
-            conn.Close();
-            return especialidad;
-}
-
         public List<Entidades.Especialidad> getEspecialidades(string desc)
         {
             List<Entidades.Especialidad> especialidades = new List<Entidades.Especialidad>();
@@ -52,7 +38,6 @@ namespace Datos
             {
                 while (reader.Read())
                 {
-
                     Entidades.Especialidad especialidad = new Entidades.Especialidad();
                     especialidad.ID = (int)reader["ID"];
                     especialidad.Descripcion = reader["descripcion"].ToString();
