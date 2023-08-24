@@ -29,14 +29,27 @@ namespace AcademiaNet
             alumnos.Show();
         }
 
+
         private void Login_Load(object sender, EventArgs e)
         {
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Especialidad esp = new Especialidad();
+            esp.Show();
 
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             Planes planes = new Planes();
+            Comision comisiones = new Comision();
+            comisiones.Show();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Plan planes = new Plan();
             planes.Show();
         }
     }

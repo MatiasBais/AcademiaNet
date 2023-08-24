@@ -108,7 +108,7 @@ namespace AcademiaNet
         private void Persona_Load(object sender, EventArgs e)
         {
 
-            loadALumnos(textBox1.Text);
+            loadALumnos(txtBuscar.Text);
 
         }
 
@@ -129,6 +129,10 @@ namespace AcademiaNet
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             clear();
+            btnAgregar.Enabled = true;
+            btnEliminar.Enabled = false;
+            btnModificar.Enabled = false;
+            btnCancelar.Enabled = false;
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -156,14 +160,11 @@ namespace AcademiaNet
             {
                 negocio.addAlumno(p);
                 clear();
+                loadALumnos(txtBuscar.Text);
             }
             catch (Exception error)
             {
-                MessageBox.Show(error.ToString());
-            }
-            finally
-            {
-                loadALumnos(textBox1.Text);
+                MessageBox.Show(error.Message);
             }
 
         }
@@ -242,7 +243,7 @@ namespace AcademiaNet
             btnEliminar.Enabled = false;
             btnModificar.Enabled = false;
             btnCancelar.Enabled = false;
-            loadALumnos(textBox1.Text);
+            loadALumnos(txtBuscar.Text);
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -263,20 +264,27 @@ namespace AcademiaNet
 
             p.Plan = plan;
 
-            Negocio.Persona negocio = new Negocio.Persona();
-            negocio.updateAlumno(p);
+            try
+            {
+                Negocio.Persona negocio = new Negocio.Persona();
+                negocio.updateAlumno(p);
 
-            clear();
-            btnAgregar.Enabled = true;
-            btnEliminar.Enabled = false;
-            btnModificar.Enabled = false;
-            btnCancelar.Enabled = false;
-            loadALumnos(textBox1.Text);
+                clear();
+                btnAgregar.Enabled = true;
+                btnEliminar.Enabled = false;
+                btnModificar.Enabled = false;
+                btnCancelar.Enabled = false;
+                loadALumnos(txtBuscar.Text);
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
-            loadALumnos(textBox1.Text);
+            loadALumnos(txtBuscar.Text);
         }
 
         private void cmbEspecialidad_SelectedIndexChanged(object sender, EventArgs e)

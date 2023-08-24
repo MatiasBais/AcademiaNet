@@ -52,7 +52,7 @@
             btnEliminar = new System.Windows.Forms.Button();
             btnModificar = new System.Windows.Forms.Button();
             label10 = new System.Windows.Forms.Label();
-            textBox1 = new System.Windows.Forms.TextBox();
+            txtBuscar = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvPersonas).BeginInit();
             SuspendLayout();
             // 
@@ -64,7 +64,8 @@
             dgvPersonas.AllowUserToResizeRows = false;
             dgvPersonas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dgvPersonas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPersonas.Location = new System.Drawing.Point(12, 184);
+            dgvPersonas.Location = new System.Drawing.Point(14, 245);
+            dgvPersonas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             dgvPersonas.Name = "dgvPersonas";
             dgvPersonas.ReadOnly = true;
             dgvPersonas.RowHeadersVisible = false;
@@ -118,8 +119,6 @@
             txtLegajo.Size = new System.Drawing.Size(435, 23);
             txtLegajo.TabIndex = 5;
             txtLegajo.Text = "0";
-            txtLegajo.TextChanged += txtLegajo_TextChanged;
-            txtLegajo.KeyDown += txtLegajo_KeyDown;
             txtLegajo.KeyPress += txtLegajo_KeyPress;
             txtLegajo.Leave += txtLegajo_Leave;
             // 
@@ -274,26 +273,28 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new System.Drawing.Point(12, 164);
+
+            label10.Location = new System.Drawing.Point(14, 219);
             label10.Name = "label10";
             label10.Size = new System.Drawing.Size(42, 15);
             label10.TabIndex = 23;
             label10.Text = "Buscar";
             // 
-            // textBox1
+            // txtBuscar
             // 
-            textBox1.Location = new System.Drawing.Point(67, 158);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new System.Drawing.Size(1084, 23);
-            textBox1.TabIndex = 24;
-            textBox1.TextChanged += textBox1_TextChanged;
+            txtBuscar.Location = new System.Drawing.Point(77, 211);
+            txtBuscar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            txtBuscar.Name = "txtBuscar";
+            txtBuscar.Size = new System.Drawing.Size(1238, 27);
+            txtBuscar.TabIndex = 24;
+            txtBuscar.TextChanged += txtBuscar_TextChanged;
             // 
             // Alumnos
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1166, 629);
-            Controls.Add(textBox1);
+            ClientSize = new System.Drawing.Size(1333, 839);
+            Controls.Add(txtBuscar);
             Controls.Add(label10);
             Controls.Add(btnModificar);
             Controls.Add(btnEliminar);
@@ -352,6 +353,6 @@
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBuscar;
     }
 }

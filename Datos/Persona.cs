@@ -12,7 +12,7 @@ namespace Datos
         {
             List<Entidades.Persona> list = new List<Entidades.Persona>();
             conn.Open();
-            SqlCommand cmd = new SqlCommand("SET DATEFORMAT 'YMD';select nombre, apellido, email, legajo, fechaNacimiento, personas.id as 'ID' , direccion, telefono, especialidades.id as 'IDEspecialidad', planes.id as 'IDPlan', planes.descripcion as 'plan', especialidades.descripcion as 'descripcion' from personas join planes on IDPLAN = planes.id join Especialidades on IDESpecialidad = especialidades.ID where tipoPersona ='Alumno' and nombre like'"+nombre+"%'", conn);
+            SqlCommand cmd = new SqlCommand("SET DATEFORMAT 'YMD';select nombre, apellido, email, legajo, fechaNacimiento, personas.id as 'ID' , direccion, telefono, especialidades.id as 'IDEspecialidad', planes.id as 'IDPlan', planes.descripcion as 'plan', especialidades.descripcion as 'descripcion' from personas join planes on IDPLAN = planes.id join Especialidades on IDESpecialidad = especialidades.ID where tipoPersona ='Alumno' and (nombre like'" + nombre + "%' or apellido like'"+nombre+"%' or legajo like'"+nombre+"%')", conn);
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read()) { 
@@ -49,7 +49,7 @@ namespace Datos
         {
             List<Entidades.Persona> list = new List<Entidades.Persona>();
             conn.Open();
-            SqlCommand cmd = new SqlCommand("SET DATEFORMAT 'YMD';select nombre, apellido, email, legajo, fechaNacimiento, personas.id as 'ID' , direccion, telefono from personas where tipoPersona ='Profesor' and nombre like '"+nombre+"%'", conn);
+            SqlCommand cmd = new SqlCommand("SET DATEFORMAT 'YMD';select nombre, apellido, email, legajo, fechaNacimiento, personas.id as 'ID' , direccion, telefono from personas where tipoPersona ='Profesor' and (nombre like'" + nombre + "%' or apellido like'"+nombre+"%' or legajo like'"+nombre+"%')", conn);
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
