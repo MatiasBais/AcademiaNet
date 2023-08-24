@@ -28,5 +28,16 @@ namespace AcademiaNet
             Alumnos alumnos = new Alumnos();
             alumnos.Show();
         }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Planes planes = new Planes();
+            planes.Show();
+        }
     }
 }

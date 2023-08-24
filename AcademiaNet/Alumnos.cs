@@ -278,5 +278,15 @@ namespace AcademiaNet
         {
             loadALumnos(textBox1.Text);
         }
+
+        private void cmbEspecialidad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvPersonas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
