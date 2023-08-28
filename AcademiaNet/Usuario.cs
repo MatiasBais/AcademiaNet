@@ -37,6 +37,8 @@ namespace AcademiaNet
             dt.Columns.Add("idEspecialidad", typeof(int));
             dt.Columns.Add("Especialidad", typeof(string));
 
+            
+
             foreach (Entidades.Usuario usuario in usuarioList)
             {
                 DataRow row = dt.NewRow();
@@ -56,6 +58,7 @@ namespace AcademiaNet
             }
             dgvUsuarios.DataSource = dt;
             dgvUsuarios.Columns[0].Visible = false;
+            dgvUsuarios.Columns[3].Visible = false;
             dgvUsuarios.Columns[6].Visible = false;
             dgvUsuarios.Columns[8].Visible = false;
             loadEspecialidades();
@@ -109,6 +112,7 @@ namespace AcademiaNet
         private void Usuario_Load(object sender, EventArgs e)
         {
             cmbTipo.SelectedIndex = 0;
+            cmbHabilitado.SelectedIndex = 0;
             loadUsuarios();
 
         }
@@ -121,7 +125,6 @@ namespace AcademiaNet
         private void clear()
         {
             txtClave.Clear();
-            txtHabilitado.Clear();
             txtNombreUsuario.Clear();
             txtLegajo.Text = "0";
         }
@@ -132,13 +135,16 @@ namespace AcademiaNet
                 usuario.NombreUsuario = txtNombreUsuario.Text;
                 usuario.Clave = txtClave.Text;
                 usuario.TipoPersona = cmbTipo.Text;
-                usuario.Habilitado = txtHabilitado.Text;
-                usuario.State = "TRUE";
+                usuario.Habilitado = cmbHabilitado.Text;
+                usuario.Legajo = Convert.ToInt32(txtLegajo.Text);
+                usuario.Plan = null;
 
-                Entidades.Plan plan = new Entidades.Plan();
-                plan.ID = (int)cmbPlan.SelectedValue;
-
-                usuario.Plan = plan;
+                if (cmbTipo.Text == "Alumno")
+                {
+                    Entidades.Plan plan = new Entidades.Plan();
+                    plan.ID = (int)cmbPlan.SelectedValue;
+                    usuario.Plan = plan;
+                }
 
                 Negocio.Usuario negocio = new Negocio.Usuario();
                 negocio.addUsuario(usuario, this.Persona);
@@ -175,7 +181,11 @@ namespace AcademiaNet
             txtLegajo.Text = dgvUsuarios.Rows[index].Cells[1].Value.ToString();
             txtNombreUsuario.Text = dgvUsuarios.Rows[index].Cells[2].Value.ToString();
             txtClave.Text = dgvUsuarios.Rows[index].Cells[3].Value.ToString();
-            txtHabilitado.Text = dgvUsuarios.Rows[index].Cells[4].Value.ToString();
+            string habilitado = dgvUsuarios.Rows[index].Cells[4].Value.ToString();
+            if (habilitado == "Habilitado")
+                cmbHabilitado.SelectedIndex = 0;
+            else
+                cmbHabilitado.SelectedIndex = 1;
             string tipo = dgvUsuarios.Rows[index].Cells[5].Value.ToString();
             if (tipo == "Alumno")
                 cmbTipo.SelectedIndex = 0;
@@ -233,12 +243,17 @@ namespace AcademiaNet
                 usuario.NombreUsuario = txtNombreUsuario.Text;
                 usuario.Clave = txtClave.Text;
                 usuario.TipoPersona = cmbTipo.Text;
-                usuario.Habilitado = txtHabilitado.Text;
+                usuario.Habilitado = cmbHabilitado.Text;
+                usuario.Legajo = Convert.ToInt32(txtLegajo.Text);
+                usuario.Plan = null;
 
-                Entidades.Plan plan = new Entidades.Plan();
-                plan.ID = (int)cmbPlan.SelectedValue;
+                if (cmbTipo.Text == "Alumno") { 
+                    Entidades.Plan plan = new Entidades.Plan();
+                    plan.ID = (int)cmbPlan.SelectedValue;
+                    usuario.Plan = plan;
+                }
 
-                usuario.Plan = plan;
+                
                 negocio.updateUsuario(usuario);
                 clear();
                 btnAgregar.Enabled = true;
@@ -251,6 +266,25 @@ namespace AcademiaNet
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void cmbTipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cmbTipo.Text == "Alumno")
+            {
+                cmbEspecialidad.Visible = true;
+                cmbPlan.Visible = true;
+                lblEspecialidad.Visible = true;
+                lblPlan.Visible = true;
+
+            }
+            else
+            {
+                cmbEspecialidad.Visible = false;
+                cmbPlan.Visible = false;
+                lblEspecialidad.Visible = false;
+                lblPlan.Visible = false;
             }
         }
     }

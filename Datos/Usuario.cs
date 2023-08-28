@@ -61,15 +61,14 @@ namespace Datos
             conn.Open();
 
             //id legajo nombre apellido FechaNacimiento Telefono direccion email idPlan idEspecialidad
-            string cmdstr = String.Format("SET DATEFORMAT 'YMD';insert into Usuarios(NombreUsuario, Clave, Habilitado, TipoPersona, idPersona, Legajo, IDPlan, State) values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}')",
+            string cmdstr = String.Format("SET DATEFORMAT 'YMD';insert into Usuarios(NombreUsuario, Clave, Habilitado, TipoPersona, idPersona, Legajo, IDPlan) values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}')",
                 usuario.NombreUsuario,
                 usuario.Clave,
                 usuario.Habilitado,
                 usuario.TipoPersona,
                 persona.ID,
                 usuario.Legajo,
-                usuario.Plan.ID,
-                usuario.State);
+                usuario.Plan == null ? 0 : usuario.Plan.ID);
 
             SqlCommand cmd = new SqlCommand(cmdstr, conn);
             cmd.ExecuteNonQuery();
@@ -93,7 +92,7 @@ namespace Datos
                 usuario.Clave,
                 usuario.Habilitado,
                 usuario.TipoPersona,
-                usuario.Plan.ID,
+                usuario.Plan == null ? 0 : usuario.Plan.ID,
                 usuario.ID);
             SqlCommand cmd = new SqlCommand(query, conn);
             cmd.ExecuteNonQuery();

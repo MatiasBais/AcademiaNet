@@ -32,7 +32,6 @@
             this.cmbTipo = new System.Windows.Forms.ComboBox();
             this.cmbEspecialidad = new System.Windows.Forms.ComboBox();
             this.cmbPlan = new System.Windows.Forms.ComboBox();
-            this.txtHabilitado = new System.Windows.Forms.TextBox();
             this.txtClave = new System.Windows.Forms.TextBox();
             this.txtLegajo = new System.Windows.Forms.TextBox();
             this.txtNombreUsuario = new System.Windows.Forms.TextBox();
@@ -41,13 +40,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblEspecialidad = new System.Windows.Forms.Label();
+            this.lblPlan = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
+            this.cmbHabilitado = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,6 +81,7 @@
             this.cmbTipo.Name = "cmbTipo";
             this.cmbTipo.Size = new System.Drawing.Size(435, 23);
             this.cmbTipo.TabIndex = 5;
+            this.cmbTipo.SelectedIndexChanged += new System.EventHandler(this.cmbTipo_SelectedIndexChanged);
             // 
             // cmbEspecialidad
             // 
@@ -100,13 +101,6 @@
             this.cmbPlan.Name = "cmbPlan";
             this.cmbPlan.Size = new System.Drawing.Size(140, 23);
             this.cmbPlan.TabIndex = 6;
-            // 
-            // txtHabilitado
-            // 
-            this.txtHabilitado.Location = new System.Drawing.Point(719, 9);
-            this.txtHabilitado.Name = "txtHabilitado";
-            this.txtHabilitado.Size = new System.Drawing.Size(435, 23);
-            this.txtHabilitado.TabIndex = 4;
             // 
             // txtClave
             // 
@@ -178,23 +172,23 @@
             this.label5.TabIndex = 12;
             this.label5.Text = "Tipo de Usuario:";
             // 
-            // label6
+            // lblEspecialidad
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(719, 70);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(75, 15);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "Especialidad:";
+            this.lblEspecialidad.AutoSize = true;
+            this.lblEspecialidad.Location = new System.Drawing.Point(719, 70);
+            this.lblEspecialidad.Name = "lblEspecialidad";
+            this.lblEspecialidad.Size = new System.Drawing.Size(75, 15);
+            this.lblEspecialidad.TabIndex = 13;
+            this.lblEspecialidad.Text = "Especialidad:";
             // 
-            // label7
+            // lblPlan
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(946, 70);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(33, 15);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "Plan:";
+            this.lblPlan.AutoSize = true;
+            this.lblPlan.Location = new System.Drawing.Point(946, 70);
+            this.lblPlan.Name = "lblPlan";
+            this.lblPlan.Size = new System.Drawing.Size(33, 15);
+            this.lblPlan.TabIndex = 14;
+            this.lblPlan.Text = "Plan:";
             // 
             // label8
             // 
@@ -247,18 +241,31 @@
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
+            // cmbHabilitado
+            // 
+            this.cmbHabilitado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbHabilitado.FormattingEnabled = true;
+            this.cmbHabilitado.Items.AddRange(new object[] {
+            "Habilitado",
+            "No Habilitado"});
+            this.cmbHabilitado.Location = new System.Drawing.Point(719, 9);
+            this.cmbHabilitado.Name = "cmbHabilitado";
+            this.cmbHabilitado.Size = new System.Drawing.Size(435, 23);
+            this.cmbHabilitado.TabIndex = 53;
+            // 
             // Usuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1166, 629);
+            this.Controls.Add(this.cmbHabilitado);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAgregar);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lblPlan);
+            this.Controls.Add(this.lblEspecialidad);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -267,7 +274,6 @@
             this.Controls.Add(this.txtNombreUsuario);
             this.Controls.Add(this.txtLegajo);
             this.Controls.Add(this.txtClave);
-            this.Controls.Add(this.txtHabilitado);
             this.Controls.Add(this.cmbPlan);
             this.Controls.Add(this.cmbEspecialidad);
             this.Controls.Add(this.cmbTipo);
@@ -287,7 +293,6 @@
         private System.Windows.Forms.ComboBox cmbTipo;
         private System.Windows.Forms.ComboBox cmbEspecialidad;
         private System.Windows.Forms.ComboBox cmbPlan;
-        private System.Windows.Forms.TextBox txtHabilitado;
         private System.Windows.Forms.TextBox txtClave;
         private System.Windows.Forms.TextBox txtLegajo;
         private System.Windows.Forms.TextBox txtNombreUsuario;
@@ -296,12 +301,13 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblEspecialidad;
+        private System.Windows.Forms.Label lblPlan;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.ComboBox cmbHabilitado;
     }
 }
