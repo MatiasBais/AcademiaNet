@@ -14,7 +14,7 @@ namespace Datos
         {
             List<Entidades.Plan> planes = new List<Entidades.Plan>();
             conn.Open();
-            SqlCommand cmd = new SqlCommand("select * from planes", conn);
+            SqlCommand cmd = new SqlCommand("select * from planes where Status is null", conn);
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
@@ -33,7 +33,7 @@ namespace Datos
         {
             List<Entidades.Plan> planes = new List<Entidades.Plan>();
             conn.Open();
-            SqlCommand cmd = new SqlCommand("select * from planes where idEspecialidad ="+idEspecialidad, conn);
+            SqlCommand cmd = new SqlCommand("select * from planes where State is null and idEspecialidad ="+idEspecialidad, conn);
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
@@ -79,17 +79,21 @@ namespace Datos
 
         public void addPlan(Entidades.Plan plan)
         {
-            conn.Open();
-            string query = String.Format("insert into Planes(Descripcion, IDEspecialidad) values ('{0}','{1}')", plan.Descripcion, plan.Especialidad.ID);
-            SqlCommand cmd = new SqlCommand(query, conn);
-            cmd.ExecuteNonQuery();
-            conn.Close();
+            if (validarPlan(plan))
+            {
+                conn.Open();
+                string query = String.Format("insert into Planes(Descripcion, IDEspecialidad) values ('{0}','{1}')", plan.Descripcion, plan.Especialidad.ID);
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+            
         }
 
         public void updatePlan(Entidades.Plan plan)
         {
             conn.Open();
-            string query = String.Format("update Planes set descripcion ='{0}', IDEspecialidad = '{1}' where ID= {1}", plan.Descripcion, plan.Especialidad.ID);
+            string query = String.Format("update Planes set descripcion ='{0}' where ID= {1}", plan.Descripcion);
             SqlCommand cmd = new SqlCommand(query, conn);
             cmd.ExecuteNonQuery();
             conn.Close();
@@ -98,7 +102,7 @@ namespace Datos
         public void deletePlan(Entidades.Plan plan)
         {
             conn.Open();
-            string query = String.Format("delete from Planes where ID= {0}", plan.ID);
+            string query = String.Format("update Planes set State = 'E' where ID= {0}", plan.ID);
             SqlCommand cmd = new SqlCommand(query, conn);
             cmd.ExecuteNonQuery();
             conn.Close();
@@ -127,5 +131,11 @@ namespace Datos
         }
 
 
+        private bool validarPlan(Entidades.Plan plan)
+        {
+            Especialidad especialidad= new Especialidad();
+            return (especialidad.getEspecialidad(plan.Especialidad.ID) != null);
+            
+        }
     }
 }
