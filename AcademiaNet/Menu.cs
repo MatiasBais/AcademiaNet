@@ -41,5 +41,11 @@ namespace AcademiaNet
             Comision comisiones = new Comision();
             comisiones.ShowDialog();
         }
+
+        private void administrarTiposDeUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TipoUsuario tipo = new TipoUsuario();
+            tipo.ShowDialog();
+        }
     }
 }

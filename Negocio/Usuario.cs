@@ -45,5 +45,11 @@ namespace Negocio
             datos.updateUsuario(usuario);
 
         }
+
+        public Boolean validarUsuario(Entidades.Usuario usuario)
+        {
+            Datos.Usuario datos = new Datos.Usuario();
+            return (datos.getUsuario(usuario).Clave == usuario.Clave);
+        }
     }
 }

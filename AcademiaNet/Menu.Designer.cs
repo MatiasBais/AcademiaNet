@@ -36,6 +36,7 @@
             this.administrarPlanesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comisionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administrarComisionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.administrarTiposDeUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +55,8 @@
             // personasToolStripMenuItem
             // 
             this.personasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.administrarPersonasToolStripMenuItem});
+            this.administrarPersonasToolStripMenuItem,
+            this.administrarTiposDeUsuarioToolStripMenuItem});
             this.personasToolStripMenuItem.Name = "personasToolStripMenuItem";
             this.personasToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.personasToolStripMenuItem.Text = "Personas";
@@ -62,7 +64,7 @@
             // administrarPersonasToolStripMenuItem
             // 
             this.administrarPersonasToolStripMenuItem.Name = "administrarPersonasToolStripMenuItem";
-            this.administrarPersonasToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.administrarPersonasToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
             this.administrarPersonasToolStripMenuItem.Text = "Administrar Personas";
             this.administrarPersonasToolStripMenuItem.Click += new System.EventHandler(this.administrarPersonasToolStripMenuItem_Click);
             // 
@@ -104,6 +106,13 @@
             this.administrarComisionesToolStripMenuItem.Text = "Administrar Comisiones";
             this.administrarComisionesToolStripMenuItem.Click += new System.EventHandler(this.administrarComisionesToolStripMenuItem_Click);
             // 
+            // administrarTiposDeUsuarioToolStripMenuItem
+            // 
+            this.administrarTiposDeUsuarioToolStripMenuItem.Name = "administrarTiposDeUsuarioToolStripMenuItem";
+            this.administrarTiposDeUsuarioToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
+            this.administrarTiposDeUsuarioToolStripMenuItem.Text = "Administrar Tipos de Usuario";
+            this.administrarTiposDeUsuarioToolStripMenuItem.Click += new System.EventHandler(this.administrarTiposDeUsuarioToolStripMenuItem_Click);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -130,5 +139,6 @@
         private System.Windows.Forms.ToolStripMenuItem administrarPlanesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem comisionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem administrarComisionesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem administrarTiposDeUsuarioToolStripMenuItem;
     }
 }

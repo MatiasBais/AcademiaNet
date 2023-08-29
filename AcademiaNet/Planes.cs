@@ -216,5 +216,10 @@ namespace AcademiaNet
                 loadPlanes();
             }
         }
+
+        private void Planes_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

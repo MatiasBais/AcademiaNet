@@ -20,7 +20,7 @@ namespace Entidades
 
         public int Legajo { get; set; }
 
-        public string TipoPersona { get; set; }
+        public Entidades.TipoUsuario tipo { get; set; }
 
 
     }

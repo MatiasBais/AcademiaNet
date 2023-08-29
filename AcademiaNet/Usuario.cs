@@ -19,6 +19,24 @@ namespace AcademiaNet
             InitializeComponent();
         }
 
+        private void loadTipos()
+        {
+            Negocio.tipoUsuario negocio = new Negocio.tipoUsuario();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ID", typeof(int));
+            dt.Columns.Add("Descripcion", typeof(string));
+            foreach (Entidades.TipoUsuario tipo in negocio.getTipoUsuarios())
+            {
+                DataRow row = dt.NewRow();
+                row[0] = tipo.ID;
+                row[1] = tipo.Descripcion;
+                dt.Rows.Add(row);
+            }
+            cmbTipo.ValueMember = "ID";
+            cmbTipo.DisplayMember = "Descripcion";
+
+            cmbTipo.DataSource = dt;
+        }
         private void loadUsuarios()
         {
             Negocio.Usuario negocio = new Negocio.Usuario();
@@ -32,6 +50,7 @@ namespace AcademiaNet
             dt.Columns.Add("Clave", typeof(string));
             dt.Columns.Add("Habilitado", typeof(string));
             dt.Columns.Add("Tipo de Usuario", typeof(string));
+            dt.Columns.Add("idTipo", typeof(string));
             dt.Columns.Add("idPlan", typeof(int));
             dt.Columns.Add("Plan", typeof(string));
             dt.Columns.Add("idEspecialidad", typeof(int));
@@ -48,11 +67,12 @@ namespace AcademiaNet
                 row[2] = usuario.NombreUsuario;
                 row[3] = usuario.Clave;
                 row[4] = usuario.Habilitado;
-                row[5] = usuario.TipoPersona;
-                row[6] = usuario.Plan.ID;
-                row[7] = usuario.Plan.Descripcion;
-                row[8] = usuario.Plan.Especialidad.ID;
-                row[9] = usuario.Plan.Especialidad.Descripcion;
+                row[5] = usuario.tipo.Descripcion;
+                row[6] = usuario.tipo.ID;
+                row[7] = usuario.Plan.ID;
+                row[8] = usuario.Plan.Descripcion;
+                row[9] = usuario.Plan.Especialidad.ID;
+                row[10] = usuario.Plan.Especialidad.Descripcion;
 
                 dt.Rows.Add(row);
             }
@@ -60,7 +80,8 @@ namespace AcademiaNet
             dgvUsuarios.Columns[0].Visible = false;
             dgvUsuarios.Columns[3].Visible = false;
             dgvUsuarios.Columns[6].Visible = false;
-            dgvUsuarios.Columns[8].Visible = false;
+            dgvUsuarios.Columns[7].Visible = false;
+            dgvUsuarios.Columns[9].Visible = false;
             loadEspecialidades();
 
 
@@ -114,6 +135,7 @@ namespace AcademiaNet
             cmbTipo.SelectedIndex = 0;
             cmbHabilitado.SelectedIndex = 0;
             loadUsuarios();
+            loadTipos();
 
         }
 
@@ -134,7 +156,8 @@ namespace AcademiaNet
                 Entidades.Usuario usuario = new Entidades.Usuario();
                 usuario.NombreUsuario = txtNombreUsuario.Text;
                 usuario.Clave = txtClave.Text;
-                usuario.TipoPersona = cmbTipo.Text;
+                usuario.tipo = new Entidades.TipoUsuario();
+                usuario.tipo.ID = (int)cmbTipo.SelectedValue;
                 usuario.Habilitado = cmbHabilitado.Text;
                 usuario.Legajo = Convert.ToInt32(txtLegajo.Text);
                 usuario.Plan = null;
@@ -186,15 +209,9 @@ namespace AcademiaNet
                 cmbHabilitado.SelectedIndex = 0;
             else
                 cmbHabilitado.SelectedIndex = 1;
-            string tipo = dgvUsuarios.Rows[index].Cells[5].Value.ToString();
-            if (tipo == "Alumno")
-                cmbTipo.SelectedIndex = 0;
-            else if (tipo == "Profesor")
-                cmbTipo.SelectedIndex = 1;
-            else
-                cmbTipo.SelectedIndex = 2;
-            cmbEspecialidad.SelectedValue = dgvUsuarios.Rows[index].Cells[8].Value;
-            cmbPlan.SelectedValue = dgvUsuarios.Rows[index].Cells[6].Value;
+            cmbTipo.SelectedValue = dgvUsuarios.Rows[index].Cells[6].Value;
+            cmbEspecialidad.SelectedValue = dgvUsuarios.Rows[index].Cells[9].Value;
+            cmbPlan.SelectedValue = dgvUsuarios.Rows[index].Cells[7].Value;
 
             btnAgregar.Enabled = false;
             btnCancelar.Enabled = true;
@@ -242,7 +259,8 @@ namespace AcademiaNet
                 usuario.ID = ID;
                 usuario.NombreUsuario = txtNombreUsuario.Text;
                 usuario.Clave = txtClave.Text;
-                usuario.TipoPersona = cmbTipo.Text;
+                usuario.tipo = new Entidades.TipoUsuario();
+                usuario.tipo.ID = (int)cmbTipo.SelectedValue;
                 usuario.Habilitado = cmbHabilitado.Text;
                 usuario.Legajo = Convert.ToInt32(txtLegajo.Text);
                 usuario.Plan = null;
