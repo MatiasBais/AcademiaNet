@@ -36,7 +36,7 @@ namespace Datos
         {
             List<Entidades.Materia> materias = new List<Entidades.Materia>();
             conn.Open();
-            SqlCommand cmd = new SqlCommand("select * from materias where IDPlan = "+ IDPlan, conn);
+            SqlCommand cmd = new SqlCommand("select * from materias where State is null and IDPlan = "+ IDPlan, conn);
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
@@ -57,17 +57,20 @@ namespace Datos
 
         public void addMateria(Entidades.Materia materia)
         {
-            conn.Open();
-            String sql = String.Format("insert into materias (descripcion, HSSemanales, HSTotales, IDPlan) values ('" + materia.Descripcion + "','" + materia.HSSemanales.ToString() + "','" + materia.HSTotales.ToString() + "','" + materia.Plan.ID.ToString() + "')");
-            SqlCommand cmd = new SqlCommand(sql, conn);
-            cmd.ExecuteNonQuery();
-            conn.Close();
+            if (validarMateria(materia, add:true))
+            {
+                conn.Open();
+                String sql = String.Format("insert into materias (descripcion, HSSemanales, HSTotales, IDPlan) values ('" + materia.Descripcion + "','" + materia.HSSemanales.ToString() + "','" + materia.HSTotales.ToString() + "','" + materia.Plan.ID.ToString() + "')");
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
         }
 
         public void deleteMateria(Entidades.Materia materia)
         {
             conn.Open();
-            string cmdstr = String.Format("delete from materias where ID = '{0}'",
+            string cmdstr = String.Format("update Materias set State = 'E' where ID = '{0}'",
                 materia.ID.ToString());
 
             SqlCommand cmd = new SqlCommand(cmdstr, conn);
@@ -77,11 +80,28 @@ namespace Datos
 
         public void updateMateria(Entidades.Materia m)
         {
-            conn.Open();
-            string cmdstr = String.Format("update materias set Descripcion = '" + m.Descripcion + "', HSSemanales = '" + m.HSSemanales + "', HSTotales = '" + m.HSTotales + "',IDPlan = " + m.Plan.ID + "  where ID =" + m.ID);
-            SqlCommand cmd = new SqlCommand(cmdstr, conn);
-            cmd.ExecuteNonQuery();
-            conn.Close();
+            if (validarMateria(m))
+            {
+                conn.Open();
+                string cmdstr = String.Format("update materias set Descripcion = '" + m.Descripcion + "', HSSemanales = '" + m.HSSemanales + "', HSTotales = '" + m.HSTotales + "'  where ID =" + m.ID);
+                SqlCommand cmd = new SqlCommand(cmdstr, conn);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+        }
+
+        private bool validarMateria(Entidades.Materia materia, bool add = false)
+        {
+            Plan plan = new Plan();
+            if(plan.getPlan(materia.Plan.ID) == null && add)
+            {
+                return false;
+            }
+            if(materia.HSSemanales <= 0 || materia.HSSemanales>materia.HSTotales)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

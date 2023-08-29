@@ -9,12 +9,29 @@ namespace Datos
 {
     public class Especialidad : Base
     {
-        
+
+        public Entidades.Especialidad getEspecialidad(int ID)
+        {
+            Entidades.Especialidad especialidad = new Entidades.Especialidad();
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("select * from especialidades where State is null and id = " + ID, conn);
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    especialidad.ID = (int)reader["ID"];
+                    especialidad.Descripcion = reader["descripcion"].ToString();
+                }
+            }
+            conn.Close();
+            return especialidad;
+        }
+
         public List<Entidades.Especialidad> getEspecialidades()
         {
             List<Entidades.Especialidad> especialidades = new List<Entidades.Especialidad>();
             conn.Open();
-            SqlCommand cmd = new SqlCommand("select * from especialidades", conn);
+            SqlCommand cmd = new SqlCommand("select * from especialidades where State is null", conn);
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
@@ -33,7 +50,7 @@ namespace Datos
         {
             List<Entidades.Especialidad> especialidades = new List<Entidades.Especialidad>();
             conn.Open();
-            SqlCommand cmd = new SqlCommand("select * from especialidades where descripcion like '" + desc+"%'", conn);
+            SqlCommand cmd = new SqlCommand("select * from especialidades where descripcion like '" + desc + "%' and State is null", conn);
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
@@ -69,7 +86,7 @@ namespace Datos
         public void deleteEspecialidad(Entidades.Especialidad especialidad)
         {
             conn.Open();
-            string query = String.Format("delete from Especialidades where ID= {0}", especialidad.ID);
+            string query = String.Format("update Especialidades set State = 'E' where ID= {0}", especialidad.ID);
             SqlCommand cmd = new SqlCommand(query, conn);
             cmd.ExecuteNonQuery();
             conn.Close();
