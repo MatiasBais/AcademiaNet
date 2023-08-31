@@ -17,7 +17,7 @@ namespace Datos
             string query = String.Format("select modulos.descripcion as 'modulo',modulosusuario.id as 'id', permiteBaja, permiteAlta, permiteConsulta, permiteModificacion, modulos.id as 'idModulo'" +
                 " from ModulosUsuario" +
                 " join modulos on modulos.id = IDModulo" +
-                " where IDTipoUsuario = '{0}'", id);
+                " where IDTipoUsuario = '{0}' and modulosusuario.state is null", id);
             conn.Open();
             SqlCommand cmd = new SqlCommand(query, conn);
             SqlDataReader reader = cmd.ExecuteReader();
@@ -57,6 +57,31 @@ namespace Datos
             cmd.ExecuteNonQuery();
             conn.Close();
 
+        }
+
+        public void updatePermiso(Entidades.ModulosUsuario permiso)
+        {
+            string query = String.Format("update modulosusuario set permitealta = '{0}', permitebaja = '{1}', permiteconsulta = '{2}', permitemodificacion = '{3}' where id = '{4}'",
+                permiso.Alta,
+                permiso.Baja,
+                permiso.Consulta,
+                permiso.Modificacion,
+                permiso.ID);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(query, conn);
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
+
+        public void deletePermiso(int id)
+        {
+            string query = String.Format("update modulosusuario set state = '{0}' where id='{1}'",
+                "E",
+                id);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(query, conn);
+            cmd.ExecuteNonQuery();
+            conn.Close();
         }
     }
 }

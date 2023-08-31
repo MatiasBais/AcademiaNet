@@ -25,5 +25,21 @@ namespace Negocio
             tipo.ID = id;
             negocio.addPermisos(tipo);
         }
+
+        public void updateTipoUsuario(Entidades.TipoUsuario tipo)
+        {
+            Datos.TipoUsuario datos = new Datos.TipoUsuario();
+            datos.updateTipoUsuario(tipo);
+            Negocio.ModulosUsuario negocio = new Negocio.ModulosUsuario();
+            negocio.updatePermisos(tipo.permisos);
+        }
+
+        public void deleteTipoUsuario(Entidades.TipoUsuario tipo)
+        {
+            Datos.TipoUsuario datos = new Datos.TipoUsuario();
+            datos.deleteTipoUsuario(tipo.ID);
+            Negocio.ModulosUsuario negocio = new Negocio.ModulosUsuario();
+            negocio.deletePermisos(tipo.permisos);
+        }
     }
 }

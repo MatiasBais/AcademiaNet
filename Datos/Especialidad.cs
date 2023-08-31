@@ -14,7 +14,7 @@ namespace Datos
         {
             Entidades.Especialidad especialidad = new Entidades.Especialidad();
             conn.Open();
-            SqlCommand cmd = new SqlCommand("select * from especialidades where State is null and id = " + ID, conn);
+            SqlCommand cmd = new SqlCommand("select * from especialidades where State is null and descripcion != '-' and id = " + ID, conn);
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
@@ -31,7 +31,7 @@ namespace Datos
         {
             List<Entidades.Especialidad> especialidades = new List<Entidades.Especialidad>();
             conn.Open();
-            SqlCommand cmd = new SqlCommand("select * from especialidades where State is null", conn);
+            SqlCommand cmd = new SqlCommand("select * from especialidades where descripcion != '-' and State is null", conn);
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
@@ -50,7 +50,7 @@ namespace Datos
         {
             List<Entidades.Especialidad> especialidades = new List<Entidades.Especialidad>();
             conn.Open();
-            SqlCommand cmd = new SqlCommand("select * from especialidades where descripcion like '" + desc + "%' and State is null", conn);
+            SqlCommand cmd = new SqlCommand("select * from especialidades where descripcion like '" + desc + "%' and descripcion != '-' and State is null", conn);
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())

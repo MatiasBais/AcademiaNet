@@ -13,7 +13,7 @@ namespace Datos
         public List<Entidades.TipoUsuario> getTipoUsuarios() {
             List<Entidades.TipoUsuario> list = new List<Entidades.TipoUsuario>();
 
-            string query = "select * from tipoUsuarios";
+            string query = "select * from tipoUsuarios where state is null";
             conn.Open();
             SqlCommand cmd = new SqlCommand(query, conn);
             SqlDataReader reader = cmd.ExecuteReader();
@@ -35,6 +35,28 @@ namespace Datos
             int id = (int)cmd.ExecuteScalar();
             conn.Close();
             return id;
+        }
+
+        public void updateTipoUsuario(Entidades.TipoUsuario tipo)
+        {
+            string query = String.Format("update tipousuarios set descripcion = '{0}' where id={1}",
+                tipo.Descripcion,
+                tipo.ID);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(query, conn);
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
+
+        public void deleteTipoUsuario(int id)
+        {
+            string query = String.Format("update tipousuarios set STATE = '{0}' where id={1}",
+                "E",
+                id);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(query, conn);
+            cmd.ExecuteNonQuery();
+            conn.Close();
         }
     }
 }

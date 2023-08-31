@@ -198,6 +198,7 @@ namespace AcademiaNet
             {
                 if(permiso.modulo.Descripcion == "Personas")
                 {
+                    idPermisos[0] = permiso.ID;
                     cbxPersonasConsulta.Checked = permiso.Consulta;
                     cbxPersonasAlta.Checked = permiso.Alta;
                     cbxPersonasBaja.Checked = permiso.Baja;
@@ -205,6 +206,7 @@ namespace AcademiaNet
                 }
                 else if (permiso.modulo.Descripcion == "Usuarios")
                 {
+                    idPermisos[1] = permiso.ID;
                     cbxUsuariosConsulta.Checked = permiso.Consulta;
                     cbxUsuariosAlta.Checked = permiso.Alta;
                     cbxUsuariosBaja.Checked = permiso.Baja;
@@ -212,6 +214,7 @@ namespace AcademiaNet
                 }
                 else if (permiso.modulo.Descripcion == "Especialidades")
                 {
+                    idPermisos[2] = permiso.ID;
                     cbxEspecialidadesConsulta.Checked = permiso.Consulta;
                     cbxEspecialidadesAlta.Checked = permiso.Alta;
                     cbxEspecialidadesBaja.Checked = permiso.Baja;
@@ -219,6 +222,7 @@ namespace AcademiaNet
                 }
                 else if (permiso.modulo.Descripcion == "Planes")
                 {
+                    idPermisos[3] = permiso.ID;
                     cbxPlanesConsulta.Checked = permiso.Consulta;
                     cbxPlanesAlta.Checked = permiso.Alta;
                     cbxPlanesBaja.Checked = permiso.Baja;
@@ -226,6 +230,7 @@ namespace AcademiaNet
                 }
                 else if (permiso.modulo.Descripcion == "Materias")
                 {
+                    idPermisos[4] = permiso.ID;
                     cbxMateriasConsulta.Checked = permiso.Consulta;
                     cbxMateriasAlta.Checked = permiso.Alta;
                     cbxMateriasBaja.Checked = permiso.Baja;
@@ -233,6 +238,7 @@ namespace AcademiaNet
                 }
                 else if (permiso.modulo.Descripcion == "Cursos")
                 {
+                    idPermisos[5] = permiso.ID;
                     cbxCursosConsulta.Checked = permiso.Consulta;
                     cbxCursosAlta.Checked = permiso.Alta;
                     cbxCursosBaja.Checked = permiso.Baja;
@@ -240,6 +246,7 @@ namespace AcademiaNet
                 }
                 else if (permiso.modulo.Descripcion == "Inscripciones")
                 {
+                    idPermisos[6] = permiso.ID;
                     cbxInscripcionesConsulta.Checked = permiso.Consulta;
                     cbxInscripcionesAlta.Checked = permiso.Alta;
                     cbxInscripcionesBaja.Checked = permiso.Baja;
@@ -247,6 +254,7 @@ namespace AcademiaNet
                 }
                 else if (permiso.modulo.Descripcion == "Notas")
                 {
+                    idPermisos[7] = permiso.ID;
                     cbxNotasConsulta.Checked = permiso.Consulta;
                     cbxNotasAlta.Checked = permiso.Alta;
                     cbxNotasBaja.Checked = permiso.Baja;
@@ -256,6 +264,7 @@ namespace AcademiaNet
 
         }
         int ID = 0;
+        int[] idPermisos = new int[8];
         private void dgvTipoUsuario_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = dgvTipoUsuario.SelectedRows[0].Index;
@@ -405,6 +414,209 @@ namespace AcademiaNet
 
 
 
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Entidades.TipoUsuario tipo = new Entidades.TipoUsuario();
+                tipo.ID = ID;
+                tipo.Descripcion = txtDescripcion.Text;
+                tipo.permisos = new List<Entidades.ModulosUsuario>();
+
+                //Personas
+                Entidades.ModulosUsuario permiso1 = new Entidades.ModulosUsuario();
+                permiso1.ID = idPermisos[0];
+                permiso1.modulo = new Entidades.Modulo();
+                permiso1.modulo.ID = 1;
+                permiso1.Consulta = cbxPersonasConsulta.Checked;
+                permiso1.Alta = cbxPersonasAlta.Checked;
+                permiso1.Baja = cbxPersonasBaja.Checked;
+                permiso1.Modificacion = cbxPersonasModificacion.Checked;
+
+                tipo.permisos.Add(permiso1);
+
+                //Usuarios
+                Entidades.ModulosUsuario permiso2 = new Entidades.ModulosUsuario();
+                permiso2.ID = idPermisos[1];
+                permiso2.modulo = new Entidades.Modulo();
+                permiso2.modulo.ID = 2;
+                permiso2.Consulta = cbxUsuariosConsulta.Checked;
+                permiso2.Alta = cbxUsuariosAlta.Checked;
+                permiso2.Baja = cbxUsuariosBaja.Checked;
+                permiso2.Modificacion = cbxUsuariosModificacion.Checked;
+
+                tipo.permisos.Add(permiso2);
+
+                //Especialidades
+                Entidades.ModulosUsuario permiso3 = new Entidades.ModulosUsuario();
+                permiso3.ID = idPermisos[2];
+                permiso3.modulo = new Entidades.Modulo();
+                permiso3.modulo.ID = 3;
+                permiso3.Consulta = cbxEspecialidadesConsulta.Checked;
+                permiso3.Alta = cbxEspecialidadesAlta.Checked;
+                permiso3.Baja = cbxEspecialidadesBaja.Checked;
+                permiso3.Modificacion = cbxEspecialidadesModificacion.Checked;
+
+                tipo.permisos.Add(permiso3);
+
+                //Planes
+                Entidades.ModulosUsuario permiso4 = new Entidades.ModulosUsuario();
+                permiso4.ID = idPermisos[3];
+                permiso4.modulo = new Entidades.Modulo();
+                permiso4.modulo.ID = 4;
+                permiso4.Consulta = cbxPlanesConsulta.Checked;
+                permiso4.Alta = cbxPlanesAlta.Checked;
+                permiso4.Baja = cbxPlanesBaja.Checked;
+                permiso4.Modificacion = cbxPlanesModificacion.Checked;
+
+                tipo.permisos.Add(permiso4);
+
+                //Materias
+                Entidades.ModulosUsuario permiso5 = new Entidades.ModulosUsuario();
+                permiso5.ID = idPermisos[4];
+                permiso5.modulo = new Entidades.Modulo();
+                permiso5.modulo.ID = 5;
+                permiso5.Consulta = cbxMateriasConsulta.Checked;
+                permiso5.Alta = cbxMateriasAlta.Checked;
+                permiso5.Baja = cbxMateriasBaja.Checked;
+                permiso5.Modificacion = cbxMateriasModificacion.Checked;
+
+                tipo.permisos.Add(permiso5);
+
+                //Cursos
+                Entidades.ModulosUsuario permiso6 = new Entidades.ModulosUsuario();
+                permiso6.ID = idPermisos[5];
+                permiso6.modulo = new Entidades.Modulo();
+                permiso6.modulo.ID = 6;
+                permiso6.Consulta = cbxCursosConsulta.Checked;
+                permiso6.Alta = cbxCursosAlta.Checked;
+                permiso6.Baja = cbxCursosBaja.Checked;
+                permiso6.Modificacion = cbxCursosModificacion.Checked;
+
+                tipo.permisos.Add(permiso6);
+
+                //Inscripciones
+                Entidades.ModulosUsuario permiso7 = new Entidades.ModulosUsuario();
+                permiso7.ID = idPermisos[6];
+                permiso7.modulo = new Entidades.Modulo();
+                permiso7.modulo.ID = 7;
+                permiso7.Consulta = cbxInscripcionesConsulta.Checked;
+                permiso7.Alta = cbxInscripcionesAlta.Checked;
+                permiso7.Baja = cbxInscripcionesBaja.Checked;
+                permiso7.Modificacion = cbxInscripcionesModificacion.Checked;
+
+                tipo.permisos.Add(permiso7);
+
+                //Notas
+                Entidades.ModulosUsuario permiso8 = new Entidades.ModulosUsuario();
+                permiso8.ID = idPermisos[7];
+                permiso8.modulo = new Entidades.Modulo();
+                permiso8.modulo.ID = 8;
+                permiso8.Consulta = cbxNotasConsulta.Checked;
+                permiso8.Alta = cbxNotasAlta.Checked;
+                permiso8.Baja = cbxNotasBaja.Checked;
+                permiso8.Modificacion = cbxNotasModificacion.Checked;
+
+                tipo.permisos.Add(permiso8);
+
+                Negocio.tipoUsuario negocio = new Negocio.tipoUsuario();
+                negocio.updateTipoUsuario(tipo);
+
+                loadTipoUsuarios();
+
+                txtDescripcion.Clear();
+                cbxPersonasConsulta.Checked = false;
+                cbxUsuariosConsulta.Checked = false;
+                cbxEspecialidadesConsulta.Checked = false;
+                cbxPlanesConsulta.Checked = false;
+                cbxMateriasConsulta.Checked = false;
+                cbxCursosConsulta.Checked = false;
+                cbxInscripcionesConsulta.Checked = false;
+                cbxNotasConsulta.Checked = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Entidades.TipoUsuario tipo = new Entidades.TipoUsuario();
+                tipo.permisos = new List<Entidades.ModulosUsuario>();
+                tipo.ID = ID;
+
+                //Personas
+                Entidades.ModulosUsuario permiso1 = new Entidades.ModulosUsuario();
+                permiso1.ID = idPermisos[0];
+
+                tipo.permisos.Add(permiso1);
+
+                //Usuarios
+                Entidades.ModulosUsuario permiso2 = new Entidades.ModulosUsuario();
+                permiso2.ID = idPermisos[1];
+
+                tipo.permisos.Add(permiso2);
+
+                //Especialidades
+                Entidades.ModulosUsuario permiso3 = new Entidades.ModulosUsuario();
+                permiso3.ID = idPermisos[2];
+
+                tipo.permisos.Add(permiso3);
+
+                //Planes
+                Entidades.ModulosUsuario permiso4 = new Entidades.ModulosUsuario();
+                permiso4.ID = idPermisos[3];
+
+                tipo.permisos.Add(permiso4);
+
+                //Materias
+                Entidades.ModulosUsuario permiso5 = new Entidades.ModulosUsuario();
+                permiso5.ID = idPermisos[4];
+
+                tipo.permisos.Add(permiso5);
+
+                //Cursos
+                Entidades.ModulosUsuario permiso6 = new Entidades.ModulosUsuario();
+                permiso6.ID = idPermisos[5];
+
+                tipo.permisos.Add(permiso6);
+
+                //Inscripciones
+                Entidades.ModulosUsuario permiso7 = new Entidades.ModulosUsuario();
+                permiso7.ID = idPermisos[6];
+
+                tipo.permisos.Add(permiso7);
+
+                //Notas
+                Entidades.ModulosUsuario permiso8 = new Entidades.ModulosUsuario();
+                permiso8.ID = idPermisos[7];
+
+                tipo.permisos.Add(permiso8);
+
+                Negocio.tipoUsuario negocio = new Negocio.tipoUsuario();
+                negocio.deleteTipoUsuario(tipo);
+
+                loadTipoUsuarios();
+
+                txtDescripcion.Clear();
+                cbxPersonasConsulta.Checked = false;
+                cbxUsuariosConsulta.Checked = false;
+                cbxEspecialidadesConsulta.Checked = false;
+                cbxPlanesConsulta.Checked = false;
+                cbxMateriasConsulta.Checked = false;
+                cbxCursosConsulta.Checked = false;
+                cbxInscripcionesConsulta.Checked = false;
+                cbxNotasConsulta.Checked = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

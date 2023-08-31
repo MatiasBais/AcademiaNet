@@ -20,6 +20,7 @@ namespace AcademiaNet
         private void Planes_Load(object sender, EventArgs e)
         {
             loadEspecialidades();
+            loadPlanes();
         }
 
         private void loadEspecialidades()
@@ -72,12 +73,6 @@ namespace AcademiaNet
 
         }
 
-        private void cmbEspecialidad_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Entidades.Plan plan = new Entidades.Plan();
-            List<Entidades.Plan> planes = new List<Entidades.Plan>();
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
         }
@@ -112,11 +107,11 @@ namespace AcademiaNet
             }
 
         }
-
+        int ID = 0;
         private void dgvPlanes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = dgvPlanes.SelectedCells[0].RowIndex;
-
+            int id = (int)dgvPlanes.Rows[index].Cells[2].Value;
             txtDescripcion.Text = dgvPlanes.Rows[index].Cells[0].Value.ToString();
             cmbEspecialidad.SelectedValue = dgvPlanes.Rows[index].Cells[1].Value;
 
@@ -124,6 +119,7 @@ namespace AcademiaNet
             btnEliminar.Enabled = true;
             btnModificar.Enabled = true;
             btnCancelar.Enabled = true;
+            cmbEspecialidad.Enabled = false;
 
 
         }
@@ -164,6 +160,7 @@ namespace AcademiaNet
             btnEliminar.Enabled = false;
             btnModificar.Enabled = false;
             btnCancelar.Enabled = false;
+            cmbEspecialidad.Enabled = true;
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -173,7 +170,7 @@ namespace AcademiaNet
             Entidades.Especialidad especialidad = new Entidades.Especialidad();
             especialidad.ID = (int)cmbEspecialidad.SelectedValue;
             int index = dgvPlanes.SelectedCells[0].RowIndex;
-            plan.ID = (int)dgvPlanes.Rows[index].Cells[2].Value;
+            plan.ID = ID;
 
             plan.Especialidad = especialidad;
 
@@ -182,6 +179,11 @@ namespace AcademiaNet
             {
                 p.updatePlan(plan);
                 clear();
+                btnAgregar.Enabled = true;
+                btnEliminar.Enabled = false;
+                btnModificar.Enabled = false;
+                btnCancelar.Enabled = false;
+                cmbEspecialidad.Enabled = true;
 
             }
             catch (Exception error)
@@ -200,11 +202,16 @@ namespace AcademiaNet
             Negocio.Plan plan = new Negocio.Plan();
             int index = dgvPlanes.SelectedCells[0].RowIndex;
             Entidades.Plan plann = new Entidades.Plan();
-            plann.ID = (int)dgvPlanes.Rows[index].Cells[2].Value;
+            plann.ID = ID;
             try
             {
                 plan.deletePlan(plann);
                 clear();
+                btnAgregar.Enabled = true;
+                btnEliminar.Enabled = false;
+                btnModificar.Enabled = false;
+                btnCancelar.Enabled = false;
+                cmbEspecialidad.Enabled = true;
 
             }
             catch (Exception error)
@@ -215,11 +222,6 @@ namespace AcademiaNet
             {
                 loadPlanes();
             }
-        }
-
-        private void Planes_Load_1(object sender, EventArgs e)
-        {
-
         }
     }
 }

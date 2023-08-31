@@ -22,5 +22,22 @@ namespace Negocio
                 datos.addPermiso(permiso, tipo.ID);
             }
         }
+
+        public void updatePermisos(List<Entidades.ModulosUsuario> permisos)
+        {
+            foreach (Entidades.ModulosUsuario permiso in permisos)
+            {
+                Datos.ModulosUsuario datos = new Datos.ModulosUsuario();
+                datos.updatePermiso(permiso);
+            }
+        }
+        public void deletePermisos(List<Entidades.ModulosUsuario> permisos)
+        {
+            foreach (Entidades.ModulosUsuario permiso in permisos)
+            {
+                Datos.ModulosUsuario datos = new Datos.ModulosUsuario();
+                datos.deletePermiso(permiso.ID);
+            }
+        }
     }
 }

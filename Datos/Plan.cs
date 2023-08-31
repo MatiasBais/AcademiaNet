@@ -14,7 +14,7 @@ namespace Datos
         {
             List<Entidades.Plan> planes = new List<Entidades.Plan>();
             conn.Open();
-            SqlCommand cmd = new SqlCommand("select * from planes where Status is null", conn);
+            SqlCommand cmd = new SqlCommand("select * from planes where descripcion != '-' and State is null", conn);
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
@@ -57,7 +57,7 @@ namespace Datos
         {
             List<Entidades.Plan> planes = new List<Entidades.Plan>();
             conn.Open();
-            SqlCommand cmd = new SqlCommand("select planes.id as 'ID', planes.descripcion as 'descripcion', IDEspecialidad, especialidades.descripcion as 'Especialidad' from planes join Especialidades on especialidades.ID = IDEspecialidad where planes.descripcion like '" + desc+"%'", conn);
+            SqlCommand cmd = new SqlCommand("select planes.id as 'ID', planes.descripcion as 'descripcion', IDEspecialidad, especialidades.descripcion as 'Especialidad' from planes join Especialidades on especialidades.ID = IDEspecialidad where planes.descripcion != '-' and planes.descripcion like '" + desc+"%'", conn);
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
