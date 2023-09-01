@@ -107,8 +107,9 @@ namespace Datos
         public Entidades.Usuario getUsuario(Entidades.Usuario usuario)
         {
             conn.Open();
-            string query = String.Format("select clave from usuarios where nombreusuario = '{0}'", usuario.NombreUsuario);
+            string query = String.Format("select clave from usuarios where nombreusuario = '{0}' and state is null", usuario.NombreUsuario);
             SqlCommand cmd = new SqlCommand(query, conn);
+
             usuario.Clave = cmd.ExecuteScalar().ToString();
             return usuario;
         }
