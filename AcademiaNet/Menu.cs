@@ -47,5 +47,11 @@ namespace AcademiaNet
             TipoUsuario tipo = new TipoUsuario();
             tipo.ShowDialog();
         }
+
+        private void inscripcionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InscripcionesPorCurso inscripciones = new InscripcionesPorCurso();
+            inscripciones.ShowDialog();
+        }
     }
 }

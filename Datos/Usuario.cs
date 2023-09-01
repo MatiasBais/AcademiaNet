@@ -111,6 +111,7 @@ namespace Datos
             SqlCommand cmd = new SqlCommand(query, conn);
 
             usuario.Clave = cmd.ExecuteScalar().ToString();
+            conn.Close();
             return usuario;
         }
 
