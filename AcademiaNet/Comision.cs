@@ -34,10 +34,10 @@ namespace AcademiaNet
             DataTable dt = new DataTable();
             dt.Columns.Add("ID Comision", typeof(int));
             dt.Columns.Add("ID Plan", typeof(int));
-            dt.Columns.Add("Descripcion Plan", typeof(string));
-            dt.Columns.Add("Descripcion Especialidad", typeof(string));
-            dt.Columns.Add("Año Especialidad", typeof(int));
-            dt.Columns.Add("Descripcion Comision", typeof(string));
+            dt.Columns.Add("Plan", typeof(string));
+            dt.Columns.Add("Especialidad", typeof(string));
+            dt.Columns.Add("Año", typeof(int));
+            dt.Columns.Add("Comision", typeof(string));
 
             foreach (Entidades.Comision comision in comisionList)
             {
@@ -52,7 +52,8 @@ namespace AcademiaNet
 
                 dt.Rows.Add(row);
             }
-
+            dgvComisiones.Columns[0].Visible = false;
+            dgvComisiones.Columns[1].Visible = false;
             dgvComisiones.DataSource = dt;
             loadEspecialidades();
         }
@@ -145,16 +146,7 @@ namespace AcademiaNet
         private void dgvComisiones_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            int index = dgvComisiones.SelectedCells[0].RowIndex;
-            ID = Convert.ToInt32(dgvComisiones.Rows[index].Cells[0].Value);
-            cmbIdPlan.Text = dgvComisiones.Rows[index].Cells[1].Value.ToString();
-            txtAnioEspecialidad.Text = dgvComisiones.Rows[index].Cells[4].Value.ToString();
-            txtDescripción.Text = dgvComisiones.Rows[index].Cells[5].Value.ToString();
 
-            btnAgregar.Enabled = false;
-            btnEliminar.Enabled = true;
-            btnModificar.Enabled = true;
-            btnCancelar.Enabled = true;
         }
 
         private void clear()
@@ -226,6 +218,8 @@ namespace AcademiaNet
             btnEliminar.Enabled = false;
             btnModificar.Enabled = false;
             btnCancelar.Enabled = false;
+            cmbIdPlan.Enabled = true;
+            cmbEspecialidad.Enabled = true;
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -238,6 +232,35 @@ namespace AcademiaNet
 
         }
 
+        private void cmbEspecialidad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            loadPlanes();
+        }
+
+        private void dgvComisiones_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = dgvComisiones.SelectedCells[0].RowIndex;
+            ID = Convert.ToInt32(dgvComisiones.Rows[index].Cells[0].Value);
+            cmbIdPlan.Text = dgvComisiones.Rows[index].Cells[1].Value.ToString();
+            txtAnioEspecialidad.Text = dgvComisiones.Rows[index].Cells[4].Value.ToString();
+            txtDescripción.Text = dgvComisiones.Rows[index].Cells[5].Value.ToString();
+
+            cmbEspecialidad.Enabled = false;
+            cmbIdPlan.Enabled = false;
+            btnAgregar.Enabled = false;
+            btnEliminar.Enabled = true;
+            btnModificar.Enabled = true;
+            btnCancelar.Enabled = true;
+        }
+
+        private void label3_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbIdPlan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
     }
 
 }

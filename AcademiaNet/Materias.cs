@@ -85,15 +85,6 @@ namespace AcademiaNet
         {
         }
 
-        private void HSTotales_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtHSTotales_TextChanged(object sender, EventArgs e)
-        {
-        }
-
         private void dgvMaterias_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = dgvMaterias.SelectedCells[0].RowIndex;
@@ -135,18 +126,17 @@ namespace AcademiaNet
         private void clear()
         {
             txtDescripcion.Clear();
-            txtHSTotales.Clear();
-            txtHSSemanales.Clear();
-
+            txtHSTotales.Text = "0";
+            txtHSSemanales.Text = "0";
+            btnAgregar.Enabled = true;
+            btnEliminar.Enabled = false;
+            btnModificar.Enabled = false;
+            btnCancelar.Enabled = false;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             clear();
-            btnAgregar.Enabled = true;
-            btnEliminar.Enabled = false;
-            btnModificar.Enabled = false;
-            btnCancelar.Enabled = false;
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -179,12 +169,38 @@ namespace AcademiaNet
             }
             catch (Exception error)
             {
-                MessageBox.Show(error.ToString());
+                MessageBox.Show(error.Message);
             }
             finally
             {
                 loadPlan();
             }
+        }
+
+        private void txtHSSemanales_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtHSTotales_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtHSTotales_Leave(object sender, EventArgs e)
+        {
+            txtHSTotales.Text = txtHSTotales.Text == "" ? "0" : txtHSTotales.Text;
+        }
+
+        private void txtHSSemanales_Leave(object sender, EventArgs e)
+        {
+            txtHSSemanales.Text = txtHSSemanales.Text == "" ? "0" : txtHSSemanales.Text;
         }
     }
 }
