@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Negocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.Design.AxImporter;
 
 namespace AcademiaNet
 {
@@ -24,16 +26,31 @@ namespace AcademiaNet
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            Entidades.Usuario usuario = new Entidades.Usuario();
-            usuario.NombreUsuario = txtNombreUsuario.Text;
-            usuario.Clave = txtClave.Text;
+            string nombreUsuario = txtNombreUsuario.Text;
+            string clave = txtClave.Text;
             Negocio.Usuario negocio = new Negocio.Usuario();
-            if (negocio.validarUsuario(usuario))
+            if (negocio.validarUsuario(nombreUsuario, clave))
             {
-                Menu menu = new Menu();
-                this.Hide();
-                menu.ShowDialog();
-                this.Show();
+                string tipoUsuario = negocio.getTipoUsuario(nombreUsuario, clave);
+                MessageBox.Show(tipoUsuario);
+                switch (tipoUsuario)
+                {
+                    case "Administrador":
+                        Menu menu = new Menu();
+                        this.Hide();
+                        menu.ShowDialog();
+                        this.Show();
+                        break;
+                    case "Alumno":
+                        menuAlumno menu2 = new menuAlumno();                      
+                        this.Hide();
+                        menu2.ShowDialog();
+                        this.Show();
+                        break;
+                    default:
+                        Console.WriteLine("Opción no válida.");
+                        break;
+                }
             }
             else
             {

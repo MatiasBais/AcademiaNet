@@ -46,11 +46,17 @@ namespace Negocio
 
         }
 
-        public Boolean validarUsuario(Entidades.Usuario usuario)
+        public Boolean validarUsuario(string nombreUsuario, string clave)
         {
             Datos.Usuario datos = new Datos.Usuario();
-            string clave = usuario.Clave;
-            return (datos.getUsuario(usuario).Clave == clave);
+            return (datos.validarUsuario(nombreUsuario, clave));
+        }
+
+        public string getTipoUsuario(string nombreUsuario, string clave)
+        {
+            Datos.Usuario datos = new Datos.Usuario();
+
+            return (datos.getTipoUsuario(nombreUsuario, clave));
         }
     }
 }
