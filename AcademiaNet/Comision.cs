@@ -52,9 +52,10 @@ namespace AcademiaNet
 
                 dt.Rows.Add(row);
             }
+
+            dgvComisiones.DataSource = dt;
             dgvComisiones.Columns[0].Visible = false;
             dgvComisiones.Columns[1].Visible = false;
-            dgvComisiones.DataSource = dt;
             loadEspecialidades();
         }
 

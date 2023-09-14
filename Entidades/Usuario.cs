@@ -22,6 +22,8 @@ namespace Entidades
 
         public Entidades.TipoUsuario tipo { get; set; }
 
+        public Entidades.Persona Persona { get; set; }
+
 
     }
 }

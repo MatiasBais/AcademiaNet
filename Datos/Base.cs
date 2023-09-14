@@ -9,6 +9,8 @@ namespace Datos
 {
     public class Base
     {
+
         public SqlConnection conn = new SqlConnection(@"Server=localhost\SQLEXPRESS;Database=academia;Trusted_Connection=True;");
+
     }
 }
