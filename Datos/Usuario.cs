@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -114,6 +115,42 @@ namespace Datos
             return usuario;
         }
 
+        public string getTipoUsuario(string nombreUsuario, string clave)
+        {
+            conn.Open();
+            string query = String.Format("select id from Usuarios where Usuarios.NombreUsuario = '{0}' and Usuarios.Clave = '{1}'", nombreUsuario, clave);
+            SqlCommand cmd = new SqlCommand(query, conn);
+            int id = Convert.ToInt32(cmd.ExecuteScalar());
+            string query2 = String.Format("select TipoUsuarios.Descripcion from Usuarios join TipoUsuarios " +
+                "on  TipoUsuarios.ID = Usuarios.IDTipoPersona and Usuarios.ID = '{0}'", id);
+            SqlCommand cmd2 = new SqlCommand(query2, conn);
+             string tipo = cmd2.ExecuteScalar().ToString();
+            conn.Close();
+            return tipo;
+
+        }
+
+        public Boolean validarUsuario(string nombreUsuario, string clave)
+        {
+            conn.Open();
+            string query = String.Format("select count(*) from usuarios where " +
+                "usuarios.NombreUsuario = '{0}' and usuarios.Clave = '{1}'", nombreUsuario, clave);
+            SqlCommand cmd = new SqlCommand(query, conn);
+
+            int filas = Convert.ToInt32(cmd.ExecuteScalar());
+
+            if (filas > 0)
+            {
+                conn.Close();
+                return true;
+            }
+            else
+            {
+                conn.Close();
+                return false;
+            }
+            
+        }
 
     }
 }
