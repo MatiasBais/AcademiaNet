@@ -1,4 +1,5 @@
 ﻿using Entidades;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -11,21 +12,100 @@ namespace Datos
 {
     public class Curso : Base
     {
+        public Entidades.Curso getCurso(int IDMateria, int IDComision)
+        {
+            Entidades.Curso curso = null;
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand(@"SELECT cursos.ID,
+                                    AñoCalendario,
+                                    Cupo,
+                                    cursos.Descripcion,
+                                    IDComision, 
+                                    IDMateria
+                                 FROM cursos
+                                 JOIN comisiones ON IDComision = comisiones.ID
+                                 JOIN materias ON IDMateria = materias.ID 
+                                 WHERE Cursos.State IS NULL AND IDMateria = @IDMateria AND IDComision = @IDComision;", conn);
+
+            cmd.Parameters.AddWithValue("@IDMateria", IDMateria);
+            cmd.Parameters.AddWithValue("@IDComision", IDComision);
+
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    curso = new Entidades.Curso();
+                    curso.ID = (int)reader["ID"];
+                    curso.AnioCalendario = (int)reader["AñoCalendario"];
+                    curso.Cupo = (int)reader["Cupo"];
+                    curso.Descripcion = reader["Descripcion"].ToString();
+
+                    Comision comision = new Comision();
+                    curso.Comision = comision.getComision(IDComision);
+
+                    Materia materia = new Materia();
+                    curso.Materia = materia.getMateria(IDMateria);
+                }
+            }
+            conn.Close();
+            return curso;
+        }
+
+        public List<Entidades.Curso> getCursos(int anio, int com)
+        {
+            List<Entidades.Curso> cursos = new List<Entidades.Curso>();
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand(@"SELECT cursos.ID,
+                                               AñoCalendario,
+                                               Cupo,
+                                               cursos.Descripcion,
+                                               IDComision, 
+                                               IDMateria
+                                            FROM cursos
+                                            JOIN comisiones ON IDComision = comisiones.ID
+                                            JOIN materias ON IDMateria = materias.ID where Cursos.State is null and AñoCalendario = '"+ anio +"' and IDComision = '" + com + "';", conn);
+
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Entidades.Curso curso = new Entidades.Curso();
+                    curso.ID = (int)reader["ID"];
+                    curso.AnioCalendario = (int)reader["AñoCalendario"];
+                    curso.Cupo = (int)reader["Cupo"];
+                    curso.Descripcion = reader["Descripcion"].ToString();
+
+                    int IDComision = (int)reader["IDComision"];
+                    Comision comision = new Comision();
+                    curso.Comision = comision.getComision(IDComision);
+
+                    int IDMateria = (int)reader["IDMateria"];
+                    Materia materia = new Materia();
+                    curso.Materia = materia.getMateria(IDMateria);
+
+                    cursos.Add(curso);
+                }
+            }
+            conn.Close();
+            return cursos;
+        }
 
         public List<Entidades.Curso> getCursos()
         {
             List<Entidades.Curso> cursos = new List<Entidades.Curso>();
             conn.Open();
 
-            SqlCommand cmd = new SqlCommand(@"SELECT ID,
+            SqlCommand cmd = new SqlCommand(@"SELECT cursos.ID,
                                                AñoCalendario,
                                                Cupo,
-                                               Descripcion,
+                                               cursos.Descripcion,
                                                IDComision, 
                                                IDMateria
                                             FROM cursos
                                             JOIN comisiones ON IDComision = comisiones.ID
-                                            JOIN materias ON IDMateria = materia.ID", conn);
+                                            JOIN materias ON IDMateria = materias.ID where Cursos.State is null", conn);
 
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
@@ -65,7 +145,7 @@ namespace Datos
                                                IDMateria
                                             FROM cursos
                                             JOIN comisiones ON IDComision = comisiones.ID
-                                            JOIN materias ON IDMateria = materia.ID WHERE Descripcion LIKE @desc + '%'", conn);
+                                            JOIN materias ON IDMateria = materia.ID WHERE Cursos.State is null and Descripcion LIKE @desc + '%'", conn);
 
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
@@ -114,10 +194,9 @@ namespace Datos
         public void updateCurso(Entidades.Curso curso)
         {
             conn.Open();
-            string cmdstr = String.Format("UPDATE Cursos SET añocalendario = '{0}', cupo = '{1}', descripcion = '{2}', " +
-                " IDComision = '{3}', IDMateria = '{4}' WHERE ID = '{5}'",
-                curso.AnioCalendario.ToString(), curso.Cupo.ToString(), curso.Descripcion, curso.Comision.ID.ToString(),
-                curso.Materia.ID.ToString(),curso.ID.ToString());
+            string cmdstr = String.Format("UPDATE Cursos SET  cupo = '{0}', descripcion = '{1}' " +
+                "  WHERE ID = '{2}'",
+                curso.Cupo.ToString(), curso.Descripcion, curso.ID.ToString());
 
             SqlCommand cmd = new SqlCommand(cmdstr, conn);
             cmd.ExecuteNonQuery();
@@ -129,7 +208,7 @@ namespace Datos
         public void deleteCurso(Entidades.Curso curso)
         {
             conn.Open();
-            string query = String.Format("delete from Cursos where ID= {0}", curso.ID);
+            string query = String.Format("update Cursos set State = 'E' where ID= {0}", curso.ID);
             SqlCommand cmd = new SqlCommand(query, conn);
             cmd.ExecuteNonQuery();
             conn.Close();

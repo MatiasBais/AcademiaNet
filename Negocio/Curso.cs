@@ -8,6 +8,18 @@ namespace Negocio
 {
     public class Curso
     {
+        public Entidades.Curso getCurso(int IDMateria, int IDComision)
+        {
+            Datos.Curso cur = new Datos.Curso();
+            return cur.getCurso(IDMateria, IDComision);
+
+        }
+        public List<Entidades.Curso> getCursos(int anio, int comision)
+        {
+            Datos.Curso cur = new Datos.Curso();
+            return cur.getCursos(anio, comision);
+
+        }
         public List<Entidades.Curso> getCursos()
         {
             Datos.Curso cur = new Datos.Curso();
@@ -42,14 +54,8 @@ namespace Negocio
         {
             if (curso.Descripcion == "")
                 throw (new Exception("Falta descripción"));
-            if (curso.AnioCalendario == 0)
-                throw (new Exception("Falta año del curso"));
             if (curso.Cupo == 0)
                 throw (new Exception("Falta cupo"));
-            if (curso.Comision.ID == 0)
-                throw (new Exception("Falta id de la comision"));
-            if (curso.Materia.ID == 0)
-                throw (new Exception("Falta id de la materia"));
 
             Datos.Curso cur = new Datos.Curso();
             cur.updateCurso(curso);
