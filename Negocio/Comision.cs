@@ -8,10 +8,10 @@ namespace Negocio
 {
     public class Comision
     {
-        public List<Entidades.Comision> getComisiones()
+        public Entidades.Comision getComision(int id)
         {
             Datos.Comision com = new Datos.Comision();
-            return com.getComisiones();
+            return com.getComision(id);
         }
     
         public List<Entidades.Comision> getComisiones(string desc)

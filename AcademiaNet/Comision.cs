@@ -19,11 +19,6 @@ namespace AcademiaNet
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void loadComisiones(string descripcion)
         {
 
@@ -52,7 +47,6 @@ namespace AcademiaNet
 
                 dt.Rows.Add(row);
             }
-
             dgvComisiones.DataSource = dt;
             dgvComisiones.Columns[0].Visible = false;
             dgvComisiones.Columns[1].Visible = false;
@@ -146,8 +140,10 @@ namespace AcademiaNet
         int ID = 0;
         private void dgvComisiones_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-
-
+            int index = dgvComisiones.SelectedCells[0].RowIndex;
+            int idComision = (int)dgvComisiones.Rows[index].Cells[0].Value;
+            Curso curso = new Curso(idComision);
+            curso.Show();
         }
 
         private void clear()
