@@ -44,14 +44,15 @@
             cmbMateria = new System.Windows.Forms.ComboBox();
             label6 = new System.Windows.Forms.Label();
             txtCupo = new System.Windows.Forms.TextBox();
-            txtAnio = new System.Windows.Forms.TextBox();
             lblAnio = new System.Windows.Forms.Label();
             lblPlan = new System.Windows.Forms.Label();
             lblComision = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
             label8 = new System.Windows.Forms.Label();
+            nudAnio = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)dgvCursos).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nudAnio).BeginInit();
             SuspendLayout();
             // 
             // txtDescripcion
@@ -68,7 +69,7 @@
             lblDescripcion.Name = "lblDescripcion";
             lblDescripcion.Size = new System.Drawing.Size(72, 15);
             lblDescripcion.TabIndex = 61;
-            lblDescripcion.Text = "Descripcion:";
+            lblDescripcion.Text = "Descripción:";
             // 
             // textBox1
             // 
@@ -155,6 +156,7 @@
             dgvCursos.Size = new System.Drawing.Size(1138, 433);
             dgvCursos.TabIndex = 52;
             dgvCursos.CellClick += dgvCursos_CellClick;
+            dgvCursos.CellDoubleClick += dgvCursos_CellDoubleClick;
             // 
             // label1
             // 
@@ -169,20 +171,20 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(79, 71);
+            label2.Location = new System.Drawing.Point(78, 71);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(29, 15);
+            label2.Size = new System.Drawing.Size(32, 15);
             label2.TabIndex = 64;
-            label2.Text = "Año";
+            label2.Text = "Año:";
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Location = new System.Drawing.Point(248, 68);
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(47, 15);
+            label4.Size = new System.Drawing.Size(50, 15);
             label4.TabIndex = 67;
-            label4.Text = "Materia";
+            label4.Text = "Materia:";
             // 
             // cmbMateria
             // 
@@ -210,22 +212,13 @@
             txtCupo.Name = "txtCupo";
             txtCupo.Size = new System.Drawing.Size(71, 23);
             txtCupo.TabIndex = 70;
-            txtCupo.KeyPress += txtCupo_KeyPress;
             txtCupo.TextChanged += textBox2_TextChanged;
-            // 
-            // txtAnio
-            // 
-            txtAnio.Location = new System.Drawing.Point(130, 68);
-            txtAnio.Name = "txtAnio";
-            txtAnio.Size = new System.Drawing.Size(71, 23);
-            txtAnio.TabIndex = 71;
-            txtAnio.KeyPress += txtAnio_KeyPress;
-            txtAnio.TextChanged += load_Cursos;
+            txtCupo.KeyPress += txtCupo_KeyPress;
             // 
             // lblAnio
             // 
             lblAnio.AutoSize = true;
-            lblAnio.Location = new System.Drawing.Point(324, 25);
+            lblAnio.Location = new System.Drawing.Point(353, 25);
             lblAnio.Name = "lblAnio";
             lblAnio.Size = new System.Drawing.Size(45, 15);
             lblAnio.TabIndex = 72;
@@ -243,7 +236,7 @@
             // lblComision
             // 
             lblComision.AutoSize = true;
-            lblComision.Location = new System.Drawing.Point(621, 24);
+            lblComision.Location = new System.Drawing.Point(621, 25);
             lblComision.Name = "lblComision";
             lblComision.Size = new System.Drawing.Size(71, 15);
             lblComision.TabIndex = 74;
@@ -252,20 +245,20 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(375, 25);
+            label3.Location = new System.Drawing.Point(314, 25);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(33, 15);
+            label3.Size = new System.Drawing.Size(36, 15);
             label3.TabIndex = 75;
-            label3.Text = "AÑO";
+            label3.Text = "AÑO:";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new System.Drawing.Point(443, 24);
+            label7.Location = new System.Drawing.Point(436, 25);
             label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(37, 15);
+            label7.Size = new System.Drawing.Size(40, 15);
             label7.TabIndex = 76;
-            label7.Text = "PLAN";
+            label7.Text = "PLAN:";
             label7.Click += label7_Click;
             // 
             // label8
@@ -273,22 +266,33 @@
             label8.AutoSize = true;
             label8.Location = new System.Drawing.Point(550, 25);
             label8.Name = "label8";
-            label8.Size = new System.Drawing.Size(65, 15);
+            label8.Size = new System.Drawing.Size(68, 15);
             label8.TabIndex = 77;
-            label8.Text = "COMISION";
+            label8.Text = "COMISIÓN:";
+            // 
+            // nudAnio
+            // 
+            nudAnio.Location = new System.Drawing.Point(130, 69);
+            nudAnio.Maximum = new decimal(new int[] { 2100, 0, 0, 0 });
+            nudAnio.Minimum = new decimal(new int[] { 1900, 0, 0, 0 });
+            nudAnio.Name = "nudAnio";
+            nudAnio.Size = new System.Drawing.Size(71, 23);
+            nudAnio.TabIndex = 78;
+            nudAnio.Value = new decimal(new int[] { 1900, 0, 0, 0 });
+            nudAnio.ValueChanged += load_Cursos;
             // 
             // Curso
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1158, 637);
+            Controls.Add(nudAnio);
             Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(label3);
             Controls.Add(lblComision);
             Controls.Add(lblPlan);
             Controls.Add(lblAnio);
-            Controls.Add(txtAnio);
             Controls.Add(txtCupo);
             Controls.Add(label6);
             Controls.Add(cmbMateria);
@@ -309,6 +313,7 @@
             Text = "Curso";
             Load += Curso_Load;
             ((System.ComponentModel.ISupportInitialize)dgvCursos).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nudAnio).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -332,12 +337,12 @@
         private System.Windows.Forms.ComboBox cmbMateria;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtCupo;
-        private System.Windows.Forms.TextBox txtAnio;
         private System.Windows.Forms.Label lblAnio;
         private System.Windows.Forms.Label lblPlan;
         private System.Windows.Forms.Label lblComision;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.NumericUpDown nudAnio;
     }
 }

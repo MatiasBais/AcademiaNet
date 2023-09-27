@@ -37,13 +37,12 @@
             administrarPlanesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             comisionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             administrarComisionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            inscripcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { personasToolStripMenuItem, especialidadesToolStripMenuItem, comisionesToolStripMenuItem, inscripcionesToolStripMenuItem });
+            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { personasToolStripMenuItem, especialidadesToolStripMenuItem, comisionesToolStripMenuItem });
             menuStrip1.Location = new System.Drawing.Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -98,6 +97,7 @@
             comisionesToolStripMenuItem.Name = "comisionesToolStripMenuItem";
             comisionesToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
             comisionesToolStripMenuItem.Text = "Comisiones";
+            comisionesToolStripMenuItem.Click += comisionesToolStripMenuItem_Click;
             // 
             // administrarComisionesToolStripMenuItem
             // 
@@ -105,13 +105,6 @@
             administrarComisionesToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             administrarComisionesToolStripMenuItem.Text = "Administrar Comisiones";
             administrarComisionesToolStripMenuItem.Click += administrarComisionesToolStripMenuItem_Click;
-            // 
-            // inscripcionesToolStripMenuItem
-            // 
-            inscripcionesToolStripMenuItem.Name = "inscripcionesToolStripMenuItem";
-            inscripcionesToolStripMenuItem.Size = new System.Drawing.Size(88, 20);
-            inscripcionesToolStripMenuItem.Text = "Inscripciones";
-            inscripcionesToolStripMenuItem.Click += inscripcionesToolStripMenuItem_Click;
             // 
             // Menu
             // 
@@ -139,6 +132,5 @@
         private System.Windows.Forms.ToolStripMenuItem comisionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem administrarComisionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem administrarTiposDeUsuarioToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem inscripcionesToolStripMenuItem;
     }
 }

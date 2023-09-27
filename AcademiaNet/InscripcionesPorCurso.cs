@@ -12,16 +12,16 @@ namespace AcademiaNet
 {
     public partial class InscripcionesPorCurso : Form
     {
-        public InscripcionesPorCurso()
+        Entidades.Curso curso;
+        public InscripcionesPorCurso(Entidades.Curso curso)
         {
+            this.curso = curso;
             InitializeComponent();
         }
 
         public void loadInscripciones()
         {
             Negocio.AlumnosInscripciones negocio = new Negocio.AlumnosInscripciones();
-            Entidades.Curso curso = new Entidades.Curso();
-            curso.ID = 1;
             List<Entidades.AlumnosInscripcion> inscripciones = negocio.getInscripciones(curso);
 
             DataTable dt = new DataTable();

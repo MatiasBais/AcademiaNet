@@ -48,10 +48,10 @@ namespace AcademiaNet
             tipo.ShowDialog();
         }
 
-        private void inscripcionesToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void comisionesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            InscripcionesPorCurso inscripciones = new InscripcionesPorCurso();
-            inscripciones.ShowDialog();
+
         }
     }
 }

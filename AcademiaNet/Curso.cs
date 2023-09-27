@@ -29,16 +29,16 @@ namespace AcademiaNet
             lblComision.Text = comision.Descripcion.ToString();
             lblPlan.Text = comision.Plan.Descripcion.ToString();
             load_Materias();
+            nudAnio.Value = DateAndTime.Now.Year;
+
+
         }
 
         private void load_Cursos(object sender, EventArgs e)
         {
             List<Entidades.Curso> cursos = new List<Entidades.Curso>();
             Negocio.Curso curso = new Negocio.Curso();
-            if (txtAnio.Text != string.Empty)
-            {
-                cursos = curso.getCursos(Convert.ToInt32(txtAnio.Text), comision.ID);
-            }
+            cursos = curso.getCursos(Convert.ToInt32(nudAnio.Value), comision.ID);
             DataTable dt = new DataTable();
 
             dt.Columns.Add("Materia", typeof(string));
@@ -172,7 +172,7 @@ namespace AcademiaNet
                 Negocio.Curso negocio = new Negocio.Curso();
                 Entidades.Curso cur = new Entidades.Curso();
                 cur.Descripcion = txtDescripcion.Text;
-                cur.AnioCalendario = Convert.ToInt32(txtAnio.Text);
+                cur.AnioCalendario = Convert.ToInt32(nudAnio.Value);
                 cur.Cupo = Convert.ToInt32(txtCupo.Text);
 
                 Entidades.Materia mat = new Entidades.Materia();
@@ -233,13 +233,6 @@ namespace AcademiaNet
 
         }
 
-        private void txtAnio_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
 
         private void txtCupo_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -247,6 +240,18 @@ namespace AcademiaNet
             {
                 e.Handled = true;
             }
+        }
+
+        private void dgvCursos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = dgvCursos.SelectedCells[0].RowIndex;
+            int ID = Convert.ToInt32(dgvCursos.Rows[index].Cells[3].Value);
+            cmbMateria.Text = dgvCursos.Rows[index].Cells[0].Value.ToString();
+
+            Negocio.Curso c = new Negocio.Curso();
+            Entidades.Curso curso = c.getCurso(ID, comision.ID);
+            InscripcionesPorCurso insc = new InscripcionesPorCurso(curso);
+            insc.Show();
         }
     }
 }
