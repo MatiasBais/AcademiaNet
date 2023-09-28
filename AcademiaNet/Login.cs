@@ -23,8 +23,8 @@ namespace AcademiaNet
         {
             this.Close();
         }
-
-        private void btnIngresar_Click(object sender, EventArgs e)
+        
+        private void login()
         {
             string nombreUsuario = txtNombreUsuario.Text;
             string clave = txtClave.Text;
@@ -42,7 +42,7 @@ namespace AcademiaNet
                         this.Show();
                         break;
                     case "Alumno":
-                        menuAlumno menu2 = new menuAlumno();                      
+                        menuAlumno menu2 = new menuAlumno();
                         this.Hide();
                         menu2.ShowDialog();
                         this.Show();
@@ -55,6 +55,19 @@ namespace AcademiaNet
             else
             {
                 MessageBox.Show("Usuario o Contraseña Incorrecta");
+            }
+        }
+
+        private void btnIngresar_Click(object sender, EventArgs e)
+        {
+            login();
+        }
+
+        private void txtClave_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                login();
             }
         }
     }

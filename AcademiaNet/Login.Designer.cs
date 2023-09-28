@@ -28,83 +28,88 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtNombreUsuario = new System.Windows.Forms.TextBox();
-            this.txtClave = new System.Windows.Forms.TextBox();
-            this.btnIngresar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            label1 = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            txtNombreUsuario = new System.Windows.Forms.TextBox();
+            txtClave = new System.Windows.Forms.TextBox();
+            btnIngresar = new System.Windows.Forms.Button();
+            btnCancelar = new System.Windows.Forms.Button();
+            SuspendLayout();
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Usuario:";
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(14, 12);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(62, 20);
+            label1.TabIndex = 0;
+            label1.Text = "Usuario:";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 38);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(39, 15);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Clave:";
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(14, 51);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(48, 20);
+            label2.TabIndex = 1;
+            label2.Text = "Clave:";
             // 
             // txtNombreUsuario
             // 
-            this.txtNombreUsuario.Location = new System.Drawing.Point(68, 6);
-            this.txtNombreUsuario.Name = "txtNombreUsuario";
-            this.txtNombreUsuario.Size = new System.Drawing.Size(109, 23);
-            this.txtNombreUsuario.TabIndex = 2;
+            txtNombreUsuario.Location = new System.Drawing.Point(78, 8);
+            txtNombreUsuario.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            txtNombreUsuario.Name = "txtNombreUsuario";
+            txtNombreUsuario.Size = new System.Drawing.Size(124, 27);
+            txtNombreUsuario.TabIndex = 2;
             // 
             // txtClave
             // 
-            this.txtClave.Location = new System.Drawing.Point(68, 35);
-            this.txtClave.Name = "txtClave";
-            this.txtClave.Size = new System.Drawing.Size(109, 23);
-            this.txtClave.TabIndex = 3;
-            this.txtClave.UseSystemPasswordChar = true;
+            txtClave.Location = new System.Drawing.Point(78, 47);
+            txtClave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            txtClave.Name = "txtClave";
+            txtClave.Size = new System.Drawing.Size(124, 27);
+            txtClave.TabIndex = 3;
+            txtClave.UseSystemPasswordChar = true;
+            txtClave.KeyPress += txtClave_KeyPress;
             // 
             // btnIngresar
             // 
-            this.btnIngresar.Location = new System.Drawing.Point(12, 64);
-            this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(75, 23);
-            this.btnIngresar.TabIndex = 4;
-            this.btnIngresar.Text = "Ingresar";
-            this.btnIngresar.UseVisualStyleBackColor = true;
-            this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
+            btnIngresar.Location = new System.Drawing.Point(14, 85);
+            btnIngresar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnIngresar.Name = "btnIngresar";
+            btnIngresar.Size = new System.Drawing.Size(86, 31);
+            btnIngresar.TabIndex = 4;
+            btnIngresar.Text = "Ingresar";
+            btnIngresar.UseVisualStyleBackColor = true;
+            btnIngresar.Click += btnIngresar_Click;
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(102, 64);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 5;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            btnCancelar.Location = new System.Drawing.Point(117, 85);
+            btnCancelar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new System.Drawing.Size(86, 31);
+            btnCancelar.TabIndex = 5;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(189, 99);
-            this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.btnIngresar);
-            this.Controls.Add(this.txtClave);
-            this.Controls.Add(this.txtNombreUsuario);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Name = "Login";
-            this.Text = "Login";
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(216, 132);
+            Controls.Add(btnCancelar);
+            Controls.Add(btnIngresar);
+            Controls.Add(txtClave);
+            Controls.Add(txtNombreUsuario);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            Name = "Login";
+            Text = "Login";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
