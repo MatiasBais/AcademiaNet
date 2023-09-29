@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -10,7 +11,8 @@ namespace Datos
     public class TipoUsuario : Base
     {
 
-        public List<Entidades.TipoUsuario> getTipoUsuarios() {
+        public List<Entidades.TipoUsuario> getTipoUsuarios()
+        {
             List<Entidades.TipoUsuario> list = new List<Entidades.TipoUsuario>();
 
             string query = "select * from tipoUsuarios where state is null";
@@ -57,6 +59,23 @@ namespace Datos
             SqlCommand cmd = new SqlCommand(query, conn);
             cmd.ExecuteNonQuery();
             conn.Close();
+        }
+
+        public Entidades.TipoUsuario getTipoUsuario(int idUsuario)
+        {
+            Entidades.TipoUsuario tipoUsuario = new Entidades.TipoUsuario();
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("select * from TipoUsuarios where ID = " + idUsuario, conn);
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    tipoUsuario.ID = (int)reader["ID"];
+                    tipoUsuario.Descripcion = reader["descripcion"].ToString();
+                }
+            }
+            conn.Close();
+            return tipoUsuario;
         }
     }
 }

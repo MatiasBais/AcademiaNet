@@ -13,6 +13,7 @@ namespace Negocio
             Datos.Persona datos = new Datos.Persona();
             return datos.getPersonas(nombre);
         }
+
         public void addPersona(Entidades.Persona p)
         {
             if (p.Nombre == "")

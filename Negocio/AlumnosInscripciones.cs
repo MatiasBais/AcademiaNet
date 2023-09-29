@@ -15,6 +15,12 @@ namespace Negocio
             return datos.getInscripciones(curso);
         }
 
+        public List<Entidades.AlumnosInscripcion> getInscripciones(Entidades.Usuario alumno)
+        {
+            Datos.AlumnosInscripcion datos = new Datos.AlumnosInscripcion();
+            return datos.getInscripciones(alumno);
+        }
+
         public void updateInscripcion(Entidades.AlumnosInscripcion inscripcion)
         {
             Datos.AlumnosInscripcion datos = new Datos.AlumnosInscripcion();
