@@ -81,6 +81,33 @@ namespace Datos
         }
 
 
+        public Entidades.Persona getPersona(int idPersona)
+        {
+            Entidades.Persona persona = new Entidades.Persona();
+            conn.Open();
+            string query = "SET DATEFORMAT 'YMD'; SELECT nombre, apellido, email, fechaNacimiento, direccion, telefono FROM personas WHERE id = @IdPersona";
+
+            SqlCommand cmd = new SqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@IdPersona", idPersona);
+
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    persona.Nombre = reader["nombre"].ToString();
+                    persona.Apellido = reader["apellido"].ToString();
+                    persona.Email = reader["email"].ToString();
+                    persona.FechaNacimiento = (DateTime)reader["fechaNacimiento"];
+                    persona.Direccion = reader["direccion"].ToString();
+                    persona.Telefono = reader["telefono"].ToString();
+                    persona.ID = idPersona; 
+                }
+            }
+
+            conn.Close();
+
+            return persona;
+        }
 
     }
 }

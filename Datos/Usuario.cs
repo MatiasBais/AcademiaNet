@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Globalization;
@@ -20,7 +21,7 @@ namespace Datos
                 "join tipousuarios on tipousuarios.id = idtipopersona " +
                 "where idPersona = {0}",
                 p.ID);
-            
+
             SqlCommand cmd = new SqlCommand(query, conn);
             List<Entidades.Usuario> list = new List<Entidades.Usuario>();
             using (SqlDataReader reader = cmd.ExecuteReader())
@@ -116,42 +117,91 @@ namespace Datos
             return usuario;
         }
 
-        public string getTipoUsuario(string nombreUsuario, string clave)
+        public Entidades.Comision getComision(int ID)
+        {
+            Entidades.Comision comision = new Entidades.Comision();
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("select * from comisiones where ID = " + ID, conn);
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    comision.ID = (int)reader["ID"];
+                    comision.AnioEspecialidad = (int)reader["AñoEspecialidad"];
+                    comision.Descripcion = reader["Descripcion"].ToString();
+                    int IDPlan = (int)reader["IDPlan"];
+                    Plan plan = new Plan();
+                    comision.Plan = plan.getPlan(IDPlan);
+                }
+            }
+            conn.Close();
+            return comision;
+        }
+
+        public Entidades.Usuario getUsuario(int idUsuario)
+        {
+            Entidades.Usuario usuario = new Entidades.Usuario();
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("select * from usuarios where ID = " + idUsuario, conn);
+
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    usuario.ID = (int)reader["ID"];
+                    usuario.NombreUsuario = reader["NombreUsuario"].ToString();
+                    usuario.Clave = reader["Clave"].ToString();
+                    usuario.Habilitado = reader["Habilitado"].ToString();
+                    usuario.Legajo = (int)reader["Legajo"];
+
+                    int IDPlan = (int)reader["IDPlan"];
+                    Plan plan = new Plan();
+                    usuario.Plan = plan.getPlan(IDPlan);
+
+                    int IDTipoPersona = (int)reader["IDTipoPersona"];
+                    TipoUsuario tipoUsuario = new TipoUsuario();
+                    usuario.tipo = tipoUsuario.getTipoUsuario(IDTipoPersona);
+
+                    int IDPersona = (int)reader["IDPersona"];
+                    Persona persona = new Persona();
+                    usuario.Persona = persona.getPersona(IDPersona);
+
+
+                }
+
+            }
+            conn.Close();
+            return usuario;
+
+        }
+
+        public string getTipoUsuario(int idUsuario)
         {
             conn.Open();
-            string query = String.Format("select id from Usuarios where Usuarios.NombreUsuario = '{0}' and Usuarios.Clave = '{1}'", nombreUsuario, clave);
+          
+            string query = String.Format("select TipoUsuarios.Descripcion from Usuarios join TipoUsuarios " +
+                "on  TipoUsuarios.ID = Usuarios.IDTipoPersona and Usuarios.ID = '{0}'", idUsuario);
             SqlCommand cmd = new SqlCommand(query, conn);
-            int id = Convert.ToInt32(cmd.ExecuteScalar());
-            string query2 = String.Format("select TipoUsuarios.Descripcion from Usuarios join TipoUsuarios " +
-                "on  TipoUsuarios.ID = Usuarios.IDTipoPersona and Usuarios.ID = '{0}'", id);
-            SqlCommand cmd2 = new SqlCommand(query2, conn);
-             string tipo = cmd2.ExecuteScalar().ToString();
+             string tipo = cmd.ExecuteScalar().ToString();
             conn.Close();
             return tipo;
 
         }
 
-        public Boolean validarUsuario(string nombreUsuario, string clave)
+        public int validarUsuario(string nombreUsuario, string clave)
         {
             conn.Open();
-            string query = String.Format("select count(*) from usuarios where " +
+            string query = String.Format("select ID from usuarios where " +
                 "usuarios.NombreUsuario = '{0}' and usuarios.Clave = '{1}'", nombreUsuario, clave);
             SqlCommand cmd = new SqlCommand(query, conn);
 
-            int filas = Convert.ToInt32(cmd.ExecuteScalar());
+            int idUsuario = Convert.ToInt32(cmd.ExecuteScalar());
 
-            if (filas > 0)
-            {
-                conn.Close();
-                return true;
-            }
-            else
-            {
-                conn.Close();
-                return false;
-            }
-            
+            conn.Close();
+
+            return idUsuario;
         }
+
 
     }
 }

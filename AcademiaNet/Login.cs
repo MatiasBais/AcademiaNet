@@ -28,24 +28,28 @@ namespace AcademiaNet
         {
             string nombreUsuario = txtNombreUsuario.Text;
             string clave = txtClave.Text;
-            Negocio.Usuario negocio = new Negocio.Usuario();
-            if (negocio.validarUsuario(nombreUsuario, clave))
+            Negocio.Usuario usuario = new Negocio.Usuario();
+            int idUsuario = usuario.validarUsuario(nombreUsuario, clave);
+            if (idUsuario != 0)
             {
-                string tipoUsuario = negocio.getTipoUsuario(nombreUsuario, clave);
+                string tipoUsuario = usuario.getTipoUsuario(idUsuario);
                 MessageBox.Show(tipoUsuario);
                 switch (tipoUsuario)
                 {
                     case "Administrador":
                         Menu menu = new Menu();
+                        menu.Show();
                         this.Hide();
-                        menu.ShowDialog();
-                        this.Show();
                         break;
                     case "Alumno":
-                        menuAlumno menu2 = new menuAlumno();
+                        menuAlumno menu2 = new menuAlumno(idUsuario);
+                        menu2.Show();
                         this.Hide();
-                        menu2.ShowDialog();
-                        this.Show();
+                        break;
+                    case "Profesor":
+                        menuProfesor menu3 = new menuProfesor();
+                        menu3.Show();
+                        this.Hide();
                         break;
                     default:
                         Console.WriteLine("Opción no válida.");
