@@ -52,6 +52,49 @@ namespace Datos
             return curso;
         }
 
+        public List<Entidades.Curso> getCursos(int IDMateria)
+        {
+            List<Entidades.Curso> cursos = new List<Entidades.Curso> ();
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand(@"SELECT cursos.ID,
+                                    AñoCalendario,
+                                    Cupo,
+                                    cursos.Descripcion as 'curso',
+                                    IDComision, 
+                                    IDMateria,
+                                    comisiones.Descripcion as 'comision'
+                                 FROM cursos
+                                 JOIN comisiones ON IDComision = comisiones.ID
+                                 JOIN materias ON IDMateria = materias.ID 
+                                 WHERE Cursos.State IS NULL AND IDMateria = @IDMateria;", conn);
+
+            cmd.Parameters.AddWithValue("@IDMateria", IDMateria);
+
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Entidades.Curso curso = new Entidades.Curso();
+                    curso = new Entidades.Curso();
+                    curso.ID = (int)reader["ID"];
+                    curso.AnioCalendario = (int)reader["AñoCalendario"];
+                    curso.Cupo = (int)reader["Cupo"];
+                    curso.Descripcion = reader["curso"].ToString();
+
+                    curso.Comision = new Entidades.Comision();
+                    curso.Comision.ID = (int)reader["IDComision"];
+                    curso.Comision.Descripcion = reader["comision"].ToString();
+
+                    Materia materia = new Materia();
+                    curso.Materia = materia.getMateria(IDMateria);
+                    cursos.Add(curso);
+                }
+            }
+            conn.Close();
+            return cursos;
+        }
+
         public List<Entidades.Curso> getCursos(int anio, int com)
         {
             List<Entidades.Curso> cursos = new List<Entidades.Curso>();

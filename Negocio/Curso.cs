@@ -14,6 +14,12 @@ namespace Negocio
             return cur.getCurso(IDMateria, IDComision);
 
         }
+        public List<Entidades.Curso> getCursos(int IDMateria)
+        {
+            Datos.Curso cur = new Datos.Curso();
+            return cur.getCursos(IDMateria);
+
+        }
         public List<Entidades.Curso> getCursos(int anio, int comision)
         {
             Datos.Curso cur = new Datos.Curso();

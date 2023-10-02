@@ -38,9 +38,9 @@
             // linkLabel1
             // 
             linkLabel1.AutoSize = true;
-            linkLabel1.Location = new System.Drawing.Point(297, 113);
+            linkLabel1.Location = new System.Drawing.Point(260, 89);
             linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new System.Drawing.Size(133, 20);
+            linkLabel1.Size = new System.Drawing.Size(105, 15);
             linkLabel1.TabIndex = 0;
             linkLabel1.TabStop = true;
             linkLabel1.Text = "Estado Académico";
@@ -49,9 +49,9 @@
             // linkLabel2
             // 
             linkLabel2.AutoSize = true;
-            linkLabel2.Location = new System.Drawing.Point(297, 183);
+            linkLabel2.Location = new System.Drawing.Point(260, 141);
             linkLabel2.Name = "linkLabel2";
-            linkLabel2.Size = new System.Drawing.Size(124, 20);
+            linkLabel2.Size = new System.Drawing.Size(97, 15);
             linkLabel2.TabIndex = 1;
             linkLabel2.TabStop = true;
             linkLabel2.Text = "Materias del plan";
@@ -59,19 +59,20 @@
             // linkLabel3
             // 
             linkLabel3.AutoSize = true;
-            linkLabel3.Location = new System.Drawing.Point(297, 247);
+            linkLabel3.Location = new System.Drawing.Point(260, 189);
             linkLabel3.Name = "linkLabel3";
-            linkLabel3.Size = new System.Drawing.Size(148, 20);
+            linkLabel3.Size = new System.Drawing.Size(119, 15);
             linkLabel3.TabIndex = 2;
             linkLabel3.TabStop = true;
             linkLabel3.Text = "Inscripción a cursado";
+            linkLabel3.LinkClicked += linkLabel3_LinkClicked;
             // 
             // linkLabel4
             // 
             linkLabel4.AutoSize = true;
-            linkLabel4.Location = new System.Drawing.Point(336, 307);
+            linkLabel4.Location = new System.Drawing.Point(260, 235);
             linkLabel4.Name = "linkLabel4";
-            linkLabel4.Size = new System.Drawing.Size(73, 20);
+            linkLabel4.Size = new System.Drawing.Size(58, 15);
             linkLabel4.TabIndex = 3;
             linkLabel4.TabStop = true;
             linkLabel4.Text = "Mis datos";
@@ -79,22 +80,23 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(336, 39);
+            label1.Location = new System.Drawing.Point(260, 25);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(50, 20);
+            label1.Size = new System.Drawing.Size(48, 15);
             label1.TabIndex = 4;
-            label1.Text = "label1";
+            label1.Text = "alumno";
             // 
             // menuAlumno
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(800, 450);
+            ClientSize = new System.Drawing.Size(638, 284);
             Controls.Add(label1);
             Controls.Add(linkLabel4);
             Controls.Add(linkLabel3);
             Controls.Add(linkLabel2);
             Controls.Add(linkLabel1);
+            Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             Name = "menuAlumno";
             Text = "menuAlumno";
             Load += menuAlumno_Load;
@@ -109,5 +111,6 @@
         private System.Windows.Forms.LinkLabel linkLabel3;
         private System.Windows.Forms.LinkLabel linkLabel4;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

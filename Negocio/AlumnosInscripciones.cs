@@ -32,5 +32,11 @@ namespace Negocio
             
             datos.updateAlumnosInscripcion(inscripcion);
         }
+
+        public void addAlumnosInscripcion(Entidades.AlumnosInscripcion inscripcion)
+        {
+            Datos.AlumnosInscripcion datos = new Datos.AlumnosInscripcion();
+            datos.addAlumnosInscripcion(inscripcion);
+        }
     }
 }

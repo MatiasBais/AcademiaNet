@@ -26,7 +26,7 @@ namespace AcademiaNet
         {
             if (usuario != null)
             {
-                string datos = usuario.Persona.Nombre + "   " + usuario.Persona.Apellido + "    Legajo:  " + usuario.Legajo.ToString();
+                string datos = usuario.Persona.Nombre + "   " + usuario.Persona.Apellido + "\nLegajo:  " + usuario.Legajo.ToString() + "\n" + usuario.Plan.Especialidad.Descripcion;
                 label1.Text = datos;
             }
             else
@@ -46,6 +46,12 @@ namespace AcademiaNet
             {
                 MessageBox.Show("El usuario no está inicializado correctamente.");
             }
+        }
+
+        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            InscripcionAlumno insc = new InscripcionAlumno(usuario);
+            insc.ShowDialog();
         }
     }
 

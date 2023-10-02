@@ -74,6 +74,8 @@ namespace Datos
             return comision;
         }
 
+
+
         public List<Entidades.Comision> getComisiones(string desc)
         {
             List<Entidades.Comision> comisiones = new List<Entidades.Comision>();
