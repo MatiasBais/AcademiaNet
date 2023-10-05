@@ -53,6 +53,12 @@ namespace AcademiaNet
             InscripcionAlumno insc = new InscripcionAlumno(usuario);
             insc.ShowDialog();
         }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MateriasDelPlan mat = new MateriasDelPlan(usuario.Plan);
+            mat.ShowDialog();
+        }
     }
 
 }

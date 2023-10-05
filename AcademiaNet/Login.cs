@@ -33,28 +33,30 @@ namespace AcademiaNet
             if (idUsuario != 0)
             {
                 string tipoUsuario = usuario.getTipoUsuario(idUsuario);
-                MessageBox.Show(tipoUsuario);
                 switch (tipoUsuario)
                 {
                     case "Administrador":
                         Menu menu = new Menu();
-                        menu.Show();
                         this.Hide();
+                        menu.ShowDialog();
+                        
                         break;
                     case "Alumno":
                         menuAlumno menu2 = new menuAlumno(idUsuario);
-                        menu2.Show();
                         this.Hide();
+                        menu2.ShowDialog();
                         break;
                     case "Profesor":
                         menuProfesor menu3 = new menuProfesor();
-                        menu3.Show();
                         this.Hide();
+                        menu3.ShowDialog();
                         break;
                     default:
                         Console.WriteLine("Opción no válida.");
                         break;
                 }
+                this.Show();
+                txtClave.Text = "";
             }
             else
             {

@@ -37,7 +37,7 @@
             label3 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
             label5 = new System.Windows.Forms.Label();
-            txbProf = new System.Windows.Forms.TextBox();
+            txtProf = new System.Windows.Forms.TextBox();
             txtProfCurso = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvProf).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvProfCurso).BeginInit();
@@ -54,23 +54,37 @@
             // 
             // dgvProf
             // 
+            dgvProf.AllowUserToAddRows = false;
+            dgvProf.AllowUserToDeleteRows = false;
+            dgvProf.AllowUserToResizeRows = false;
+            dgvProf.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dgvProf.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvProf.Location = new System.Drawing.Point(12, 97);
             dgvProf.Name = "dgvProf";
+            dgvProf.ReadOnly = true;
+            dgvProf.RowHeadersVisible = false;
             dgvProf.RowHeadersWidth = 51;
             dgvProf.RowTemplate.Height = 29;
+            dgvProf.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             dgvProf.Size = new System.Drawing.Size(371, 341);
             dgvProf.TabIndex = 1;
             // 
             // dgvProfCurso
             // 
+            dgvProfCurso.AllowUserToAddRows = false;
+            dgvProfCurso.AllowUserToDeleteRows = false;
+            dgvProfCurso.AllowUserToResizeRows = false;
             dgvProfCurso.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvProfCurso.Location = new System.Drawing.Point(489, 97);
             dgvProfCurso.Name = "dgvProfCurso";
+            dgvProfCurso.ReadOnly = true;
+            dgvProfCurso.RowHeadersVisible = false;
             dgvProfCurso.RowHeadersWidth = 51;
             dgvProfCurso.RowTemplate.Height = 29;
+            dgvProfCurso.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             dgvProfCurso.Size = new System.Drawing.Size(371, 341);
             dgvProfCurso.TabIndex = 2;
+            dgvProfCurso.CellDoubleClick += dgvProfCurso_CellDoubleClick;
             // 
             // btnAgregar
             // 
@@ -80,6 +94,7 @@
             btnAgregar.TabIndex = 3;
             btnAgregar.Text = "Agregar ->";
             btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.Click += btnAgregar_Click;
             // 
             // btnQuitar
             // 
@@ -89,6 +104,7 @@
             btnQuitar.TabIndex = 4;
             btnQuitar.Text = "<- Quitar";
             btnQuitar.UseVisualStyleBackColor = true;
+            btnQuitar.Click += btnQuitar_Click;
             // 
             // label2
             // 
@@ -126,12 +142,13 @@
             label5.TabIndex = 8;
             label5.Text = "Filtrar: ";
             // 
-            // txbProf
+            // txtProf
             // 
-            txbProf.Location = new System.Drawing.Point(72, 64);
-            txbProf.Name = "txbProf";
-            txbProf.Size = new System.Drawing.Size(311, 27);
-            txbProf.TabIndex = 9;
+            txtProf.Location = new System.Drawing.Point(72, 64);
+            txtProf.Name = "txtProf";
+            txtProf.Size = new System.Drawing.Size(311, 27);
+            txtProf.TabIndex = 9;
+            txtProf.TextChanged += txtProf_TextChanged;
             // 
             // txtProfCurso
             // 
@@ -139,6 +156,7 @@
             txtProfCurso.Name = "txtProfCurso";
             txtProfCurso.Size = new System.Drawing.Size(311, 27);
             txtProfCurso.TabIndex = 10;
+            txtProfCurso.TextChanged += txtProfCurso_TextChanged;
             // 
             // CursoProfesores
             // 
@@ -146,7 +164,7 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(871, 450);
             Controls.Add(txtProfCurso);
-            Controls.Add(txbProf);
+            Controls.Add(txtProf);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -176,7 +194,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txbProf;
+        private System.Windows.Forms.TextBox txtProf;
         private System.Windows.Forms.TextBox txtProfCurso;
     }
 }
