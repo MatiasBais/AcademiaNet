@@ -244,6 +244,16 @@ namespace AcademiaNet
 
         private void dgvCursos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void verInscriptosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             int index = dgvCursos.SelectedCells[0].RowIndex;
             int ID = Convert.ToInt32(dgvCursos.Rows[index].Cells[3].Value);
             cmbMateria.Text = dgvCursos.Rows[index].Cells[0].Value.ToString();
@@ -252,6 +262,18 @@ namespace AcademiaNet
             Entidades.Curso curso = c.getCurso(ID, comision.ID);
             InscripcionesPorCurso insc = new InscripcionesPorCurso(curso);
             insc.Show();
+        }
+
+        private void profesoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int index = dgvCursos.SelectedCells[0].RowIndex;
+            int ID = Convert.ToInt32(dgvCursos.Rows[index].Cells[3].Value);
+            cmbMateria.Text = dgvCursos.Rows[index].Cells[0].Value.ToString();
+
+            Negocio.Curso c = new Negocio.Curso();
+            Entidades.Curso curso = c.getCurso(ID, comision.ID);
+            CursoProfesores prof = new CursoProfesores(curso);
+            prof.Show();
         }
     }
 }
