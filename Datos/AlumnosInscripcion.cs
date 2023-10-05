@@ -13,8 +13,8 @@ namespace Datos
         public void addAlumnosInscripcion(Entidades.AlumnosInscripcion inscripcion)
         {
             conn.Open();
-            string query = String.Format("insert into alumnosinscripciones (idalumno, idcurso) " +
-                "values ('{0}', '{1}')",
+            string query = String.Format("insert into alumnosinscripciones (idalumno, idcurso, nota) " +
+                "values ('{0}', '{1}', '0')",
                 inscripcion.Alumno.ID,
                 inscripcion.Curso.ID);
             SqlCommand cmd = new SqlCommand(query, conn);
