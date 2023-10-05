@@ -38,8 +38,9 @@ namespace AcademiaNet
 
             dt.Columns.Add("Año", typeof(string));
             dt.Columns.Add("Materia", typeof(string));
-            dt.Columns.Add("Estado", typeof(int));
-            dt.Columns.Add("Plan", typeof(int));
+            dt.Columns.Add("Estado", typeof(string));
+            dt.Columns.Add("Nota", typeof(string));
+            dt.Columns.Add("Plan", typeof(string));
 
 
             foreach (Entidades.AlumnosInscripcion ai in inscripciones)
@@ -49,7 +50,8 @@ namespace AcademiaNet
                 row[0] = ai.Curso.Comision.AnioEspecialidad;
                 row[1] = ai.Curso.Materia.Descripcion;
                 row[2] = ai.Condicion;
-                row[3] = usuario.Plan;
+                row[3] = ai.Nota ==0 ? '-' : ai.Nota.ToString();
+                row[4] = usuario.Plan.Descripcion;
 
                 dt.Rows.Add(row);
             }

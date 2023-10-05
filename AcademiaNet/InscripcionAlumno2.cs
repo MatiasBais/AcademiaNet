@@ -23,8 +23,17 @@ namespace AcademiaNet
 
         void loadComisiones()
         {
+
+
+
             Negocio.Curso negocio = new Negocio.Curso();
             List<Entidades.Curso> cursos = negocio.getCursos(materia.ID);
+
+            if(cursos.Count == 0 )
+            {
+                MessageBox.Show("No hay cursos con cupos disponibles");
+                this.Close();
+            }
 
             DataTable dt = new DataTable();
             //id legajo nombre apellido FechaNacimiento Telefono email Plan idEspecialidad Especialidad

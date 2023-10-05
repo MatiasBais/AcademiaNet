@@ -13,8 +13,8 @@ namespace Datos
         public void addAlumnosInscripcion(Entidades.AlumnosInscripcion inscripcion)
         {
             conn.Open();
-            string query = String.Format("insert into alumnosinscripciones (idalumno, idcurso, nota) " +
-                "values ('{0}', '{1}', '0')",
+            string query = String.Format("insert into alumnosinscripciones (idalumno, idcurso, nota, condicion) " +
+                "values ('{0}', '{1}', '0', 'Inscripto')",
                 inscripcion.Alumno.ID,
                 inscripcion.Curso.ID);
             SqlCommand cmd = new SqlCommand(query, conn);
@@ -85,7 +85,7 @@ namespace Datos
         {
             List<Entidades.AlumnosInscripcion> lista = new List<Entidades.AlumnosInscripcion>();
             conn.Open();
-            string query = String.Format("select alumnosinscripciones.id as 'id', condicion, nota, idcurso, añocalendario, cursos.descripcion, añoespecialidad, comisiones.descripcion, materias.descripcion " +
+            string query = String.Format("select alumnosinscripciones.id as 'id', condicion, nota, idcurso, añocalendario, cursos.descripcion as 'curso', añoespecialidad, comisiones.descripcion as 'comision', materias.descripcion as 'materia', idmateria " +
                 "from alumnosinscripciones " +
                 "join cursos on idcurso = cursos.id " +
                 "join comisiones on idcomision = comisiones.id " +
@@ -105,14 +105,15 @@ namespace Datos
                     inscripcion.Curso = new Entidades.Curso();
                     inscripcion.Curso.ID = (int)reader["idcurso"];
                     inscripcion.Curso.AnioCalendario = (int)reader["añocalendario"];
-                    inscripcion.Curso.Descripcion = reader["cursos.descripcion"].ToString();
+                    inscripcion.Curso.Descripcion = reader["curso"].ToString();
 
                     inscripcion.Curso.Comision = new Entidades.Comision();
                     inscripcion.Curso.Comision.AnioEspecialidad = (int)reader["añoespecialidad"];
-                    inscripcion.Curso.Comision.Descripcion = reader["comisiones.descripcion"].ToString();
+                    inscripcion.Curso.Comision.Descripcion = reader["comision"].ToString();
 
                     inscripcion.Curso.Materia = new Entidades.Materia();
-                    inscripcion.Curso.Materia.Descripcion = reader["materias.descripcion"].ToString();
+                    inscripcion.Curso.Materia.Descripcion = reader["materia"].ToString();
+                    inscripcion.Curso.Materia.ID = Convert.ToInt32(reader["idmateria"]);
 
 
                     lista.Add(inscripcion);

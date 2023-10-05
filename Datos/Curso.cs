@@ -63,11 +63,12 @@ namespace Datos
                                     cursos.Descripcion as 'curso',
                                     IDComision, 
                                     IDMateria,
-                                    comisiones.Descripcion as 'comision'
+                                    comisiones.Descripcion as 'comision',
+                                    (select count(*) from alumnosinscripciones where idcurso = cursos.id) as 'cupo2'
                                  FROM cursos
                                  JOIN comisiones ON IDComision = comisiones.ID
                                  JOIN materias ON IDMateria = materias.ID 
-                                 WHERE Cursos.State IS NULL AND IDMateria = @IDMateria;", conn);
+                                 WHERE Cursos.State IS NULL AND IDMateria = @IDMateria", conn);
 
             cmd.Parameters.AddWithValue("@IDMateria", IDMateria);
 
@@ -75,20 +76,24 @@ namespace Datos
             {
                 while (reader.Read())
                 {
-                    Entidades.Curso curso = new Entidades.Curso();
-                    curso = new Entidades.Curso();
-                    curso.ID = (int)reader["ID"];
-                    curso.AnioCalendario = (int)reader["AñoCalendario"];
-                    curso.Cupo = (int)reader["Cupo"];
-                    curso.Descripcion = reader["curso"].ToString();
+                    if (Convert.ToInt32(reader["cupo"]) > Convert.ToInt32(reader["cupo2"]))
+                    {
+                        
+                        Entidades.Curso curso = new Entidades.Curso();
+                        curso = new Entidades.Curso();
+                        curso.ID = (int)reader["ID"];
+                        curso.AnioCalendario = (int)reader["AñoCalendario"];
+                        curso.Cupo = (int)reader["Cupo"];
+                        curso.Descripcion = reader["curso"].ToString();
 
-                    curso.Comision = new Entidades.Comision();
-                    curso.Comision.ID = (int)reader["IDComision"];
-                    curso.Comision.Descripcion = reader["comision"].ToString();
+                        curso.Comision = new Entidades.Comision();
+                        curso.Comision.ID = (int)reader["IDComision"];
+                        curso.Comision.Descripcion = reader["comision"].ToString();
 
-                    Materia materia = new Materia();
-                    curso.Materia = materia.getMateria(IDMateria);
-                    cursos.Add(curso);
+                        Materia materia = new Materia();
+                        curso.Materia = materia.getMateria(IDMateria);
+                        cursos.Add(curso);
+                    }
                 }
             }
             conn.Close();

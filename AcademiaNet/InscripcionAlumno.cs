@@ -25,7 +25,20 @@ namespace AcademiaNet
             Negocio.Materia negocio = new Negocio.Materia();
             List<Entidades.Materia> materias = new List<Entidades.Materia>();
             materias = negocio.getMaterias(usuario.Plan.ID);
-            dgvMaterias.DataSource = materias;
+
+            Negocio.AlumnosInscripciones aineg = new Negocio.AlumnosInscripciones();
+            List<Entidades.AlumnosInscripcion> inscriptas = new List<Entidades.AlumnosInscripcion>();
+            inscriptas = aineg.getInscripciones(usuario);
+            List<Entidades.Materia> materiasinsc = new List<Entidades.Materia>();
+
+            foreach(Entidades.AlumnosInscripcion ai in inscriptas)
+            {
+                materiasinsc.Add(ai.Curso.Materia);
+            }
+
+            List<Entidades.Materia> results = materias.Where(f => !materiasinsc.Any(t => t.ID == f.ID)).ToList();
+
+            dgvMaterias.DataSource = results;
             dgvMaterias.Columns[0].Visible = false;
             dgvMaterias.Columns[3].Visible = false;
             dgvMaterias.Columns[4].Visible = false;
