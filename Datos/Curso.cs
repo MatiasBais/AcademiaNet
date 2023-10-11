@@ -180,6 +180,48 @@ namespace Datos
             return cursos;
         }
 
+        public List<Entidades.Curso> getCursos(Entidades.Usuario profesor, int año)
+        {
+            List<Entidades.Curso> cursos = new List<Entidades.Curso>();
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand(@"SELECT cursos.ID,
+                                               AñoCalendario,
+                                               Cupo,
+                                               cursos.Descripcion,
+                                               IDComision, 
+                                               IDMateria
+                                            FROM cursos
+                                            JOIN comisiones ON IDComision = comisiones.ID
+                                            JOIN materias ON IDMateria = materias.ID 
+                                            JOIN Docentescursos on IDCurso = cursos.ID 
+                                            where Cursos.State is null and idDocente = "+profesor.ID + " and AñoCalendario = "+año, conn);
+
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Entidades.Curso curso = new Entidades.Curso();
+                    curso.ID = (int)reader["ID"];
+                    curso.AnioCalendario = (int)reader["AñoCalendario"];
+                    curso.Cupo = (int)reader["Cupo"];
+                    curso.Descripcion = reader["Descripcion"].ToString();
+
+                    int IDComision = (int)reader["IDComision"];
+                    Comision comision = new Comision();
+                    curso.Comision = comision.getComision(IDComision);
+
+                    int IDMateria = (int)reader["IDMateria"];
+                    Materia materia = new Materia();
+                    curso.Materia = materia.getMateria(IDMateria);
+
+                    cursos.Add(curso);
+                }
+            }
+            conn.Close();
+            return cursos;
+        }
+
         public List<Entidades.Curso> getCursos(string desc)
         {
             List<Entidades.Curso> cursos = new List<Entidades.Curso>();

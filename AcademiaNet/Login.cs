@@ -47,7 +47,7 @@ namespace AcademiaNet
                         menu2.ShowDialog();
                         break;
                     case "Profesor":
-                        menuProfesor menu3 = new menuProfesor();
+                        menuProfesor menu3 = new menuProfesor(idUsuario);
                         this.Hide();
                         menu3.ShowDialog();
                         break;

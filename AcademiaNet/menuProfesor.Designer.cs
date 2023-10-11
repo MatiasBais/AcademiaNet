@@ -28,12 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "menuProfesor";
+            label1 = new System.Windows.Forms.Label();
+            linkLabel1 = new System.Windows.Forms.LinkLabel();
+            SuspendLayout();
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(171, 9);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(38, 15);
+            label1.TabIndex = 1;
+            label1.Text = "label1";
+            // 
+            // linkLabel1
+            // 
+            linkLabel1.AutoSize = true;
+            linkLabel1.Location = new System.Drawing.Point(171, 82);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new System.Drawing.Size(43, 15);
+            linkLabel1.TabIndex = 2;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "Cursos";
+            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
+            // 
+            // menuProfesor
+            // 
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(440, 450);
+            Controls.Add(linkLabel1);
+            Controls.Add(label1);
+            Name = "menuProfesor";
+            Text = "menuProfesor";
+            Load += menuProfesor_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }

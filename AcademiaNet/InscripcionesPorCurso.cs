@@ -13,9 +13,18 @@ namespace AcademiaNet
     public partial class InscripcionesPorCurso : Form
     {
         Entidades.Curso curso;
+        Entidades.Usuario profesor;
+        public InscripcionesPorCurso(Entidades.Curso curso, Entidades.Usuario profesor)
+        {
+            this.curso = curso;
+            this.profesor = profesor;
+            InitializeComponent();
+        }
+
         public InscripcionesPorCurso(Entidades.Curso curso)
         {
             this.curso = curso;
+            this.profesor = null;
             InitializeComponent();
         }
 
@@ -56,6 +65,24 @@ namespace AcademiaNet
 
         private void InscripcionesPorCurso_Load(object sender, EventArgs e)
         {
+            if (profesor == null)
+            {
+                label1.Visible = false;
+                label2.Visible = false;
+                nudNota.Visible = false;
+                cbxCondicion.Visible = false;
+                btnAceptar.Visible = false;
+                btnCancelar.Visible = false;
+                System.Drawing.Size size = new System.Drawing.Size();
+                size.Height = 426;
+                size.Width = 495;
+                dgvInscripciones.Size = size;
+                System.Drawing.Point location = new System.Drawing.Point();
+                location.X = 12;
+                location.Y = 12;
+                dgvInscripciones.Location = location;
+
+            }
             loadInscripciones();
             cbxCondicion.SelectedIndex = 0;
         }
