@@ -50,13 +50,13 @@ namespace AcademiaNet
                 row[0] = ai.Curso.Comision.AnioEspecialidad;
                 row[1] = ai.Curso.Materia.Descripcion;
                 row[2] = ai.Condicion;
-                row[3] = ai.Nota ==0 ? '-' : ai.Nota.ToString();
+                row[3] = ai.Nota == 0 ? '-' : ai.Nota.ToString();
                 row[4] = usuario.Plan.Descripcion;
 
                 dt.Rows.Add(row);
             }
             dgvEstadoAcademico.DataSource = dt;
-      
+
         }
 
 

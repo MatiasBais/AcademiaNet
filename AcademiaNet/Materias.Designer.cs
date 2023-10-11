@@ -48,9 +48,9 @@
             // 
             lblPlan.AutoSize = true;
             lblPlan.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            lblPlan.Location = new System.Drawing.Point(582, 12);
+            lblPlan.Location = new System.Drawing.Point(509, 9);
             lblPlan.Name = "lblPlan";
-            lblPlan.Size = new System.Drawing.Size(81, 35);
+            lblPlan.Size = new System.Drawing.Size(65, 28);
             lblPlan.TabIndex = 0;
             lblPlan.Text = "label1";
             lblPlan.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -59,9 +59,9 @@
             // 
             lblEspecialidad.AutoSize = true;
             lblEspecialidad.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            lblEspecialidad.Location = new System.Drawing.Point(651, 12);
+            lblEspecialidad.Location = new System.Drawing.Point(570, 9);
             lblEspecialidad.Name = "lblEspecialidad";
-            lblEspecialidad.Size = new System.Drawing.Size(180, 35);
+            lblEspecialidad.Size = new System.Drawing.Size(142, 28);
             lblEspecialidad.TabIndex = 1;
             lblEspecialidad.Text = "lblEspecialidad";
             lblEspecialidad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -69,10 +69,9 @@
             // btnModificar
             // 
             btnModificar.Enabled = false;
-            btnModificar.Location = new System.Drawing.Point(342, 132);
-            btnModificar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnModificar.Location = new System.Drawing.Point(299, 99);
             btnModificar.Name = "btnModificar";
-            btnModificar.Size = new System.Drawing.Size(321, 31);
+            btnModificar.Size = new System.Drawing.Size(281, 23);
             btnModificar.TabIndex = 26;
             btnModificar.Text = "Modificar";
             btnModificar.UseVisualStyleBackColor = true;
@@ -81,10 +80,9 @@
             // btnEliminar
             // 
             btnEliminar.Enabled = false;
-            btnEliminar.Location = new System.Drawing.Point(670, 132);
-            btnEliminar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnEliminar.Location = new System.Drawing.Point(586, 99);
             btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new System.Drawing.Size(321, 31);
+            btnEliminar.Size = new System.Drawing.Size(281, 23);
             btnEliminar.TabIndex = 25;
             btnEliminar.Text = "Eliminar";
             btnEliminar.UseVisualStyleBackColor = true;
@@ -93,10 +91,9 @@
             // btnCancelar
             // 
             btnCancelar.Enabled = false;
-            btnCancelar.Location = new System.Drawing.Point(998, 132);
-            btnCancelar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnCancelar.Location = new System.Drawing.Point(873, 99);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new System.Drawing.Size(321, 31);
+            btnCancelar.Size = new System.Drawing.Size(281, 23);
             btnCancelar.TabIndex = 24;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
@@ -104,10 +101,9 @@
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new System.Drawing.Point(14, 132);
-            btnAgregar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnAgregar.Location = new System.Drawing.Point(12, 99);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new System.Drawing.Size(321, 31);
+            btnAgregar.Size = new System.Drawing.Size(281, 23);
             btnAgregar.TabIndex = 23;
             btnAgregar.Text = "Agregar";
             btnAgregar.UseVisualStyleBackColor = true;
@@ -116,35 +112,34 @@
             // lblDescripcion
             // 
             lblDescripcion.AutoSize = true;
-            lblDescripcion.Location = new System.Drawing.Point(14, 84);
+            lblDescripcion.Location = new System.Drawing.Point(12, 63);
             lblDescripcion.Name = "lblDescripcion";
-            lblDescripcion.Size = new System.Drawing.Size(94, 20);
+            lblDescripcion.Size = new System.Drawing.Size(75, 15);
             lblDescripcion.TabIndex = 27;
             lblDescripcion.Text = "Descripcion: ";
             // 
             // txtDescripcion
             // 
-            txtDescripcion.Location = new System.Drawing.Point(130, 80);
-            txtDescripcion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            txtDescripcion.Location = new System.Drawing.Point(114, 60);
             txtDescripcion.Name = "txtDescripcion";
-            txtDescripcion.Size = new System.Drawing.Size(533, 27);
+            txtDescripcion.Size = new System.Drawing.Size(467, 23);
             txtDescripcion.TabIndex = 28;
             // 
             // lblHSSemanales
             // 
             lblHSSemanales.AutoSize = true;
-            lblHSSemanales.Location = new System.Drawing.Point(671, 84);
+            lblHSSemanales.Location = new System.Drawing.Point(587, 63);
             lblHSSemanales.Name = "lblHSSemanales";
-            lblHSSemanales.Size = new System.Drawing.Size(126, 20);
+            lblHSSemanales.Size = new System.Drawing.Size(100, 15);
             lblHSSemanales.TabIndex = 29;
             lblHSSemanales.Text = "Horas Semanales:";
             // 
             // HSTotales
             // 
             HSTotales.AutoSize = true;
-            HSTotales.Location = new System.Drawing.Point(998, 84);
+            HSTotales.Location = new System.Drawing.Point(873, 63);
             HSTotales.Name = "HSTotales";
-            HSTotales.Size = new System.Drawing.Size(102, 20);
+            HSTotales.Size = new System.Drawing.Size(80, 15);
             HSTotales.TabIndex = 31;
             HSTotales.Text = "Horas Totales:";
             // 
@@ -156,23 +151,22 @@
             dgvMaterias.AllowUserToResizeRows = false;
             dgvMaterias.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dgvMaterias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMaterias.Location = new System.Drawing.Point(18, 184);
-            dgvMaterias.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            dgvMaterias.Location = new System.Drawing.Point(16, 138);
             dgvMaterias.Name = "dgvMaterias";
             dgvMaterias.ReadOnly = true;
             dgvMaterias.RowHeadersVisible = false;
             dgvMaterias.RowHeadersWidth = 51;
             dgvMaterias.RowTemplate.Height = 25;
-            dgvMaterias.Size = new System.Drawing.Size(1301, 577);
+            dgvMaterias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            dgvMaterias.Size = new System.Drawing.Size(1138, 433);
             dgvMaterias.TabIndex = 33;
             dgvMaterias.CellClick += dgvMaterias_CellClick;
             // 
             // txtHSSemanales
             // 
-            txtHSSemanales.Location = new System.Drawing.Point(803, 81);
-            txtHSSemanales.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            txtHSSemanales.Location = new System.Drawing.Point(703, 61);
             txtHSSemanales.Name = "txtHSSemanales";
-            txtHSSemanales.Size = new System.Drawing.Size(188, 27);
+            txtHSSemanales.Size = new System.Drawing.Size(165, 23);
             txtHSSemanales.TabIndex = 34;
             txtHSSemanales.Text = "0";
             txtHSSemanales.TextChanged += txtHSSemanales_TextChanged;
@@ -181,10 +175,9 @@
             // 
             // txtHSTotales
             // 
-            txtHSTotales.Location = new System.Drawing.Point(1131, 81);
-            txtHSTotales.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            txtHSTotales.Location = new System.Drawing.Point(990, 61);
             txtHSTotales.Name = "txtHSTotales";
-            txtHSTotales.Size = new System.Drawing.Size(188, 27);
+            txtHSTotales.Size = new System.Drawing.Size(165, 23);
             txtHSTotales.TabIndex = 35;
             txtHSTotales.Text = "0";
             txtHSTotales.KeyPress += txtHSTotales_KeyPress;
@@ -192,9 +185,9 @@
             // 
             // Materias
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1329, 768);
+            ClientSize = new System.Drawing.Size(1163, 576);
             Controls.Add(txtHSTotales);
             Controls.Add(txtHSSemanales);
             Controls.Add(dgvMaterias);
@@ -208,7 +201,6 @@
             Controls.Add(btnAgregar);
             Controls.Add(lblEspecialidad);
             Controls.Add(lblPlan);
-            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             Name = "Materias";
             Text = "Materias";
             Load += Materias_Load;

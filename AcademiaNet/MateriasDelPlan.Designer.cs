@@ -38,33 +38,36 @@
             dgvMaterias.AllowUserToAddRows = false;
             dgvMaterias.AllowUserToDeleteRows = false;
             dgvMaterias.AllowUserToResizeRows = false;
+            dgvMaterias.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dgvMaterias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMaterias.Location = new System.Drawing.Point(12, 39);
+            dgvMaterias.Location = new System.Drawing.Point(10, 29);
+            dgvMaterias.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             dgvMaterias.Name = "dgvMaterias";
             dgvMaterias.ReadOnly = true;
             dgvMaterias.RowHeadersVisible = false;
             dgvMaterias.RowHeadersWidth = 51;
             dgvMaterias.RowTemplate.Height = 29;
             dgvMaterias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            dgvMaterias.Size = new System.Drawing.Size(487, 580);
+            dgvMaterias.Size = new System.Drawing.Size(426, 435);
             dgvMaterias.TabIndex = 2;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(214, 9);
+            label1.Location = new System.Drawing.Point(187, 7);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(50, 20);
+            label1.Size = new System.Drawing.Size(38, 15);
             label1.TabIndex = 3;
             label1.Text = "label1";
             // 
             // MateriasDelPlan
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(511, 631);
+            ClientSize = new System.Drawing.Size(447, 473);
             Controls.Add(label1);
             Controls.Add(dgvMaterias);
+            Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             Name = "MateriasDelPlan";
             Text = "MateriasDelPlan";
             Load += MateriasDelPlan_Load;

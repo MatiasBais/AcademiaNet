@@ -149,6 +149,7 @@ namespace AcademiaNet
         private void clear()
         {
             txtDescripción.Text = "";
+            txtAnioEspecialidad.Text = "";
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -217,6 +218,7 @@ namespace AcademiaNet
             btnCancelar.Enabled = false;
             cmbIdPlan.Enabled = true;
             cmbEspecialidad.Enabled = true;
+            clear();
         }
 
         private void label2_Click(object sender, EventArgs e)

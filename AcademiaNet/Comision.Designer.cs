@@ -48,9 +48,10 @@
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new System.Drawing.Point(12, 78);
+            btnAgregar.Location = new System.Drawing.Point(10, 58);
+            btnAgregar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new System.Drawing.Size(158, 35);
+            btnAgregar.Size = new System.Drawing.Size(138, 26);
             btnAgregar.TabIndex = 0;
             btnAgregar.Text = "Agregar";
             btnAgregar.UseVisualStyleBackColor = true;
@@ -59,9 +60,10 @@
             // btnCancelar
             // 
             btnCancelar.Enabled = false;
-            btnCancelar.Location = new System.Drawing.Point(504, 78);
+            btnCancelar.Location = new System.Drawing.Point(441, 58);
+            btnCancelar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new System.Drawing.Size(158, 35);
+            btnCancelar.Size = new System.Drawing.Size(138, 26);
             btnCancelar.TabIndex = 1;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
@@ -70,9 +72,10 @@
             // btnModificar
             // 
             btnModificar.Enabled = false;
-            btnModificar.Location = new System.Drawing.Point(176, 78);
+            btnModificar.Location = new System.Drawing.Point(154, 58);
+            btnModificar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             btnModificar.Name = "btnModificar";
-            btnModificar.Size = new System.Drawing.Size(158, 33);
+            btnModificar.Size = new System.Drawing.Size(138, 25);
             btnModificar.TabIndex = 2;
             btnModificar.Text = "Modificar";
             btnModificar.UseVisualStyleBackColor = true;
@@ -81,9 +84,10 @@
             // btnEliminar
             // 
             btnEliminar.Enabled = false;
-            btnEliminar.Location = new System.Drawing.Point(340, 78);
+            btnEliminar.Location = new System.Drawing.Point(298, 58);
+            btnEliminar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new System.Drawing.Size(158, 35);
+            btnEliminar.Size = new System.Drawing.Size(138, 26);
             btnEliminar.TabIndex = 3;
             btnEliminar.Text = "Eliminar";
             btnEliminar.UseVisualStyleBackColor = true;
@@ -92,18 +96,18 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(398, 49);
+            label1.Location = new System.Drawing.Point(348, 37);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(90, 20);
+            label1.Size = new System.Drawing.Size(72, 15);
             label1.TabIndex = 4;
             label1.Text = "Descripción:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(12, 120);
+            label2.Location = new System.Drawing.Point(10, 90);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(55, 20);
+            label2.Size = new System.Drawing.Size(45, 15);
             label2.TabIndex = 5;
             label2.Text = "Buscar:";
             // 
@@ -114,38 +118,42 @@
             dgvComisiones.AllowUserToResizeRows = false;
             dgvComisiones.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dgvComisiones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvComisiones.Location = new System.Drawing.Point(11, 161);
+            dgvComisiones.Location = new System.Drawing.Point(10, 121);
+            dgvComisiones.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             dgvComisiones.Name = "dgvComisiones";
             dgvComisiones.ReadOnly = true;
             dgvComisiones.RowHeadersVisible = false;
             dgvComisiones.RowHeadersWidth = 51;
             dgvComisiones.RowTemplate.Height = 29;
-            dgvComisiones.Size = new System.Drawing.Size(649, 300);
+            dgvComisiones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            dgvComisiones.Size = new System.Drawing.Size(568, 225);
             dgvComisiones.TabIndex = 6;
             dgvComisiones.CellClick += dgvComisiones_CellClick;
             dgvComisiones.CellDoubleClick += dgvComisiones_CellDoubleClick;
             // 
             // txtDescripción
             // 
-            txtDescripción.Location = new System.Drawing.Point(503, 46);
+            txtDescripción.Location = new System.Drawing.Point(440, 34);
+            txtDescripción.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             txtDescripción.Name = "txtDescripción";
-            txtDescripción.Size = new System.Drawing.Size(157, 27);
+            txtDescripción.Size = new System.Drawing.Size(138, 23);
             txtDescripción.TabIndex = 7;
             // 
             // txtBuscar
             // 
-            txtBuscar.Location = new System.Drawing.Point(160, 117);
+            txtBuscar.Location = new System.Drawing.Point(140, 88);
+            txtBuscar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             txtBuscar.Name = "txtBuscar";
-            txtBuscar.Size = new System.Drawing.Size(500, 27);
+            txtBuscar.Size = new System.Drawing.Size(438, 23);
             txtBuscar.TabIndex = 8;
             txtBuscar.TextChanged += txtBuscar_TextChanged;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(398, 14);
+            label3.Location = new System.Drawing.Point(348, 10);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(40, 20);
+            label3.Size = new System.Drawing.Size(33, 15);
             label3.TabIndex = 9;
             label3.Text = "Plan:";
             label3.Click += label3_Click_1;
@@ -153,35 +161,37 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new System.Drawing.Point(11, 49);
+            label4.Location = new System.Drawing.Point(10, 37);
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(127, 20);
+            label4.Size = new System.Drawing.Size(100, 15);
             label4.TabIndex = 10;
             label4.Text = "Año especialidad:";
             // 
             // txtAnioEspecialidad
             // 
-            txtAnioEspecialidad.Location = new System.Drawing.Point(160, 45);
+            txtAnioEspecialidad.Location = new System.Drawing.Point(140, 34);
+            txtAnioEspecialidad.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             txtAnioEspecialidad.Name = "txtAnioEspecialidad";
-            txtAnioEspecialidad.Size = new System.Drawing.Size(167, 27);
+            txtAnioEspecialidad.Size = new System.Drawing.Size(147, 23);
             txtAnioEspecialidad.TabIndex = 12;
             // 
             // cmbIdPlan
             // 
             cmbIdPlan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             cmbIdPlan.FormattingEnabled = true;
-            cmbIdPlan.Location = new System.Drawing.Point(503, 12);
+            cmbIdPlan.Location = new System.Drawing.Point(440, 9);
+            cmbIdPlan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             cmbIdPlan.Name = "cmbIdPlan";
-            cmbIdPlan.Size = new System.Drawing.Size(157, 28);
+            cmbIdPlan.Size = new System.Drawing.Size(138, 23);
             cmbIdPlan.TabIndex = 13;
             cmbIdPlan.SelectedIndexChanged += cmbIdPlan_SelectedIndexChanged;
             // 
             // txtEspecialidad
             // 
             txtEspecialidad.AutoSize = true;
-            txtEspecialidad.Location = new System.Drawing.Point(11, 15);
+            txtEspecialidad.Location = new System.Drawing.Point(10, 11);
             txtEspecialidad.Name = "txtEspecialidad";
-            txtEspecialidad.Size = new System.Drawing.Size(96, 20);
+            txtEspecialidad.Size = new System.Drawing.Size(75, 15);
             txtEspecialidad.TabIndex = 14;
             txtEspecialidad.Text = "Especialidad:";
             // 
@@ -189,17 +199,18 @@
             // 
             cmbEspecialidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             cmbEspecialidad.FormattingEnabled = true;
-            cmbEspecialidad.Location = new System.Drawing.Point(160, 11);
+            cmbEspecialidad.Location = new System.Drawing.Point(140, 8);
+            cmbEspecialidad.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             cmbEspecialidad.Name = "cmbEspecialidad";
-            cmbEspecialidad.Size = new System.Drawing.Size(167, 28);
+            cmbEspecialidad.Size = new System.Drawing.Size(147, 23);
             cmbEspecialidad.TabIndex = 15;
             cmbEspecialidad.SelectedIndexChanged += cmbEspecialidad_SelectedIndexChanged;
             // 
             // Comision
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(675, 473);
+            ClientSize = new System.Drawing.Size(591, 355);
             Controls.Add(cmbEspecialidad);
             Controls.Add(txtEspecialidad);
             Controls.Add(cmbIdPlan);
@@ -215,6 +226,7 @@
             Controls.Add(btnModificar);
             Controls.Add(btnCancelar);
             Controls.Add(btnAgregar);
+            Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             Name = "Comision";
             Text = "Comision";
             Load += Comision_Load;

@@ -28,159 +28,159 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.btnModificar = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnAgregar = new System.Windows.Forms.Button();
-            this.dgvPlanes = new System.Windows.Forms.DataGridView();
-            this.cmbEspecialidad = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblDescripcion = new System.Windows.Forms.Label();
-            this.txtDescripcion = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPlanes)).BeginInit();
-            this.SuspendLayout();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            textBox1 = new System.Windows.Forms.TextBox();
+            label10 = new System.Windows.Forms.Label();
+            btnModificar = new System.Windows.Forms.Button();
+            btnEliminar = new System.Windows.Forms.Button();
+            btnCancelar = new System.Windows.Forms.Button();
+            btnAgregar = new System.Windows.Forms.Button();
+            dgvPlanes = new System.Windows.Forms.DataGridView();
+            cmbEspecialidad = new System.Windows.Forms.ComboBox();
+            label5 = new System.Windows.Forms.Label();
+            lblDescripcion = new System.Windows.Forms.Label();
+            txtDescripcion = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)dgvPlanes).BeginInit();
+            SuspendLayout();
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(66, 74);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(1084, 23);
-            this.textBox1.TabIndex = 49;
+            textBox1.Location = new System.Drawing.Point(66, 74);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new System.Drawing.Size(1084, 23);
+            textBox1.TabIndex = 49;
             // 
             // label10
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(11, 80);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(42, 15);
-            this.label10.TabIndex = 48;
-            this.label10.Text = "Buscar";
+            label10.AutoSize = true;
+            label10.Location = new System.Drawing.Point(11, 80);
+            label10.Name = "label10";
+            label10.Size = new System.Drawing.Size(42, 15);
+            label10.TabIndex = 48;
+            label10.Text = "Buscar";
             // 
             // btnModificar
             // 
-            this.btnModificar.Enabled = false;
-            this.btnModificar.Location = new System.Drawing.Point(298, 45);
-            this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(281, 23);
-            this.btnModificar.TabIndex = 47;
-            this.btnModificar.Text = "Modificar";
-            this.btnModificar.UseVisualStyleBackColor = true;
-            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            btnModificar.Enabled = false;
+            btnModificar.Location = new System.Drawing.Point(298, 45);
+            btnModificar.Name = "btnModificar";
+            btnModificar.Size = new System.Drawing.Size(281, 23);
+            btnModificar.TabIndex = 47;
+            btnModificar.Text = "Modificar";
+            btnModificar.UseVisualStyleBackColor = true;
+            btnModificar.Click += btnModificar_Click;
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Enabled = false;
-            this.btnEliminar.Location = new System.Drawing.Point(585, 45);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(281, 23);
-            this.btnEliminar.TabIndex = 46;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            btnEliminar.Enabled = false;
+            btnEliminar.Location = new System.Drawing.Point(585, 45);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new System.Drawing.Size(281, 23);
+            btnEliminar.TabIndex = 46;
+            btnEliminar.Text = "Eliminar";
+            btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.Click += btnEliminar_Click;
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Enabled = false;
-            this.btnCancelar.Location = new System.Drawing.Point(872, 45);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(281, 23);
-            this.btnCancelar.TabIndex = 45;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            btnCancelar.Enabled = false;
+            btnCancelar.Location = new System.Drawing.Point(872, 45);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new System.Drawing.Size(281, 23);
+            btnCancelar.TabIndex = 45;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(11, 45);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(281, 23);
-            this.btnAgregar.TabIndex = 44;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            btnAgregar.Location = new System.Drawing.Point(11, 45);
+            btnAgregar.Name = "btnAgregar";
+            btnAgregar.Size = new System.Drawing.Size(281, 23);
+            btnAgregar.TabIndex = 44;
+            btnAgregar.Text = "Agregar";
+            btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.Click += btnAgregar_Click;
             // 
             // dgvPlanes
             // 
-            this.dgvPlanes.AllowUserToAddRows = false;
-            this.dgvPlanes.AllowUserToDeleteRows = false;
-            this.dgvPlanes.AllowUserToResizeColumns = false;
-            this.dgvPlanes.AllowUserToResizeRows = false;
-            this.dgvPlanes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvPlanes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPlanes.Location = new System.Drawing.Point(11, 100);
-            this.dgvPlanes.MultiSelect = false;
-            this.dgvPlanes.Name = "dgvPlanes";
-            this.dgvPlanes.ReadOnly = true;
-            this.dgvPlanes.RowHeadersVisible = false;
-            this.dgvPlanes.RowHeadersWidth = 51;
-            this.dgvPlanes.RowTemplate.Height = 25;
-            this.dgvPlanes.Size = new System.Drawing.Size(1138, 433);
-            this.dgvPlanes.TabIndex = 25;
-            this.dgvPlanes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlanes_CellClick);
-            this.dgvPlanes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlanes_CellContentClick);
-            this.dgvPlanes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlanes_CellDoubleClick);
+            dgvPlanes.AllowUserToAddRows = false;
+            dgvPlanes.AllowUserToDeleteRows = false;
+            dgvPlanes.AllowUserToResizeColumns = false;
+            dgvPlanes.AllowUserToResizeRows = false;
+            dgvPlanes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dgvPlanes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPlanes.Location = new System.Drawing.Point(11, 100);
+            dgvPlanes.MultiSelect = false;
+            dgvPlanes.Name = "dgvPlanes";
+            dgvPlanes.ReadOnly = true;
+            dgvPlanes.RowHeadersVisible = false;
+            dgvPlanes.RowHeadersWidth = 51;
+            dgvPlanes.RowTemplate.Height = 25;
+            dgvPlanes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            dgvPlanes.Size = new System.Drawing.Size(1138, 433);
+            dgvPlanes.TabIndex = 25;
+            dgvPlanes.CellClick += dgvPlanes_CellClick;
+            dgvPlanes.CellContentClick += dgvPlanes_CellContentClick;
+            dgvPlanes.CellDoubleClick += dgvPlanes_CellDoubleClick;
             // 
             // cmbEspecialidad
             // 
-            this.cmbEspecialidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbEspecialidad.FormattingEnabled = true;
-            this.cmbEspecialidad.Location = new System.Drawing.Point(93, 6);
-            this.cmbEspecialidad.Name = "cmbEspecialidad";
-            this.cmbEspecialidad.Size = new System.Drawing.Size(169, 23);
-            this.cmbEspecialidad.TabIndex = 41;
-            this.cmbEspecialidad.SelectedIndexChanged += new System.EventHandler(this.cmbEspecialidad_SelectedIndexChanged_1);
+            cmbEspecialidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            cmbEspecialidad.FormattingEnabled = true;
+            cmbEspecialidad.Location = new System.Drawing.Point(93, 6);
+            cmbEspecialidad.Name = "cmbEspecialidad";
+            cmbEspecialidad.Size = new System.Drawing.Size(169, 23);
+            cmbEspecialidad.TabIndex = 41;
+            cmbEspecialidad.SelectedIndexChanged += cmbEspecialidad_SelectedIndexChanged_1;
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 9);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(75, 15);
-            this.label5.TabIndex = 37;
-            this.label5.Text = "Especialidad:";
+            label5.AutoSize = true;
+            label5.Location = new System.Drawing.Point(12, 9);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(75, 15);
+            label5.TabIndex = 37;
+            label5.Text = "Especialidad:";
             // 
             // lblDescripcion
             // 
-            this.lblDescripcion.AutoSize = true;
-            this.lblDescripcion.Location = new System.Drawing.Point(286, 9);
-            this.lblDescripcion.Name = "lblDescripcion";
-            this.lblDescripcion.Size = new System.Drawing.Size(72, 15);
-            this.lblDescripcion.TabIndex = 50;
-            this.lblDescripcion.Text = "Descripcion:";
+            lblDescripcion.AutoSize = true;
+            lblDescripcion.Location = new System.Drawing.Point(286, 9);
+            lblDescripcion.Name = "lblDescripcion";
+            lblDescripcion.Size = new System.Drawing.Size(72, 15);
+            lblDescripcion.TabIndex = 50;
+            lblDescripcion.Text = "Descripcion:";
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(361, 6);
-            this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(788, 23);
-            this.txtDescripcion.TabIndex = 51;
+            txtDescripcion.Location = new System.Drawing.Point(361, 6);
+            txtDescripcion.Name = "txtDescripcion";
+            txtDescripcion.Size = new System.Drawing.Size(788, 23);
+            txtDescripcion.TabIndex = 51;
             // 
             // Planes
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1158, 548);
-            this.Controls.Add(this.txtDescripcion);
-            this.Controls.Add(this.lblDescripcion);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.btnModificar);
-            this.Controls.Add(this.btnEliminar);
-            this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.btnAgregar);
-            this.Controls.Add(this.cmbEspecialidad);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.dgvPlanes);
-            this.Name = "Planes";
-            this.Text = "Planes";
-            this.Load += new System.EventHandler(this.Planes_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPlanes)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(1158, 548);
+            Controls.Add(txtDescripcion);
+            Controls.Add(lblDescripcion);
+            Controls.Add(textBox1);
+            Controls.Add(label10);
+            Controls.Add(btnModificar);
+            Controls.Add(btnEliminar);
+            Controls.Add(btnCancelar);
+            Controls.Add(btnAgregar);
+            Controls.Add(cmbEspecialidad);
+            Controls.Add(label5);
+            Controls.Add(dgvPlanes);
+            Name = "Planes";
+            Text = "Planes";
+            Load += Planes_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvPlanes).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

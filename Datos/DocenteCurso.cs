@@ -19,7 +19,7 @@ namespace Datos
                                                 from docentescursos
                                                 join usuarios on iddocente = usuarios.id
                                                 join personas on idpersona = personas.id
-                                                where idcurso = @IDCurso and (nombre like'" + filtro + "%' or apellido like'"+filtro+"%')"
+                                                where idcurso = @IDCurso and (nombre like'" + filtro + "%' or apellido like'"+filtro+"%' or legajo like '"+filtro+"%')"
             , conn);
 
             cmd.Parameters.AddWithValue("@IDCurso", curso.ID);
@@ -55,7 +55,7 @@ namespace Datos
             SqlCommand cmd = new SqlCommand(@"SELECT nombre, apellido, legajo, usuarios.id as 'docente'
                                                 from usuarios
                                                 join personas on idpersona = personas.id
-                                                where usuarios.idtipopersona = 4 and usuarios.id not in (select iddocente from docentescursos where idcurso = @IDCurso)  and (nombre like'" + filtro + "%' or apellido like'"+filtro+"%')"
+                                                where usuarios.idtipopersona = 4 and usuarios.id not in (select iddocente from docentescursos where idcurso = @IDCurso)  and (nombre like'" + filtro + "%' or apellido like'" + filtro + "%' or legajo like '" + filtro + "%')"
             , conn);
 
             cmd.Parameters.AddWithValue("@IDCurso", curso.ID);

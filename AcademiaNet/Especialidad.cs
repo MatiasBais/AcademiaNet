@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AcademiaNet  
+namespace AcademiaNet
 {
     public partial class Especialidad : Form
     {
@@ -59,7 +59,7 @@ namespace AcademiaNet
         int ID = 0;
         private void dgvEspecialidades_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
         }
 
         private void clear()
@@ -116,6 +116,7 @@ namespace AcademiaNet
             btnEliminar.Enabled = false;
             btnModificar.Enabled = false;
             btnCancelar.Enabled = false;
+            clear();
         }
 
         private void label2_Click(object sender, EventArgs e)
