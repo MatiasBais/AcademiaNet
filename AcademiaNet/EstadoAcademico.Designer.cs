@@ -31,6 +31,7 @@
             dgvEstadoAcademico = new System.Windows.Forms.DataGridView();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
+            btnImprimir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)dgvEstadoAcademico).BeginInit();
             SuspendLayout();
             // 
@@ -41,22 +42,21 @@
             dgvEstadoAcademico.AllowUserToResizeRows = false;
             dgvEstadoAcademico.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dgvEstadoAcademico.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvEstadoAcademico.Location = new System.Drawing.Point(10, 45);
-            dgvEstadoAcademico.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            dgvEstadoAcademico.Location = new System.Drawing.Point(11, 60);
             dgvEstadoAcademico.Name = "dgvEstadoAcademico";
             dgvEstadoAcademico.RowHeadersVisible = false;
             dgvEstadoAcademico.RowHeadersWidth = 51;
             dgvEstadoAcademico.RowTemplate.Height = 29;
             dgvEstadoAcademico.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            dgvEstadoAcademico.Size = new System.Drawing.Size(1098, 302);
+            dgvEstadoAcademico.Size = new System.Drawing.Size(1255, 403);
             dgvEstadoAcademico.TabIndex = 0;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(308, 21);
+            label1.Location = new System.Drawing.Point(352, 28);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(125, 15);
+            label1.Size = new System.Drawing.Size(159, 20);
             label1.TabIndex = 1;
             label1.Text = "Estado academico de: ";
             label1.Click += label1_Click;
@@ -64,21 +64,31 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(491, 21);
+            label2.Location = new System.Drawing.Point(561, 28);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(38, 15);
+            label2.Size = new System.Drawing.Size(50, 20);
             label2.TabIndex = 2;
             label2.Text = "label2";
             // 
+            // btnImprimir
+            // 
+            btnImprimir.Location = new System.Drawing.Point(1172, 24);
+            btnImprimir.Name = "btnImprimir";
+            btnImprimir.Size = new System.Drawing.Size(94, 29);
+            btnImprimir.TabIndex = 3;
+            btnImprimir.Text = "Imprimir";
+            btnImprimir.UseVisualStyleBackColor = true;
+            btnImprimir.Click += btnImprimir_Click;
+            // 
             // EstadoAcademico
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1134, 356);
+            ClientSize = new System.Drawing.Size(1296, 475);
+            Controls.Add(btnImprimir);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(dgvEstadoAcademico);
-            Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             Name = "EstadoAcademico";
             Text = "EstadoAcademico";
             Load += EstadoAcademico_Load;
@@ -92,5 +102,6 @@
         private System.Windows.Forms.DataGridView dgvEstadoAcademico;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnImprimir;
     }
 }
