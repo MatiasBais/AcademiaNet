@@ -60,7 +60,8 @@ namespace AcademiaNet
         private void dgvCursos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             Entidades.Curso curso = new Entidades.Curso();
-            curso.ID = Convert.ToInt32(dgvCursos.Rows[dgvCursos.SelectedRows[0].Index].Cells[0].Value);
+            Negocio.Curso negocio = new Negocio.Curso();
+            curso = negocio.getCurso(Convert.ToInt32(dgvCursos.Rows[dgvCursos.SelectedRows[0].Index].Cells[0].Value));
             InscripcionesPorCurso insc = new InscripcionesPorCurso(curso, profesor);
             insc.Show();
 

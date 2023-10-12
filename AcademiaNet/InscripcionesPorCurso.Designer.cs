@@ -35,6 +35,7 @@
             cbxCondicion = new System.Windows.Forms.ComboBox();
             label2 = new System.Windows.Forms.Label();
             nudNota = new System.Windows.Forms.NumericUpDown();
+            btnReporte = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)dgvInscripciones).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudNota).BeginInit();
             SuspendLayout();
@@ -46,31 +47,34 @@
             dgvInscripciones.AllowUserToResizeRows = false;
             dgvInscripciones.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dgvInscripciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvInscripciones.Location = new System.Drawing.Point(12, 70);
+            dgvInscripciones.Location = new System.Drawing.Point(14, 93);
+            dgvInscripciones.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             dgvInscripciones.Name = "dgvInscripciones";
             dgvInscripciones.ReadOnly = true;
             dgvInscripciones.RowHeadersVisible = false;
+            dgvInscripciones.RowHeadersWidth = 51;
             dgvInscripciones.RowTemplate.Height = 25;
             dgvInscripciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            dgvInscripciones.Size = new System.Drawing.Size(495, 368);
+            dgvInscripciones.Size = new System.Drawing.Size(566, 491);
             dgvInscripciones.TabIndex = 0;
             dgvInscripciones.CellClick += dgvInscripciones_CellClick;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(12, 15);
+            label1.Location = new System.Drawing.Point(14, 20);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(65, 15);
+            label1.Size = new System.Drawing.Size(79, 20);
             label1.TabIndex = 1;
             label1.Text = "Condición:";
             // 
             // btnAceptar
             // 
             btnAceptar.Enabled = false;
-            btnAceptar.Location = new System.Drawing.Point(12, 41);
+            btnAceptar.Location = new System.Drawing.Point(14, 55);
+            btnAceptar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnAceptar.Name = "btnAceptar";
-            btnAceptar.Size = new System.Drawing.Size(244, 23);
+            btnAceptar.Size = new System.Drawing.Size(279, 31);
             btnAceptar.TabIndex = 2;
             btnAceptar.Text = "Aceptar";
             btnAceptar.UseVisualStyleBackColor = true;
@@ -79,9 +83,10 @@
             // btnCancelar
             // 
             btnCancelar.Enabled = false;
-            btnCancelar.Location = new System.Drawing.Point(262, 41);
+            btnCancelar.Location = new System.Drawing.Point(299, 55);
+            btnCancelar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new System.Drawing.Size(243, 23);
+            btnCancelar.Size = new System.Drawing.Size(278, 31);
             btnCancelar.TabIndex = 3;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
@@ -93,35 +98,48 @@
             cbxCondicion.Enabled = false;
             cbxCondicion.FormattingEnabled = true;
             cbxCondicion.Items.AddRange(new object[] { "Inscripto", "Regular", "Aprobado" });
-            cbxCondicion.Location = new System.Drawing.Point(83, 12);
+            cbxCondicion.Location = new System.Drawing.Point(95, 16);
+            cbxCondicion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             cbxCondicion.Name = "cbxCondicion";
-            cbxCondicion.Size = new System.Drawing.Size(173, 23);
+            cbxCondicion.Size = new System.Drawing.Size(197, 28);
             cbxCondicion.TabIndex = 5;
             cbxCondicion.SelectedIndexChanged += cbxCondicion_SelectedIndexChanged;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(262, 15);
+            label2.Location = new System.Drawing.Point(299, 20);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(36, 15);
+            label2.Size = new System.Drawing.Size(45, 20);
             label2.TabIndex = 7;
             label2.Text = "Nota:";
             // 
             // nudNota
             // 
             nudNota.Enabled = false;
-            nudNota.Location = new System.Drawing.Point(332, 12);
+            nudNota.Location = new System.Drawing.Point(379, 16);
+            nudNota.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             nudNota.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
             nudNota.Name = "nudNota";
-            nudNota.Size = new System.Drawing.Size(173, 23);
+            nudNota.Size = new System.Drawing.Size(198, 27);
             nudNota.TabIndex = 8;
+            // 
+            // btnReporte
+            // 
+            btnReporte.Location = new System.Drawing.Point(14, 591);
+            btnReporte.Name = "btnReporte";
+            btnReporte.Size = new System.Drawing.Size(94, 29);
+            btnReporte.TabIndex = 9;
+            btnReporte.Text = "Imprimir";
+            btnReporte.UseVisualStyleBackColor = true;
+            btnReporte.Click += btnReporte_Click;
             // 
             // InscripcionesPorCurso
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(517, 450);
+            ClientSize = new System.Drawing.Size(591, 626);
+            Controls.Add(btnReporte);
             Controls.Add(nudNota);
             Controls.Add(label2);
             Controls.Add(cbxCondicion);
@@ -129,6 +147,7 @@
             Controls.Add(btnAceptar);
             Controls.Add(label1);
             Controls.Add(dgvInscripciones);
+            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             Name = "InscripcionesPorCurso";
             Text = "Inscripciones";
             Load += InscripcionesPorCurso_Load;
@@ -147,5 +166,6 @@
         private System.Windows.Forms.ComboBox cbxCondicion;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown nudNota;
+        private System.Windows.Forms.Button btnReporte;
     }
 }

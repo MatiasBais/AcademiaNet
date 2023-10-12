@@ -1,8 +1,11 @@
-﻿using System;
+﻿using iTextSharp.text.pdf;
+using iTextSharp.text;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,6 +44,7 @@ namespace AcademiaNet
             dt.Columns.Add("Legajo", typeof(string));
             dt.Columns.Add("Condición", typeof(string));
             dt.Columns.Add("Nota", typeof(int));
+            dt.Columns.Add("E-Mail", typeof(string));
 
 
 
@@ -54,6 +58,7 @@ namespace AcademiaNet
                 row[3] = inscripcion.Alumno.Legajo;
                 row[4] = inscripcion.Condicion;
                 row[5] = inscripcion.Nota;
+                row[6] = inscripcion.Alumno.Persona.Email;
 
                 dt.Rows.Add(row);
             }
@@ -149,6 +154,92 @@ namespace AcademiaNet
                 nudNota.Enabled = true;
             else
                 nudNota.Value = 0;
+        }
+
+        private void btnReporte_Click(object sender, EventArgs e)
+        {
+
+            //Create a DataTable
+            Negocio.AlumnosInscripciones negocio = new Negocio.AlumnosInscripciones();
+            List<Entidades.AlumnosInscripcion> inscripciones = negocio.getInscripciones(curso);
+
+            DataTable dt = new DataTable();
+            //id legajo nombre apellido FechaNacimiento Telefono email Plan idEspecialidad Especialidad
+            dt.Columns.Add("Nombre", typeof(string));
+            dt.Columns.Add("Legajo", typeof(string));
+            dt.Columns.Add("Condición", typeof(string));
+            dt.Columns.Add("Nota", typeof(int));
+            dt.Columns.Add("E-Mail", typeof(string));
+
+
+
+            foreach (Entidades.AlumnosInscripcion inscripcion in inscripciones)
+            {
+                DataRow row = dt.NewRow();
+
+                row[0] = inscripcion.Alumno.Persona.Apellido + ", " + inscripcion.Alumno.Persona.Nombre;
+                row[1] = inscripcion.Alumno.Legajo;
+                row[2] = inscripcion.Condicion;
+                row[3] = inscripcion.Nota;
+                row[4] = inscripcion.Alumno.Persona.Email;
+
+                dt.Rows.Add(row);
+            }
+            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            ExportToPdf(dt, desktopPath + "\\Inscripciones.pdf");
+            MessageBox.Show("Reporte generado en el escritorio con éxito");
+        }
+
+        public void ExportToPdf(DataTable dt, string strFilePath)
+        {
+            var pgSize = new iTextSharp.text.Rectangle(444, 631);
+            Document document = new Document(pgSize, 15, 15, 0, 0);
+            PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(strFilePath, FileMode.Create));
+            document.Open();
+            iTextSharp.text.Font font5 = iTextSharp.text.FontFactory.GetFont(FontFactory.HELVETICA, 5);
+
+            Paragraph title = new Paragraph(string.Format(curso.Materia.Descripcion + " - " + curso.Comision.Descripcion + " - " + curso.AnioCalendario), new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 20, iTextSharp.text.Font.BOLD));
+            title.Alignment = Element.ALIGN_CENTER;
+            document.Add(title);
+
+            Paragraph title3 = new Paragraph(string.Format("--"), new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 20, iTextSharp.text.Font.BOLD));
+            title3.Alignment = Element.ALIGN_CENTER;
+            document.Add(title3);
+
+            PdfPTable table = new PdfPTable(dt.Columns.Count);
+            PdfPRow row = null;
+            float[] widths = new float[dt.Columns.Count];
+            for (int i = 0; i < dt.Columns.Count; i++)
+                widths[i] = 4f;
+            widths[1] = 2f;
+            widths[3] = 2f;
+            widths[4] = 8f;
+            table.SetWidths(widths);
+
+            table.WidthPercentage = 80;
+            int iCol = 0;
+            string colname = "";
+            PdfPCell cell = new PdfPCell(new Phrase("Products"));
+
+            cell.Colspan = dt.Columns.Count;
+
+            foreach (DataColumn c in dt.Columns)
+            {
+                table.AddCell(new Phrase(c.ColumnName, font5));
+            }
+
+            foreach (DataRow r in dt.Rows)
+            {
+                if (dt.Rows.Count > 0)
+                {
+                    for (int h = 0; h < dt.Columns.Count; h++)
+                    {
+                        table.AddCell(new Phrase(r[h].ToString(), font5));
+                    }
+                }
+            }
+            document.Add(table);
+            document.Close();
         }
     }
 }

@@ -52,6 +52,44 @@ namespace Datos
             return curso;
         }
 
+        public Entidades.Curso getCurso(int IDCurso)
+        {
+            Entidades.Curso curso = null;
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand(@"SELECT cursos.ID,
+                                    AñoCalendario,
+                                    Cupo,
+                                    cursos.Descripcion,
+                                    IDComision, 
+                                    IDMateria
+                                 FROM cursos
+                                 JOIN comisiones ON IDComision = comisiones.ID
+                                 JOIN materias ON IDMateria = materias.ID 
+                                 WHERE Cursos.State IS NULL AND cursos.id = @IDCurso", conn);
+
+            cmd.Parameters.AddWithValue("@IDCurso", IDCurso);
+
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    curso = new Entidades.Curso();
+                    curso.ID = (int)reader["ID"];
+                    curso.AnioCalendario = (int)reader["AñoCalendario"];
+                    curso.Cupo = (int)reader["Cupo"];
+                    curso.Descripcion = reader["Descripcion"].ToString();
+
+                    Comision comision = new Comision();
+                    curso.Comision = comision.getComision((int)reader["IDComision"]);
+
+                    Materia materia = new Materia();
+                    curso.Materia = materia.getMateria((int)reader["IDMateria"]);
+                }
+            }
+            conn.Close();
+            return curso;
+        }
         public List<Entidades.Curso> getCursos(int IDMateria)
         {
             List<Entidades.Curso> cursos = new List<Entidades.Curso> ();

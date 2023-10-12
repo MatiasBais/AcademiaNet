@@ -50,7 +50,7 @@ namespace Datos
         {
             List<Entidades.AlumnosInscripcion> lista = new List<Entidades.AlumnosInscripcion>();
             conn.Open();
-            string query = String.Format("select alumnosinscripciones.id as 'id', idalumno, nombre, apellido, legajo, condicion, nota " +
+            string query = String.Format("select alumnosinscripciones.id as 'id', idalumno, email, nombre, apellido, legajo, condicion, nota " +
                 "from alumnosinscripciones " +
                 "join usuarios on alumnosinscripciones.idAlumno = usuarios.id " +
                 "join personas on personas.id = usuarios.idPersona " +
@@ -73,6 +73,7 @@ namespace Datos
                     inscripcion.Alumno.Persona = new Entidades.Persona();
                     inscripcion.Alumno.Persona.Nombre = reader["nombre"].ToString();
                     inscripcion.Alumno.Persona.Apellido = reader["apellido"].ToString();
+                    inscripcion.Alumno.Persona.Email = reader["email"].ToString();
 
                     lista.Add(inscripcion);
                 }
