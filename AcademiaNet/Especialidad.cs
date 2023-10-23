@@ -12,6 +12,7 @@ namespace AcademiaNet
 {
     public partial class Especialidad : Form
     {
+        private Task<IEnumerable<Entidades.Especialidad>>? l;
         public Especialidad()
         {
             InitializeComponent();
@@ -21,14 +22,20 @@ namespace AcademiaNet
         {
 
         }
-
-        private void loadEspecialidades()
+        public IEnumerable<Entidades.Especialidad> getEspecialidades()
         {
-            Negocio.Especialidad negocio = new Negocio.Especialidad();
-            dgvEspecialidades.DataSource = negocio.getEspecialidades(txtBuscar.Text);
+            l = Negocio.Especialidad.GetByDesc(txtBuscar.Text);
+            return l.Result;
+        }
+        private async void loadEspecialidades()
+        {
+            Task<IEnumerable<Entidades.Especialidad>> task = new Task<IEnumerable<Entidades.Especialidad>>(getEspecialidades);
+            task.Start();
+            dgvEspecialidades.DataSource = await task;
             dgvEspecialidades.Columns[1].Visible = false;
             dgvEspecialidades.Columns[2].Visible = false;
         }
+
         private void Especialidad_Load(object sender, EventArgs e)
         {
             loadEspecialidades();
@@ -39,14 +46,14 @@ namespace AcademiaNet
             loadEspecialidades();
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
+        private async void btnAgregar_Click(object sender, EventArgs e)
         {
             try
             {
-                Negocio.Especialidad negocio = new Negocio.Especialidad();
+                //Negocio.Especialidad negocio = new Negocio.Especialidad();
                 Entidades.Especialidad esp = new Entidades.Especialidad();
                 esp.Descripcion = txtDescripción.Text;
-                negocio.addEspecialidad(esp);
+                await Negocio.Especialidad.Add(esp);
                 clear();
                 loadEspecialidades();
             }
@@ -67,15 +74,15 @@ namespace AcademiaNet
             txtDescripción.Text = "";
         }
 
-        private void btnModificar_Click(object sender, EventArgs e)
+        private async void btnModificar_Click(object sender, EventArgs e)
         {
             try
             {
-                Negocio.Especialidad negocio = new Negocio.Especialidad();
+               // Negocio.Especialidad negocio = new Negocio.Especialidad();
                 Entidades.Especialidad esp = new Entidades.Especialidad();
                 esp.Descripcion = txtDescripción.Text;
                 esp.ID = ID;
-                negocio.updateEspecialidad(esp);
+                await Negocio.Especialidad.Update(esp);
                 clear();
                 btnAgregar.Enabled = true;
                 btnEliminar.Enabled = false;
@@ -89,14 +96,14 @@ namespace AcademiaNet
             }
         }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
+        private async void btnEliminar_Click(object sender, EventArgs e)
         {
             try
             {
-                Negocio.Especialidad negocio = new Negocio.Especialidad();
+                //Negocio.Especialidad negocio = new Negocio.Especialidad();
                 Entidades.Especialidad esp = new Entidades.Especialidad();
                 esp.ID = ID;
-                negocio.deleteEspecialidad(esp);
+                await Negocio.Especialidad.Delete(esp);
                 clear();
                 btnAgregar.Enabled = true;
                 btnEliminar.Enabled = false;

@@ -14,6 +14,7 @@ namespace AcademiaNet
 {
     public partial class Comision : Form
     {
+        private Task<IEnumerable<Entidades.Especialidad>>? l;
         public Comision()
         {
             InitializeComponent();
@@ -52,25 +53,16 @@ namespace AcademiaNet
             dgvComisiones.Columns[1].Visible = false;
             loadEspecialidades();
         }
-
-        private void loadEspecialidades()
+        public IEnumerable<Entidades.Especialidad> getEspecialidades()
         {
-            Negocio.Especialidad negocio = new Negocio.Especialidad();
-            DataTable dt = new DataTable();
-            dt.Columns.Add("ID", typeof(int));
-            dt.Columns.Add("Descripcion", typeof(string));
-            foreach (Entidades.Especialidad esp in negocio.getEspecialidades())
-            {
-                DataRow row = dt.NewRow();
-                row[0] = esp.ID;
-                row[1] = esp.Descripcion;
-                dt.Rows.Add(row);
-            }
-            cmbEspecialidad.ValueMember = "ID";
-            cmbEspecialidad.DisplayMember = "Descripcion";
-
-            cmbEspecialidad.DataSource = dt;
-
+            l = Negocio.Especialidad.GetAll();
+            return l.Result;
+        }
+        private async void loadEspecialidades()
+        {          
+            Task<IEnumerable<Entidades.Especialidad>> task = new Task<IEnumerable<Entidades.Especialidad>>(getEspecialidades);
+            task.Start();
+            cmbEspecialidad.DataSource = await task;
         }
         private void cmbEspecialidad_SelectedValueChanged(object sender, EventArgs e)
         {

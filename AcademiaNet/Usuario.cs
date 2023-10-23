@@ -12,6 +12,7 @@ namespace AcademiaNet
 {
     public partial class Usuario : Form
     {
+        private Task<IEnumerable<Entidades.Especialidad>>? l;
         private Entidades.Persona Persona { get; set; }
         public Usuario(Entidades.Persona persona)
         {
@@ -87,24 +88,16 @@ namespace AcademiaNet
 
         }
 
-        private void loadEspecialidades()
+        public IEnumerable<Entidades.Especialidad> getEspecialidades()
         {
-            Negocio.Especialidad negocio = new Negocio.Especialidad();
-            DataTable dt = new DataTable();
-            dt.Columns.Add("ID", typeof(int));
-            dt.Columns.Add("Descripcion", typeof(string));
-            foreach (Entidades.Especialidad esp in negocio.getEspecialidades())
-            {
-                DataRow row = dt.NewRow();
-                row[0] = esp.ID;
-                row[1] = esp.Descripcion;
-                dt.Rows.Add(row);
-            }
-            cmbEspecialidad.ValueMember = "ID";
-            cmbEspecialidad.DisplayMember = "Descripcion";
-
-            cmbEspecialidad.DataSource = dt;
-
+            l = Negocio.Especialidad.GetAll();
+            return l.Result;
+        }
+        private async void loadEspecialidades()
+        {
+            Task<IEnumerable<Entidades.Especialidad>> task = new Task<IEnumerable<Entidades.Especialidad>>(getEspecialidades);
+            task.Start();
+            cmbEspecialidad.DataSource = await task;
         }
 
         private void loadPlanes()
