@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Entidades;
 using System.Net.Http.Json;
 using Datos;
+using System.Net.Http;
 
 namespace Negocio
 {
@@ -18,12 +19,13 @@ namespace Negocio
             var data = JsonConvert.DeserializeObject<List<Entidades.Especialidad>>(response);
             return data;
         }
-        public async static Task<IEnumerable<Entidades.Especialidad>> GetByDesc(string desc)
+        public async static Task<IEnumerable<Entidades.Especialidad>> GetByDesc(string desc) 
         {
-            var response = await Conexion.Instancia.Cliente.GetStringAsync("https://localhost:7092/api/GetByDesc/" + desc);
+            var response = await Conexion.Instancia.Cliente.GetStringAsync("https://localhost:7092/api/Especialidad/GetByDesc/"+desc);
             var data = JsonConvert.DeserializeObject<List<Entidades.Especialidad>>(response);
             return data;
         }
+        
         public async static Task<Boolean> Add(Entidades.Especialidad e)
         {
             if (e.Descripcion == "")

@@ -24,7 +24,14 @@ namespace AcademiaNet
         }
         public IEnumerable<Entidades.Especialidad> getEspecialidades()
         {
-            l = Negocio.Especialidad.GetByDesc(txtBuscar.Text);
+            if (txtBuscar.Text != "" && txtBuscar.Text != null)
+            {
+                l = Negocio.Especialidad.GetByDesc(txtBuscar.Text);
+            }
+            else
+            {
+                l = Negocio.Especialidad.GetAll();
+            }
             return l.Result;
         }
         private async void loadEspecialidades()
@@ -78,7 +85,7 @@ namespace AcademiaNet
         {
             try
             {
-               // Negocio.Especialidad negocio = new Negocio.Especialidad();
+                // Negocio.Especialidad negocio = new Negocio.Especialidad();
                 Entidades.Especialidad esp = new Entidades.Especialidad();
                 esp.Descripcion = txtDescripción.Text;
                 esp.ID = ID;
