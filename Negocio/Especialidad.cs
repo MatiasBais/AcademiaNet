@@ -21,7 +21,7 @@ namespace Negocio
         }
         public async static Task<IEnumerable<Entidades.Especialidad>> GetByDesc(string desc) 
         {
-            var response = await Conexion.Instancia.Cliente.GetStringAsync("https://localhost:7092/api/Especialidad/GetByDesc/"+desc);
+            var response = await Conexion.Instancia.Cliente.GetStringAsync("https://localhost:7092/api/especialidad/GetByDesc/"+desc);
             var data = JsonConvert.DeserializeObject<List<Entidades.Especialidad>>(response);
             return data;
         }
