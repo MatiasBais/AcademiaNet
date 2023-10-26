@@ -98,7 +98,7 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(216, 132);
+            ClientSize = new System.Drawing.Size(225, 131);
             Controls.Add(btnCancelar);
             Controls.Add(btnIngresar);
             Controls.Add(txtClave);

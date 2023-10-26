@@ -83,6 +83,10 @@ namespace Negocio
 
         public void deleteCurso(Entidades.Curso curso)
         {
+            Datos.AlumnosInscripcion a = new Datos.AlumnosInscripcion();
+            List<Entidades.AlumnosInscripcion> inscripciones = a.getInscripciones(curso);
+            if (inscripciones.Count > 0)
+                throw new Exception("No se puede eliminar el curso porque hay alumnos inscriptos en el.");
             Datos.Curso com = new Datos.Curso();
             com.deleteCurso(curso);
         }

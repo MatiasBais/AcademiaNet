@@ -23,7 +23,7 @@ namespace AcademiaNet
         {
             this.Close();
         }
-        
+
         private void login()
         {
             string nombreUsuario = txtNombreUsuario.Text;
@@ -39,7 +39,7 @@ namespace AcademiaNet
                         Menu menu = new Menu();
                         this.Hide();
                         menu.ShowDialog();
-                        
+
                         break;
                     case "Alumno":
                         menuAlumno menu2 = new menuAlumno(idUsuario);

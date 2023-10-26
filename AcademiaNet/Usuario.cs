@@ -57,7 +57,7 @@ namespace AcademiaNet
             dt.Columns.Add("idEspecialidad", typeof(int));
             dt.Columns.Add("Especialidad", typeof(string));
 
-            
+
 
             foreach (Entidades.Usuario usuario in usuarioList)
             {
@@ -93,16 +93,22 @@ namespace AcademiaNet
             l = Negocio.Especialidad.GetAll();
             return l.Result;
         }
+
+        bool espLoad = false;
         private async void loadEspecialidades()
         {
+            espLoad = false;
             Task<IEnumerable<Entidades.Especialidad>> task = new Task<IEnumerable<Entidades.Especialidad>>(getEspecialidades);
             task.Start();
             cmbEspecialidad.DataSource = await task;
+            cmbEspecialidad.ValueMember = "ID";
+            cmbEspecialidad.DisplayMember = "Descripcion";
+            espLoad = true;
         }
 
         private void loadPlanes()
         {
-            if (cmbEspecialidad.SelectedValue == null)
+            if (!espLoad)
                 return;
             Negocio.Plan negocio = new Negocio.Plan();
             DataTable dt = new DataTable();
@@ -129,6 +135,7 @@ namespace AcademiaNet
             cmbHabilitado.SelectedIndex = 0;
             loadUsuarios();
             loadTipos();
+            timer1.Start();
 
         }
 
@@ -145,7 +152,8 @@ namespace AcademiaNet
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            try { 
+            try
+            {
                 Entidades.Usuario usuario = new Entidades.Usuario();
                 usuario.NombreUsuario = txtNombreUsuario.Text;
                 usuario.Clave = txtClave.Text;
@@ -168,7 +176,7 @@ namespace AcademiaNet
                 loadUsuarios();
                 clear();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -178,7 +186,7 @@ namespace AcademiaNet
 
         private void txtLegajo_Leave(object sender, EventArgs e)
         {
-            txtLegajo.Text = txtLegajo.Text == "" ? "0":txtLegajo.Text;
+            txtLegajo.Text = txtLegajo.Text == "" ? "0" : txtLegajo.Text;
         }
 
         private void txtLegajo_KeyPress(object sender, KeyPressEventArgs e)
@@ -228,7 +236,9 @@ namespace AcademiaNet
             try
             {
                 Negocio.Usuario negocio = new Negocio.Usuario();
-                negocio.deleteUsuario(ID);
+                Entidades.Usuario usuario = new Entidades.Usuario();
+                usuario.ID = ID;
+                negocio.deleteUsuario(usuario);
                 clear();
                 btnAgregar.Enabled = true;
                 btnCancelar.Enabled = false;
@@ -237,7 +247,7 @@ namespace AcademiaNet
                 loadUsuarios();
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -258,13 +268,14 @@ namespace AcademiaNet
                 usuario.Legajo = Convert.ToInt32(txtLegajo.Text);
                 usuario.Plan = null;
 
-                if (cmbTipo.Text == "Alumno") { 
+                if (cmbTipo.Text == "Alumno")
+                {
                     Entidades.Plan plan = new Entidades.Plan();
                     plan.ID = (int)cmbPlan.SelectedValue;
                     usuario.Plan = plan;
                 }
 
-                
+
                 negocio.updateUsuario(usuario);
                 clear();
                 btnAgregar.Enabled = true;
@@ -282,7 +293,7 @@ namespace AcademiaNet
 
         private void cmbTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cmbTipo.Text == "Alumno")
+            if (cmbTipo.Text == "Alumno")
             {
                 cmbEspecialidad.Visible = true;
                 cmbPlan.Visible = true;
@@ -296,6 +307,15 @@ namespace AcademiaNet
                 cmbPlan.Visible = false;
                 lblEspecialidad.Visible = false;
                 lblPlan.Visible = false;
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (espLoad)
+            {
+                loadPlanes();
+                timer1.Stop();
             }
         }
     }

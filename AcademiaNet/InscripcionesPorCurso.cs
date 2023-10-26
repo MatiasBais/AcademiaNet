@@ -198,12 +198,20 @@ namespace AcademiaNet
             document.Open();
             iTextSharp.text.Font font5 = iTextSharp.text.FontFactory.GetFont(FontFactory.HELVETICA, 5);
 
-            Paragraph title = new Paragraph(string.Format(curso.Materia.Descripcion + " - " + curso.Comision.Descripcion + " - " + curso.AnioCalendario), new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 20, iTextSharp.text.Font.BOLD));
-            title.Alignment = Element.ALIGN_CENTER;
+            Paragraph title5 = new Paragraph(string.Format("Profesor: " + profesor.Persona.Apellido + ", " + profesor.Persona.Nombre + " - " + profesor.Legajo), new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12, iTextSharp.text.Font.BOLD));
+            title5.Alignment = Element.ALIGN_LEFT;
+            document.Add(title5);
+
+            Paragraph title = new Paragraph(string.Format(curso.Materia.Descripcion + " - " + curso.Comision.Descripcion + " - " + curso.AnioCalendario), new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12, iTextSharp.text.Font.BOLD));
+            title.Alignment = Element.ALIGN_LEFT;
             document.Add(title);
 
-            Paragraph title3 = new Paragraph(string.Format("--"), new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 20, iTextSharp.text.Font.BOLD));
-            title3.Alignment = Element.ALIGN_CENTER;
+            Paragraph title4 = new Paragraph(string.Format("Fecha: " + DateTime.Now.ToString()), new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12, iTextSharp.text.Font.BOLD));
+            title4.Alignment = Element.ALIGN_LEFT;
+            document.Add(title4);
+
+            Paragraph title3 = new Paragraph(string.Format("--"), new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12, iTextSharp.text.Font.BOLD));
+            title3.Alignment = Element.ALIGN_LEFT;
             document.Add(title3);
 
             PdfPTable table = new PdfPTable(dt.Columns.Count);

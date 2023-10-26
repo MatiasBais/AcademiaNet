@@ -15,17 +15,21 @@ namespace AcademiaNet
     public partial class Comision : Form
     {
         private Task<IEnumerable<Entidades.Especialidad>>? l;
+
+
         public Comision()
         {
+
             InitializeComponent();
         }
 
         private void loadComisiones(string descripcion)
         {
-
-
+            if (!espLoad || cmbIdPlan.SelectedValue.ToString() == "System.Data.DataRowView")
+                return;
             Negocio.Comision negocio = new Negocio.Comision();
-            List<Entidades.Comision> comisionList = negocio.getComisiones(descripcion);
+            List<Entidades.Comision> comisionList = negocio.getComisiones(descripcion, (int)cmbIdPlan.SelectedValue);
+
 
             DataTable dt = new DataTable();
             dt.Columns.Add("ID Comision", typeof(int));
@@ -51,18 +55,26 @@ namespace AcademiaNet
             dgvComisiones.DataSource = dt;
             dgvComisiones.Columns[0].Visible = false;
             dgvComisiones.Columns[1].Visible = false;
-            loadEspecialidades();
         }
         public IEnumerable<Entidades.Especialidad> getEspecialidades()
         {
             l = Negocio.Especialidad.GetAll();
             return l.Result;
         }
+
+        bool espLoad = false;
         private async void loadEspecialidades()
-        {          
+        {
+            espLoad = false;
             Task<IEnumerable<Entidades.Especialidad>> task = new Task<IEnumerable<Entidades.Especialidad>>(getEspecialidades);
             task.Start();
             cmbEspecialidad.DataSource = await task;
+
+            cmbEspecialidad.ValueMember = "ID";
+            cmbEspecialidad.DisplayMember = "Descripcion";
+
+            espLoad = true;
+
         }
         private void cmbEspecialidad_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -72,15 +84,20 @@ namespace AcademiaNet
 
         private void loadPlanes()
         {
-
-            if (cmbEspecialidad.SelectedValue == null)
+            if (!espLoad)
                 return;
 
             Negocio.Plan negocio = new Negocio.Plan();
             DataTable dt = new DataTable();
             dt.Columns.Add("ID", typeof(int));
             dt.Columns.Add("Descripcion", typeof(string));
-            foreach (Entidades.Plan plan in negocio.getPlanes((int)cmbEspecialidad.SelectedValue))
+            List<Entidades.Plan> planes;
+            try { planes = negocio.getPlanes((int)cmbEspecialidad.SelectedValue); }
+            catch
+            {
+                planes = negocio.getPlanes(1);
+            }
+            foreach (Entidades.Plan plan in planes)
             {
                 DataRow row = dt.NewRow();
                 row[0] = plan.ID;
@@ -89,15 +106,19 @@ namespace AcademiaNet
                 dt.Rows.Add(row);
             }
 
+            
+
+            cmbIdPlan.DataSource = dt;
             cmbIdPlan.ValueMember = "ID";
             cmbIdPlan.DisplayMember = "Descripcion";
 
-            cmbIdPlan.DataSource = dt;
         }
 
 
         private void Comision_Load(object sender, EventArgs e)
         {
+            timer1.Start();
+            loadEspecialidades();
             loadComisiones("");
         }
 
@@ -121,7 +142,7 @@ namespace AcademiaNet
 
                 negocio.addComision(com);
                 clear();
-                loadComisiones("");
+                loadComisiones(txtBuscar.Text);
             }
             catch (Exception ex)
             {
@@ -195,7 +216,7 @@ namespace AcademiaNet
                 btnModificar.Enabled = false;
                 btnCancelar.Enabled = false;
 
-                loadComisiones("");
+                loadComisiones(txtBuscar.Text);
             }
             catch (Exception ex)
             {
@@ -225,7 +246,7 @@ namespace AcademiaNet
 
         private void cmbEspecialidad_SelectedIndexChanged(object sender, EventArgs e)
         {
-            loadPlanes();
+            
         }
 
         private void dgvComisiones_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -251,6 +272,35 @@ namespace AcademiaNet
 
         private void cmbIdPlan_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void cmbIdPlan_SelectedValueChanged(object sender, EventArgs e)
+        {
+            loadComisiones(txtBuscar.Text);
+        }
+
+        private void cmbIdPlan_DataSourceChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void cmbIdPlan_ValueMemberChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (espLoad)
+            {
+                loadPlanes();
+                timer1.Stop();
+            }
+        }
+
+        private void cmbEspecialidad_SelectedValueChanged_1(object sender, EventArgs e)
+        {
+            loadPlanes();
         }
     }
 

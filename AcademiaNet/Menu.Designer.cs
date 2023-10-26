@@ -31,90 +31,69 @@
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             personasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             administrarPersonasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            administrarTiposDeUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            especialidadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            administrarEspecialidadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            administrarPlanesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            comisionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            administrarComisionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            especialidadesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            planesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            comisionesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { personasToolStripMenuItem, especialidadesToolStripMenuItem, comisionesToolStripMenuItem });
+            menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { personasToolStripMenuItem });
             menuStrip1.Location = new System.Drawing.Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new System.Drawing.Size(800, 24);
+            menuStrip1.Padding = new System.Windows.Forms.Padding(7, 3, 0, 3);
+            menuStrip1.Size = new System.Drawing.Size(433, 30);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
             // personasToolStripMenuItem
             // 
-            personasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { administrarPersonasToolStripMenuItem, administrarTiposDeUsuarioToolStripMenuItem });
+            personasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { administrarPersonasToolStripMenuItem, especialidadesToolStripMenuItem1, planesToolStripMenuItem, comisionesToolStripMenuItem1 });
             personasToolStripMenuItem.Name = "personasToolStripMenuItem";
-            personasToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
-            personasToolStripMenuItem.Text = "Personas";
+            personasToolStripMenuItem.Size = new System.Drawing.Size(100, 24);
+            personasToolStripMenuItem.Text = "Administrar";
             // 
             // administrarPersonasToolStripMenuItem
             // 
             administrarPersonasToolStripMenuItem.Name = "administrarPersonasToolStripMenuItem";
-            administrarPersonasToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
-            administrarPersonasToolStripMenuItem.Text = "Administrar Personas";
+            administrarPersonasToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            administrarPersonasToolStripMenuItem.Text = "Personas";
             administrarPersonasToolStripMenuItem.Click += administrarPersonasToolStripMenuItem_Click;
             // 
-            // administrarTiposDeUsuarioToolStripMenuItem
+            // especialidadesToolStripMenuItem1
             // 
-            administrarTiposDeUsuarioToolStripMenuItem.Name = "administrarTiposDeUsuarioToolStripMenuItem";
-            administrarTiposDeUsuarioToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
-            administrarTiposDeUsuarioToolStripMenuItem.Text = "Administrar Tipos de Usuario";
-            administrarTiposDeUsuarioToolStripMenuItem.Click += administrarTiposDeUsuarioToolStripMenuItem_Click;
+            especialidadesToolStripMenuItem1.Name = "especialidadesToolStripMenuItem1";
+            especialidadesToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            especialidadesToolStripMenuItem1.Text = "Especialidades";
+            especialidadesToolStripMenuItem1.Click += especialidadesToolStripMenuItem1_Click;
             // 
-            // especialidadesToolStripMenuItem
+            // planesToolStripMenuItem
             // 
-            especialidadesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { administrarEspecialidadesToolStripMenuItem, administrarPlanesToolStripMenuItem });
-            especialidadesToolStripMenuItem.Name = "especialidadesToolStripMenuItem";
-            especialidadesToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
-            especialidadesToolStripMenuItem.Text = "Especialidades";
+            planesToolStripMenuItem.Name = "planesToolStripMenuItem";
+            planesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            planesToolStripMenuItem.Text = "Planes";
+            planesToolStripMenuItem.Click += planesToolStripMenuItem_Click;
             // 
-            // administrarEspecialidadesToolStripMenuItem
+            // comisionesToolStripMenuItem1
             // 
-            administrarEspecialidadesToolStripMenuItem.Name = "administrarEspecialidadesToolStripMenuItem";
-            administrarEspecialidadesToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
-            administrarEspecialidadesToolStripMenuItem.Text = "Administrar Especialidades";
-            administrarEspecialidadesToolStripMenuItem.Click += administrarEspecialidadesToolStripMenuItem_Click;
-            // 
-            // administrarPlanesToolStripMenuItem
-            // 
-            administrarPlanesToolStripMenuItem.Name = "administrarPlanesToolStripMenuItem";
-            administrarPlanesToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
-            administrarPlanesToolStripMenuItem.Text = "Administrar Planes";
-            administrarPlanesToolStripMenuItem.Click += administrarPlanesToolStripMenuItem_Click;
-            // 
-            // comisionesToolStripMenuItem
-            // 
-            comisionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { administrarComisionesToolStripMenuItem });
-            comisionesToolStripMenuItem.Name = "comisionesToolStripMenuItem";
-            comisionesToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
-            comisionesToolStripMenuItem.Text = "Comisiones";
-            comisionesToolStripMenuItem.Click += comisionesToolStripMenuItem_Click;
-            // 
-            // administrarComisionesToolStripMenuItem
-            // 
-            administrarComisionesToolStripMenuItem.Name = "administrarComisionesToolStripMenuItem";
-            administrarComisionesToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
-            administrarComisionesToolStripMenuItem.Text = "Administrar Comisiones";
-            administrarComisionesToolStripMenuItem.Click += administrarComisionesToolStripMenuItem_Click;
+            comisionesToolStripMenuItem1.Name = "comisionesToolStripMenuItem1";
+            comisionesToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            comisionesToolStripMenuItem1.Text = "Comisiones";
+            comisionesToolStripMenuItem1.Click += comisionesToolStripMenuItem1_Click;
             // 
             // Menu
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(800, 450);
+            ClientSize = new System.Drawing.Size(433, 341);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
+            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             Name = "Menu";
             Text = "Menu";
+            Load += Menu_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
@@ -126,11 +105,8 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem personasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem administrarPersonasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem especialidadesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem administrarEspecialidadesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem administrarPlanesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem comisionesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem administrarComisionesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem administrarTiposDeUsuarioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem especialidadesToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem planesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem comisionesToolStripMenuItem1;
     }
 }

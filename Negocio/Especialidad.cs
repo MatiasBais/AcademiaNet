@@ -35,6 +35,10 @@ namespace Negocio
         }
         public async static Task<Boolean> Delete(Entidades.Especialidad e)
         {
+            Datos.Plan datos = new Datos.Plan();
+            List<Entidades.Plan> planes = datos.getPlanes(e.ID);
+            if (planes.Count > 0)
+                throw new Exception("No se puede eliminar la especialidad ya que hay planes asociados a ella");
             var response = await Conexion.Instancia.Cliente.DeleteAsync("https://localhost:7092/api/Especialidad/" + e.ID);
             return response.IsSuccessStatusCode;
         }

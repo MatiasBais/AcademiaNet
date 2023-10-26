@@ -26,30 +26,49 @@ namespace AcademiaNet
 
         private void administrarEspecialidadesToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void administrarPlanesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void administrarComisionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void administrarTiposDeUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void comisionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void especialidadesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
             Especialidad esp = new Especialidad();
             esp.ShowDialog();
         }
 
-        private void administrarPlanesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void planesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Planes planes = new Planes();
             planes.ShowDialog();
         }
 
-        private void administrarComisionesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void comisionesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Comision comisiones = new Comision();
-            comisiones.ShowDialog();
+            Comision comi = new Comision();
+            comi.ShowDialog();
         }
 
-        private void administrarTiposDeUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            TipoUsuario tipo = new TipoUsuario();
-            tipo.ShowDialog();
-        }
-
-
-        private void comisionesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void Menu_Load(object sender, EventArgs e)
         {
 
         }

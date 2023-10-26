@@ -18,9 +18,10 @@ namespace AcademiaNet
             InitializeComponent();
         }
 
-        private void Planes_Load(object sender, EventArgs e)
+        private async void Planes_Load(object sender, EventArgs e)
         {
             loadEspecialidades();
+            timer1.Start();
             loadPlanes();
         }
 
@@ -29,17 +30,25 @@ namespace AcademiaNet
             l = Negocio.Especialidad.GetAll();
             return l.Result;
         }
+        bool espLoad = false;
         private async void loadEspecialidades()
         {
+            espLoad = false;
             Task<IEnumerable<Entidades.Especialidad>> task = new Task<IEnumerable<Entidades.Especialidad>>(getEspecialidades);
             task.Start();
             cmbEspecialidad.DataSource = await task;
+            cmbEspecialidad.ValueMember = "ID";
+            cmbEspecialidad.DisplayMember = "Descripcion";
+            espLoad = true;
         }
 
         private void loadPlanes()
         {
+            if (!espLoad)
+                return;
             Negocio.Plan plan = new Negocio.Plan();
             List<Entidades.Plan> planes = plan.getPlanes((int)cmbEspecialidad.SelectedValue);
+
 
             DataTable dt = new DataTable();
 
@@ -216,6 +225,15 @@ namespace AcademiaNet
             finally
             {
                 loadPlanes();
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (espLoad)
+            {
+                loadPlanes();
+                timer1.Stop();
             }
         }
     }

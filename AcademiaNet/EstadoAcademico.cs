@@ -112,13 +112,17 @@ namespace AcademiaNet
             document.Open();
             iTextSharp.text.Font font5 = iTextSharp.text.FontFactory.GetFont(FontFactory.HELVETICA, 5);
 
-            Paragraph title = new Paragraph(string.Format(usuario.Persona.Apellido + ", " + usuario.Persona.Nombre), new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 20, iTextSharp.text.Font.BOLD));
-            title.Alignment = Element.ALIGN_CENTER;
+            Paragraph title = new Paragraph(string.Format("Alumno: " + usuario.Persona.Apellido + ", " + usuario.Persona.Nombre), new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12, iTextSharp.text.Font.BOLD));
+            title.Alignment = Element.ALIGN_LEFT;
             document.Add(title);
 
-            Paragraph title2 = new Paragraph(string.Format(usuario.Plan.Descripcion + " - " + usuario.Plan.Especialidad.Descripcion), new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 16, iTextSharp.text.Font.BOLD));
-            title2.Alignment = Element.ALIGN_CENTER;
+            Paragraph title2 = new Paragraph(string.Format(usuario.Plan.Descripcion + " - " + usuario.Plan.Especialidad.Descripcion), new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12, iTextSharp.text.Font.BOLD));
+            title2.Alignment = Element.ALIGN_LEFT;
             document.Add(title2);
+
+            Paragraph title4 = new Paragraph(string.Format("Fecha: " + DateTime.Now.ToString()), new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12, iTextSharp.text.Font.BOLD));
+            title4.Alignment = Element.ALIGN_LEFT;
+            document.Add(title4);
 
             Paragraph title3 = new Paragraph(string.Format("--"), new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 20, iTextSharp.text.Font.BOLD));
             title3.Alignment = Element.ALIGN_CENTER;
@@ -158,6 +162,6 @@ namespace AcademiaNet
             document.Close();
         }
 
-    
+
     }
 }

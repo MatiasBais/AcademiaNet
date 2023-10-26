@@ -37,6 +37,13 @@ namespace AcademiaNet
             }
 
             List<Entidades.Materia> results = materias.Where(f => !materiasinsc.Any(t => t.ID == f.ID)).ToList();
+            
+            if (results.Count == 0)
+            {
+                MessageBox.Show("No hay materias a las que no se haya anotado");
+                this.Close();
+            }
+               
 
             dgvMaterias.DataSource = results;
             dgvMaterias.Columns[0].Visible = false;

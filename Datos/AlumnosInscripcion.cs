@@ -54,7 +54,7 @@ namespace Datos
                 "from alumnosinscripciones " +
                 "join usuarios on alumnosinscripciones.idAlumno = usuarios.id " +
                 "join personas on personas.id = usuarios.idPersona " +
-                "where idcurso ='{0}' and alumnosinscripciones.state is null",
+                "where idcurso ='{0}' and alumnosinscripciones.state is null and usuarios.state is null",
                 curso.ID);
             SqlCommand cmd = new SqlCommand(query, conn);
             using (SqlDataReader reader = cmd.ExecuteReader())

@@ -44,6 +44,7 @@
             dgvEstadoAcademico.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvEstadoAcademico.Location = new System.Drawing.Point(11, 60);
             dgvEstadoAcademico.Name = "dgvEstadoAcademico";
+            dgvEstadoAcademico.ReadOnly = true;
             dgvEstadoAcademico.RowHeadersVisible = false;
             dgvEstadoAcademico.RowHeadersWidth = 51;
             dgvEstadoAcademico.RowTemplate.Height = 29;

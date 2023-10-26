@@ -37,6 +37,12 @@ namespace Negocio
 
         public void deletePersona(int id)
         {
+            Datos.Usuario u = new Datos.Usuario();
+            Entidades.Persona persona = new Entidades.Persona();
+            persona.ID=id;
+            List<Entidades.Usuario> usuarios = u.getUsuarios(persona);
+            if (usuarios.Count > 0)
+                throw new Exception("No se puede eliminar la persona porque tiene usuarios.");
             Datos.Persona datos = new Datos.Persona();
             datos.deletePersona(id);
         }

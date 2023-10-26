@@ -28,263 +28,277 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvUsuarios = new System.Windows.Forms.DataGridView();
-            this.cmbTipo = new System.Windows.Forms.ComboBox();
-            this.cmbEspecialidad = new System.Windows.Forms.ComboBox();
-            this.cmbPlan = new System.Windows.Forms.ComboBox();
-            this.txtClave = new System.Windows.Forms.TextBox();
-            this.txtLegajo = new System.Windows.Forms.TextBox();
-            this.txtNombreUsuario = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblEspecialidad = new System.Windows.Forms.Label();
-            this.lblPlan = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.btnModificar = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnAgregar = new System.Windows.Forms.Button();
-            this.cmbHabilitado = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            dgvUsuarios = new System.Windows.Forms.DataGridView();
+            cmbTipo = new System.Windows.Forms.ComboBox();
+            cmbEspecialidad = new System.Windows.Forms.ComboBox();
+            cmbPlan = new System.Windows.Forms.ComboBox();
+            txtClave = new System.Windows.Forms.TextBox();
+            txtLegajo = new System.Windows.Forms.TextBox();
+            txtNombreUsuario = new System.Windows.Forms.TextBox();
+            label1 = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
+            label5 = new System.Windows.Forms.Label();
+            lblEspecialidad = new System.Windows.Forms.Label();
+            lblPlan = new System.Windows.Forms.Label();
+            label8 = new System.Windows.Forms.Label();
+            btnModificar = new System.Windows.Forms.Button();
+            btnEliminar = new System.Windows.Forms.Button();
+            btnCancelar = new System.Windows.Forms.Button();
+            btnAgregar = new System.Windows.Forms.Button();
+            cmbHabilitado = new System.Windows.Forms.ComboBox();
+            timer1 = new System.Windows.Forms.Timer(components);
+            ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
+            SuspendLayout();
             // 
             // dgvUsuarios
             // 
-            this.dgvUsuarios.AllowUserToAddRows = false;
-            this.dgvUsuarios.AllowUserToDeleteRows = false;
-            this.dgvUsuarios.AllowUserToResizeColumns = false;
-            this.dgvUsuarios.AllowUserToResizeRows = false;
-            this.dgvUsuarios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvUsuarios.Location = new System.Drawing.Point(12, 128);
-            this.dgvUsuarios.Name = "dgvUsuarios";
-            this.dgvUsuarios.ReadOnly = true;
-            this.dgvUsuarios.RowHeadersVisible = false;
-            this.dgvUsuarios.RowTemplate.Height = 25;
-            this.dgvUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUsuarios.Size = new System.Drawing.Size(1143, 489);
-            this.dgvUsuarios.TabIndex = 0;
-            this.dgvUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsuarios_CellClick);
+            dgvUsuarios.AllowUserToAddRows = false;
+            dgvUsuarios.AllowUserToDeleteRows = false;
+            dgvUsuarios.AllowUserToResizeColumns = false;
+            dgvUsuarios.AllowUserToResizeRows = false;
+            dgvUsuarios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvUsuarios.Location = new System.Drawing.Point(14, 171);
+            dgvUsuarios.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            dgvUsuarios.Name = "dgvUsuarios";
+            dgvUsuarios.ReadOnly = true;
+            dgvUsuarios.RowHeadersVisible = false;
+            dgvUsuarios.RowHeadersWidth = 51;
+            dgvUsuarios.RowTemplate.Height = 25;
+            dgvUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            dgvUsuarios.Size = new System.Drawing.Size(1306, 652);
+            dgvUsuarios.TabIndex = 0;
+            dgvUsuarios.CellClick += dgvUsuarios_CellClick;
             // 
             // cmbTipo
             // 
-            this.cmbTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTipo.FormattingEnabled = true;
-            this.cmbTipo.Items.AddRange(new object[] {
-            "Alumno",
-            "Profesor",
-            "Administrador"});
-            this.cmbTipo.Location = new System.Drawing.Point(719, 38);
-            this.cmbTipo.Name = "cmbTipo";
-            this.cmbTipo.Size = new System.Drawing.Size(435, 23);
-            this.cmbTipo.TabIndex = 5;
-            this.cmbTipo.SelectedIndexChanged += new System.EventHandler(this.cmbTipo_SelectedIndexChanged);
+            cmbTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            cmbTipo.FormattingEnabled = true;
+            cmbTipo.Items.AddRange(new object[] { "Alumno", "Profesor", "Administrador" });
+            cmbTipo.Location = new System.Drawing.Point(822, 51);
+            cmbTipo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            cmbTipo.Name = "cmbTipo";
+            cmbTipo.Size = new System.Drawing.Size(497, 28);
+            cmbTipo.TabIndex = 5;
+            cmbTipo.SelectedIndexChanged += cmbTipo_SelectedIndexChanged;
             // 
             // cmbEspecialidad
             // 
-            this.cmbEspecialidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbEspecialidad.FormattingEnabled = true;
-            this.cmbEspecialidad.Location = new System.Drawing.Point(800, 67);
-            this.cmbEspecialidad.Name = "cmbEspecialidad";
-            this.cmbEspecialidad.Size = new System.Drawing.Size(140, 23);
-            this.cmbEspecialidad.TabIndex = 6;
-            this.cmbEspecialidad.SelectedIndexChanged += new System.EventHandler(this.cmbEspecialidad_SelectedIndexChanged);
+            cmbEspecialidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            cmbEspecialidad.FormattingEnabled = true;
+            cmbEspecialidad.Location = new System.Drawing.Point(914, 89);
+            cmbEspecialidad.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            cmbEspecialidad.Name = "cmbEspecialidad";
+            cmbEspecialidad.Size = new System.Drawing.Size(159, 28);
+            cmbEspecialidad.TabIndex = 6;
+            cmbEspecialidad.SelectedIndexChanged += cmbEspecialidad_SelectedIndexChanged;
             // 
             // cmbPlan
             // 
-            this.cmbPlan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbPlan.FormattingEnabled = true;
-            this.cmbPlan.Location = new System.Drawing.Point(1014, 67);
-            this.cmbPlan.Name = "cmbPlan";
-            this.cmbPlan.Size = new System.Drawing.Size(140, 23);
-            this.cmbPlan.TabIndex = 6;
+            cmbPlan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            cmbPlan.FormattingEnabled = true;
+            cmbPlan.Location = new System.Drawing.Point(1159, 89);
+            cmbPlan.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            cmbPlan.Name = "cmbPlan";
+            cmbPlan.Size = new System.Drawing.Size(159, 28);
+            cmbPlan.TabIndex = 6;
             // 
             // txtClave
             // 
-            this.txtClave.Location = new System.Drawing.Point(141, 67);
-            this.txtClave.Name = "txtClave";
-            this.txtClave.Size = new System.Drawing.Size(435, 23);
-            this.txtClave.TabIndex = 3;
-            this.txtClave.UseSystemPasswordChar = true;
+            txtClave.Location = new System.Drawing.Point(161, 89);
+            txtClave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            txtClave.Name = "txtClave";
+            txtClave.Size = new System.Drawing.Size(497, 27);
+            txtClave.TabIndex = 3;
+            txtClave.UseSystemPasswordChar = true;
             // 
             // txtLegajo
             // 
-            this.txtLegajo.Location = new System.Drawing.Point(141, 9);
-            this.txtLegajo.Name = "txtLegajo";
-            this.txtLegajo.Size = new System.Drawing.Size(435, 23);
-            this.txtLegajo.TabIndex = 1;
-            this.txtLegajo.Text = "0";
-            this.txtLegajo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLegajo_KeyPress);
-            this.txtLegajo.Leave += new System.EventHandler(this.txtLegajo_Leave);
+            txtLegajo.Location = new System.Drawing.Point(161, 12);
+            txtLegajo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            txtLegajo.Name = "txtLegajo";
+            txtLegajo.Size = new System.Drawing.Size(497, 27);
+            txtLegajo.TabIndex = 1;
+            txtLegajo.Text = "0";
+            txtLegajo.KeyPress += txtLegajo_KeyPress;
+            txtLegajo.Leave += txtLegajo_Leave;
             // 
             // txtNombreUsuario
             // 
-            this.txtNombreUsuario.Location = new System.Drawing.Point(141, 38);
-            this.txtNombreUsuario.Name = "txtNombreUsuario";
-            this.txtNombreUsuario.Size = new System.Drawing.Size(435, 23);
-            this.txtNombreUsuario.TabIndex = 2;
+            txtNombreUsuario.Location = new System.Drawing.Point(161, 51);
+            txtNombreUsuario.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            txtNombreUsuario.Name = "txtNombreUsuario";
+            txtNombreUsuario.Size = new System.Drawing.Size(497, 27);
+            txtNombreUsuario.TabIndex = 2;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 15);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Legajo:";
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(14, 16);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(57, 20);
+            label1.TabIndex = 8;
+            label1.Text = "Legajo:";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 41);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(113, 15);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Nombre de Usuario:";
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(14, 55);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(142, 20);
+            label2.TabIndex = 9;
+            label2.Text = "Nombre de Usuario:";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 70);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 15);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Clave: ";
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(14, 93);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(52, 20);
+            label3.TabIndex = 10;
+            label3.Text = "Clave: ";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(582, 12);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 15);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Habilitado:";
+            label4.AutoSize = true;
+            label4.Location = new System.Drawing.Point(665, 16);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(83, 20);
+            label4.TabIndex = 11;
+            label4.Text = "Habilitado:";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(582, 41);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(92, 15);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "Tipo de Usuario:";
+            label5.AutoSize = true;
+            label5.Location = new System.Drawing.Point(665, 55);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(117, 20);
+            label5.TabIndex = 12;
+            label5.Text = "Tipo de Usuario:";
             // 
             // lblEspecialidad
             // 
-            this.lblEspecialidad.AutoSize = true;
-            this.lblEspecialidad.Location = new System.Drawing.Point(719, 70);
-            this.lblEspecialidad.Name = "lblEspecialidad";
-            this.lblEspecialidad.Size = new System.Drawing.Size(75, 15);
-            this.lblEspecialidad.TabIndex = 13;
-            this.lblEspecialidad.Text = "Especialidad:";
+            lblEspecialidad.AutoSize = true;
+            lblEspecialidad.Location = new System.Drawing.Point(822, 93);
+            lblEspecialidad.Name = "lblEspecialidad";
+            lblEspecialidad.Size = new System.Drawing.Size(96, 20);
+            lblEspecialidad.TabIndex = 13;
+            lblEspecialidad.Text = "Especialidad:";
             // 
             // lblPlan
             // 
-            this.lblPlan.AutoSize = true;
-            this.lblPlan.Location = new System.Drawing.Point(946, 70);
-            this.lblPlan.Name = "lblPlan";
-            this.lblPlan.Size = new System.Drawing.Size(33, 15);
-            this.lblPlan.TabIndex = 14;
-            this.lblPlan.Text = "Plan:";
+            lblPlan.AutoSize = true;
+            lblPlan.Location = new System.Drawing.Point(1081, 93);
+            lblPlan.Name = "lblPlan";
+            lblPlan.Size = new System.Drawing.Size(40, 20);
+            lblPlan.TabIndex = 14;
+            lblPlan.Text = "Plan:";
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 128);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(0, 15);
-            this.label8.TabIndex = 52;
+            label8.AutoSize = true;
+            label8.Location = new System.Drawing.Point(14, 171);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(0, 20);
+            label8.TabIndex = 52;
             // 
             // btnModificar
             // 
-            this.btnModificar.Enabled = false;
-            this.btnModificar.Location = new System.Drawing.Point(300, 96);
-            this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(281, 23);
-            this.btnModificar.TabIndex = 51;
-            this.btnModificar.Text = "Modificar";
-            this.btnModificar.UseVisualStyleBackColor = true;
-            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            btnModificar.Enabled = false;
+            btnModificar.Location = new System.Drawing.Point(343, 128);
+            btnModificar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnModificar.Name = "btnModificar";
+            btnModificar.Size = new System.Drawing.Size(321, 31);
+            btnModificar.TabIndex = 51;
+            btnModificar.Text = "Modificar";
+            btnModificar.UseVisualStyleBackColor = true;
+            btnModificar.Click += btnModificar_Click;
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Enabled = false;
-            this.btnEliminar.Location = new System.Drawing.Point(586, 96);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(281, 23);
-            this.btnEliminar.TabIndex = 50;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            btnEliminar.Enabled = false;
+            btnEliminar.Location = new System.Drawing.Point(670, 128);
+            btnEliminar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new System.Drawing.Size(321, 31);
+            btnEliminar.TabIndex = 50;
+            btnEliminar.Text = "Eliminar";
+            btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.Click += btnEliminar_Click;
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Enabled = false;
-            this.btnCancelar.Location = new System.Drawing.Point(874, 96);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(281, 23);
-            this.btnCancelar.TabIndex = 49;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            btnCancelar.Enabled = false;
+            btnCancelar.Location = new System.Drawing.Point(999, 128);
+            btnCancelar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new System.Drawing.Size(321, 31);
+            btnCancelar.TabIndex = 49;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(12, 96);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(281, 23);
-            this.btnAgregar.TabIndex = 48;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            btnAgregar.Location = new System.Drawing.Point(14, 128);
+            btnAgregar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnAgregar.Name = "btnAgregar";
+            btnAgregar.Size = new System.Drawing.Size(321, 31);
+            btnAgregar.TabIndex = 48;
+            btnAgregar.Text = "Agregar";
+            btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.Click += btnAgregar_Click;
             // 
             // cmbHabilitado
             // 
-            this.cmbHabilitado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbHabilitado.FormattingEnabled = true;
-            this.cmbHabilitado.Items.AddRange(new object[] {
-            "Habilitado",
-            "No Habilitado"});
-            this.cmbHabilitado.Location = new System.Drawing.Point(719, 9);
-            this.cmbHabilitado.Name = "cmbHabilitado";
-            this.cmbHabilitado.Size = new System.Drawing.Size(435, 23);
-            this.cmbHabilitado.TabIndex = 53;
+            cmbHabilitado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            cmbHabilitado.FormattingEnabled = true;
+            cmbHabilitado.Items.AddRange(new object[] { "Habilitado", "No Habilitado" });
+            cmbHabilitado.Location = new System.Drawing.Point(822, 12);
+            cmbHabilitado.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            cmbHabilitado.Name = "cmbHabilitado";
+            cmbHabilitado.Size = new System.Drawing.Size(497, 28);
+            cmbHabilitado.TabIndex = 53;
+            // 
+            // timer1
+            // 
+            timer1.Tick += timer1_Tick;
             // 
             // Usuario
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1166, 629);
-            this.Controls.Add(this.cmbHabilitado);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.btnModificar);
-            this.Controls.Add(this.btnEliminar);
-            this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.btnAgregar);
-            this.Controls.Add(this.lblPlan);
-            this.Controls.Add(this.lblEspecialidad);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtNombreUsuario);
-            this.Controls.Add(this.txtLegajo);
-            this.Controls.Add(this.txtClave);
-            this.Controls.Add(this.cmbPlan);
-            this.Controls.Add(this.cmbEspecialidad);
-            this.Controls.Add(this.cmbTipo);
-            this.Controls.Add(this.dgvUsuarios);
-            this.Name = "Usuario";
-            this.Text = "Usuario";
-            this.Load += new System.EventHandler(this.Usuario_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(1333, 839);
+            Controls.Add(cmbHabilitado);
+            Controls.Add(label8);
+            Controls.Add(btnModificar);
+            Controls.Add(btnEliminar);
+            Controls.Add(btnCancelar);
+            Controls.Add(btnAgregar);
+            Controls.Add(lblPlan);
+            Controls.Add(lblEspecialidad);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(txtNombreUsuario);
+            Controls.Add(txtLegajo);
+            Controls.Add(txtClave);
+            Controls.Add(cmbPlan);
+            Controls.Add(cmbEspecialidad);
+            Controls.Add(cmbTipo);
+            Controls.Add(dgvUsuarios);
+            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            Name = "Usuario";
+            Text = "Usuario";
+            Load += Usuario_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvUsuarios).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -309,5 +323,6 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.ComboBox cmbHabilitado;
+        private System.Windows.Forms.Timer timer1;
     }
 }

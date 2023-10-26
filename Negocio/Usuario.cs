@@ -27,10 +27,27 @@ namespace Negocio
         }
 
 
-        public void deleteUsuario(int id)
+        public void deleteUsuario(Entidades.Usuario usuario)
         {
             Datos.Usuario datos = new Datos.Usuario();
-            datos.deleteUsuario(id);
+            usuario = datos.getUsuario(usuario.ID);
+            if (usuario.tipo.Descripcion == "Profesor")
+            {
+                Datos.Curso datos2 = new Datos.Curso();
+                List<Entidades.Curso> cursos = new List<Entidades.Curso>();
+                cursos= datos2.getCursos(usuario, DateTime.Now.Year);
+                if(cursos.Count > 0)
+                    throw new Exception("Debe desvincular al profesor de sus cursos actuales para poder eliminar el usuairo. En los cursos de años anteriores seguirá apareciendo");
+            }
+            if(usuario.tipo.Descripcion == "Alumno")
+            {
+                Datos.AlumnosInscripcion datos2 = new Datos.AlumnosInscripcion();
+                List<Entidades.AlumnosInscripcion> inscripciones = new List<Entidades.AlumnosInscripcion>();
+                inscripciones = datos2.getInscripciones(usuario);
+                if (inscripciones.Count > 0)
+                    throw new Exception("El alumno no se puede eliminar ya que está anotado en uno o varios cursos. En los cursos de años anteriores seguirá apareciendo");
+            }
+            datos.deleteUsuario(usuario);
         }
 
         public void updateUsuario(Entidades.Usuario usuario)

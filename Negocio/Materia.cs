@@ -23,6 +23,10 @@ namespace Negocio
 
         public void deleteMateria(int ID)
         {
+            Datos.Curso c = new Datos.Curso();
+            List<Entidades.Curso> cursos = c.getCursos(ID);
+            if (cursos.Count > 0)
+                throw new Exception("No se puede eliminar la materia porque tiene cursos asociados.");
             Datos.Materia mat = new Datos.Materia();
             Entidades.Materia materia = mat.getMateria(ID);
             mat.deleteMateria(materia);

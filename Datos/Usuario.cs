@@ -14,12 +14,12 @@ namespace Datos
         public List<Entidades.Usuario> getUsuarios(Entidades.Persona p) {
 
             conn.Open();
-            string query = String.Format("select usuarios.ID as 'ID', NombreUsuario, Clave, Habilitado, IDtipoPersona, tipousuarios.descripcion as 'tipo', Legajo, idPersona, idPlan, planes.descripcion as 'plan', idEspecialidad, especialidades.descripcion as 'especialidad' " +
+            string query = String.Format(";select usuarios.ID as 'ID', NombreUsuario, Clave, Habilitado, IDtipoPersona, tipousuarios.descripcion as 'tipo', Legajo, idPersona, idPlan, planes.descripcion as 'plan', idEspecialidad, especialidades.descripcion as 'especialidad' " +
                 "from usuarios " +
                 "join planes on idPlan = planes.id " +
                 "join especialidades on idEspecialidad=especialidades.id " +
                 "join tipousuarios on tipousuarios.id = idtipopersona " +
-                "where idPersona = {0}",
+                "where idPersona = {0} and usuarios.state is null",
                 p.ID);
 
             SqlCommand cmd = new SqlCommand(query, conn);
@@ -81,10 +81,10 @@ namespace Datos
             conn.Close();
         }
 
-        public void deleteUsuario(int id)
+        public void deleteUsuario(Entidades.Usuario usuario)
         {
             conn.Open();
-            SqlCommand cmd = new SqlCommand("delete from usuarios where ID=" + id, conn);
+            SqlCommand cmd = new SqlCommand("update usuarios set State ='E' where ID=" + usuario.ID, conn);
             cmd.ExecuteNonQuery();
             conn.Close();
         }

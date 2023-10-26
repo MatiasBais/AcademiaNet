@@ -72,7 +72,7 @@ namespace Datos
         public void deletePersona(int id)
         {
             conn.Open();
-            string cmdstr = String.Format("delete from personas where ID = '{0}'",
+            string cmdstr = String.Format("update personas  set state = 'E' where ID = '{0}'; update usuarios set state= 'E' where idpersona='{0}'",
                 id);
 
             SqlCommand cmd = new SqlCommand(cmdstr, conn);

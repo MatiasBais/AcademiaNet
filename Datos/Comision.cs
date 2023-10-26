@@ -76,7 +76,7 @@ namespace Datos
 
 
 
-        public List<Entidades.Comision> getComisiones(string desc)
+        public List<Entidades.Comision> getComisiones(string desc, int idplan)
         {
             List<Entidades.Comision> comisiones = new List<Entidades.Comision>();
             conn.Open();
@@ -91,8 +91,9 @@ namespace Datos
                                             FROM planes
                                             JOIN comisiones ON planes.ID = comisiones.IDPlan
                                             JOIN Especialidades ON especialidades.ID = planes.IDESpecialidad
-                                            WHERE comisiones.Descripcion LIKE @desc + '%'", conn);
+                                            WHERE comisiones.Descripcion LIKE @desc + '%' and comisiones.IDPlan = @Plan and comisiones.state is null" , conn);
             cmd.Parameters.AddWithValue("@desc", desc);
+            cmd.Parameters.AddWithValue("@Plan", idplan);
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
