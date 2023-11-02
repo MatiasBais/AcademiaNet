@@ -119,7 +119,7 @@ namespace AcademiaNet
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            
+
             Negocio.Persona negocio = new Negocio.Persona();
             negocio.deletePersona(ID);
 
@@ -133,7 +133,7 @@ namespace AcademiaNet
 
         private void txtLegajo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -143,7 +143,7 @@ namespace AcademiaNet
 
         private void txtLegajo_Leave(object sender, EventArgs e)
         {
-       
+
         }
 
         private void dgvPersonas_CellClick(object sender, DataGridViewCellEventArgs e)

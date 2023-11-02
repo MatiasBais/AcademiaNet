@@ -115,7 +115,7 @@ namespace AcademiaNet
         private void dgvPlanes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = dgvPlanes.SelectedCells[0].RowIndex;
-            int id = (int)dgvPlanes.Rows[index].Cells[2].Value;
+            ID = (int)dgvPlanes.Rows[index].Cells[2].Value;
             txtDescripcion.Text = dgvPlanes.Rows[index].Cells[0].Value.ToString();
             cmbEspecialidad.SelectedValue = dgvPlanes.Rows[index].Cells[1].Value;
 
@@ -220,7 +220,7 @@ namespace AcademiaNet
             }
             catch (Exception error)
             {
-                MessageBox.Show(error.ToString());
+                MessageBox.Show(error.Message);
             }
             finally
             {
