@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Negocio
@@ -20,17 +21,26 @@ namespace Negocio
                 throw new Exception("Falta Nombre");
             if (p.Apellido == "")
                 throw new Exception("Falta Apellido");
+            if(!IsValidEmail(p.Email))
+                throw new Exception("Email invalido");
             Datos.Persona datos = new Datos.Persona();
             datos.addPersona(p);
 
         }
-
+        static bool IsValidEmail(string email)
+        {
+            string pattern = @"^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$";
+            Regex regex = new Regex(pattern);
+            return regex.IsMatch(email);
+        }
         public void updatePersona(Entidades.Persona p)
         {
             if (p.Nombre == "")
                 throw new Exception("Falta Nombre");
             if (p.Apellido == "")
                 throw new Exception("Falta Apellido");
+            if (!IsValidEmail(p.Email))
+                throw new Exception("Email invalido");
             Datos.Persona datos = new Datos.Persona();
             datos.updatePersona(p);
         }
