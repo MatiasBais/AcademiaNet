@@ -18,14 +18,19 @@ namespace Api.Controllers
         [HttpGet(Name = "GetEspecialidad")]
         public ActionResult<IEnumerable<Especialidad>> GetAll()
         {
-            return _context.Especialidades.ToList();
+
+            var especialidades = _context.Especialidades
+                .Where(e => e.Descripcion != "-")
+                .ToList();
+
+            return especialidades;
         }
 
         [HttpGet("GetByDesc/{descripcion}", Name = "GetByDesc")]
         public ActionResult<IEnumerable<Especialidad>> GetByDesc(string descripcion)
         {
             var especialidades = _context.Especialidades
-                .Where(e => e.Descripcion.Contains(descripcion))
+                .Where(e => e.Descripcion.Contains(descripcion) && e.Descripcion != "-")
                 .ToList();
 
             return especialidades;
